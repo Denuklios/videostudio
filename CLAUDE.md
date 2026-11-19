@@ -45,7 +45,18 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   ausdrücklichen Wunsch mit `"anbieter": "elevenlabs"`.)
 - **Logo / Schluss-Szene:** Die letzte Szene nutzt IMMER `kanal/schluss.png` (die Neon-Krake, deren Arme ein
   Fragezeichen bilden) als `"foto": "../../kanal/schluss.png"`, Überschrift „Wusstest <b>du's?</b>“, Effekt
-  `leuchten(564, 421, 140, "#ff4fd8", wort="folg")`. Kein neues Logo-Bild erzeugen.
+  `hervorheben(560, 980, maske="../../kanal/maske_logo.png", art="puls", glanz="#ff4fd8", halten=None, wort="folg")`.
+  Kein neues Logo-Bild erzeugen.
+
+- **Effekte – feste Regel des Nutzers:** Objekte werden IMMER in ihrer echten Form hervorgehoben, nie mit
+  Kreisen, Ovalen oder Ringen. Ablauf je Objekt:
+  1. `python3 ../../engine/ausschneiden.py bilder/X.png <name> x1,y1,x2,y2` (Rahmen knapp um das Objekt,
+     mehrere Rahmen für mehrere Teile) → `bilder/maske_<name>.png`.
+  2. **`bilder/maske_<name>_check.jpg` ansehen**: Ist genau das Objekt magenta? Sonst Rahmen anpassen.
+  3. In `bauen.py`: `hervorheben(x, y, maske=str(B / "maske_<name>.png"), wort="…", glanz=Akzentfarbe)`
+     mit x, y = Mitte des Objekts; `art="puls"` oder `"blink"` für Abwechslung.
+  **Verboten:** `kreis()`, `sonar()`, `leuchten()` und `hervorheben()` ohne `maske`.
+  Erlaubt ergänzend: `schild()` für Zahlen/Begriffe, `pfeil()` nur für Bewegungen/Richtungen, `ekg()`, `tempo_linien()`.
 
 ## Automatischer Tagesbetrieb
 
@@ -66,6 +77,7 @@ Ein Zeitplan schickt jeden Tag um 9:17 Uhr den Auftrag „Tageslauf“ in den Ch
 
 ## Technik
 
+- rembg (Freistell-KI SAM, Modell lädt beim ersten Mal ~375 MB) und scipy installiert das Setup-Skript.
 - edge-tts wird vom Setup-Skript der Umgebung installiert. Hinter dem Proxy liest `stimme.py`
   automatisch `/root/.ccr/ca-bundle.crt`.
 - Playwright/Chromium und ffmpeg sind in der Cloud-Umgebung vorhanden.

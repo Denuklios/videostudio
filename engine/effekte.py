@@ -120,3 +120,71 @@ def tempo_linien(x, y, laenge=220, anzahl=3, abstand=60, farbe=WEISS, **z):
         ll = laenge * (1 - 0.2 * abs(i - (anzahl - 1) / 2))
         out += f'<g data-a="breit links" data-l="0.4"{_zeit(**zz)}><path d="M{x-ll} {yy} h{ll}" stroke="{farbe}" stroke-width="12" stroke-linecap="round" opacity=".85"/></g>'
     return out
+
+
+_zaehler = [0]
+
+
+def _ellipse(x, y, rx, ry):
+    return f"M{x-rx} {y} a{rx} {ry} 0 1 0 {2*rx} 0 a{rx} {ry} 0 1 0 {-2*rx} 0Z"
+
+
+def hervorheben(x, y, rx=None, ry=None, art="heben", abdunkeln=True, glanz="#3ff0ff", halten=2.6, maske=None, **z):
+    """Schneidet eine Stelle aus dem Szenenbild aus (weiche Kante) und legt sie als Kopie darüber.
+
+    art: "heben"  – Kopie wird heller und hebt sich leicht an (Standard)
+         "puls"   – wie heben, dazu pulsierend
+         "blink"  – Kopie blinkt hell auf
+    abdunkeln: Rest des Bildes kurz abdunkeln (Scheinwerfer-Effekt).
+    halten: Sekunden, bis der Effekt wieder ausblendet (None = bis Szenenende).
+    maske: Pfad zu einer Maske aus ausschneiden.py (exakte Objektform) – IMMER bevorzugen.
+           x, y = Mittelpunkt des Objekts (für das Anheben).
+    rx/ry: nur ohne Maske: weiche Ellipse (sieht schlechter aus).
+    Funktioniert nur in Szenen mit "foto".
+    """
+    if maske:
+        return _hervorheben_maske(x, y, maske, art, abdunkeln, glanz, halten, **z)
+    ry = ry or rx
+    _zaehler[0] += 1
+    i = _zaehler[0]
+    h = f' data-halten="{halten}"' if halten else ""
+    arten = {"heben": "heben", "puls": "heben puls", "blink": "fade blink"}[art]
+    out = (f'<defs><radialGradient id="hg{i}"><stop offset=".55" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>'
+           f'<radialGradient id="hd{i}"><stop offset=".45" stop-color="#000"/><stop offset="1" stop-color="#fff"/></radialGradient>'
+           f'<mask id="hm{i}" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">'
+           f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}" fill="url(#hg{i})"/></mask>'
+           f'<mask id="hn{i}" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1480" height="2320">'
+           f'<rect x="-200" y="-200" width="1480" height="2320" fill="#fff"/>'
+           f'<ellipse cx="{x}" cy="{y}" rx="{rx*1.15}" ry="{ry*1.15}" fill="url(#hd{i})"/></mask></defs>')
+    if abdunkeln:
+        out += (f'<g data-a="fade" data-l="0.35"{h}{_zeit(**z)}><rect x="-200" y="-200" width="1480" height="2320" '
+                f'fill="#000" opacity=".62" mask="url(#hn{i})"/></g>')
+    stil = (f"transform-box:view-box;transform-origin:{x}px {y}px;"
+            f"filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 22px {glanz})")
+    out += (f'<g data-a="{arten}" data-l="0.45"{h}{_zeit(**z)} style="{stil}">'
+            f'<image href="__FOTO__" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice" '
+            f'mask="url(#hm{i})"/></g>')
+    return out
+
+
+def _hervorheben_maske(x, y, maske, art, abdunkeln, glanz, halten, **z):
+    from pathlib import Path
+    m = Path(maske).resolve()
+    inv = m.with_name(m.stem + "_inv.png")
+    _zaehler[0] += 1
+    i = _zaehler[0]
+    h = f' data-halten="{halten}"' if halten else ""
+    arten = {"heben": "heben", "puls": "heben puls", "blink": "fade blink"}[art]
+    out = (f'<defs><mask id="hm{i}" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">'
+           f'<image href="file://{m}" x="0" y="0" width="1080" height="1920"/></mask>'
+           f'<mask id="hn{i}" maskUnits="userSpaceOnUse" x="0" y="0" width="1080" height="1920">'
+           f'<image href="file://{inv}" x="0" y="0" width="1080" height="1920"/></mask></defs>')
+    if abdunkeln:
+        out += (f'<g data-a="fade" data-l="0.35"{h}{_zeit(**z)}><rect x="0" y="0" width="1080" height="1920" '
+                f'fill="#000" opacity=".6" mask="url(#hn{i})"/></g>')
+    stil = (f"transform-box:view-box;transform-origin:{x}px {y}px;"
+            f"filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px {glanz}) drop-shadow(0 0 40px {glanz})")
+    out += (f'<g data-a="{arten}" data-l="0.45"{h}{_zeit(**z)} style="{stil}">'
+            f'<image href="__FOTO__" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice" '
+            f'mask="url(#hm{i})"/></g>')
+    return out

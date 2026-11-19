@@ -84,7 +84,7 @@ function aufbauen() {
   P.szenen.forEach((sz, i) => {
     const d = document.createElement("div");
     d.className = "szene";
-    d.innerHTML = (sz.foto ? `<div class="foto"><div class="ebene"><img src="${sz.foto}"><svg class="ueber" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">${sz.ueber || ""}</svg></div></div>` : "") + (sz.kopf ? `<div class="kopf">${sz.kopf}</div>` : "") + `<div class="bild">${sz.bild || ""}</div>`;
+    d.innerHTML = (sz.foto ? `<div class="foto"><div class="ebene"><img src="${sz.foto}"><svg class="ueber" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">${(sz.ueber || "").split("__FOTO__").join(sz.foto)}</svg></div></div>` : "") + (sz.kopf ? `<div class="kopf">${sz.kopf}</div>` : "") + `<div class="bild">${sz.bild || ""}</div>`;
     cont.appendChild(d);
     szenenEls.push(d);
     // Animationen an gesprochene Wörter koppeln: data-wort="herzen" (optional data-n="2" für das 2. Vorkommen)
@@ -135,6 +135,7 @@ function animiereElemente(root, t) {
       else if (a === "schweben") tf += ` translateY(${Math.sin((t - start) * 2.2) * 14}px)`;
       else if (a === "puls") tf += ` scale(${1 + Math.max(0, Math.sin((t - start) * 5)) * 0.07})`;
       else if (a === "wackeln") tf += ` rotate(${Math.sin((t - start) * 7) * 6}deg)`;
+      else if (a === "heben") { tf += ` scale(${1 + 0.05 * ease(p)})`; op *= clamp(p * 3); }
       else if (a === "blink") op *= t < start ? 1 : 0.3 + 0.7 * (0.5 + 0.5 * Math.cos((t - start) * Math.PI * 2 * 2.2));
       else if (a === "sonar") { const k = ((t - start) % 1.1) / 1.1; tf += ` scale(${0.6 + k * 0.9})`; op *= (1 - k); }
       else if (a === "glimmen") tf += ` scale(${1 + 0.08 * (0.5 + 0.5 * Math.sin((t - start) * 9))})`;
@@ -148,6 +149,7 @@ function animiereElemente(root, t) {
       }
     }
     if (t < start && !arten.includes("draw")) op = 0;
+    if (el.dataset.halten) op *= 1 - clamp((t - start - parseFloat(el.dataset.halten)) / 0.4);
     if (el.dataset.aus) op *= 1 - clamp((t - parseFloat(el.dataset.aus)) / 0.3);
     el.style.transform = tf; el.style.opacity = op;
   });
