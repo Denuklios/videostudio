@@ -49,9 +49,8 @@ Ein Zeitplan schickt jeden Tag um 9:17 Uhr den Auftrag „Tageslauf“ in den Ch
    (`- [~] … übersprungen: Grund`) und das nächste genommen.
 3. Veröffentlichung über Metricool, nur TikTok, Uhrzeiten **12:00 und 19:00** Europe/Copenhagen am selben Tag
    (ist 12:00 schon vorbei, das erste Video 2 Stunden nach jetzt).
-4. **Freigabe:** Die ersten 3 Videos des Kanals mit `autoPublish: false` (der Nutzer bekommt eine Nachricht in der
-   Metricool-App und veröffentlicht mit einem Tipp). Ab dem 4. Video `autoPublish: true`.
-   Zähler: Anzahl `- [x]`-Zeilen in `themen.md` vor dem Lauf.
+4. **Veröffentlichung immer automatisch:** `autoPublish: true` (Wunsch des Nutzers seit 19.11.2026).
+   Mit `autoPublish: false` landet das Video nur als Entwurf im TikTok-Posteingang und bleibt liegen.
 5. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), nach „Erledigt“ verschieben, committen, pushen.
 6. Sind weniger als 10 offene Themen übrig: 20 neue, gut belegbare Themen-Ideen ergänzen (Mischung aus Tiere,
    Körper, Weltall, Geschichte, Alltagsirrtümer). Wenn Metricool-Analysen zeigen, was gut läuft, mehr davon.
