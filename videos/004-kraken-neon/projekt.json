@@ -1,0 +1,67 @@
+{
+ "titel": "Kraken haben 3 Herzen",
+ "datei": "kraken-3-herzen-neon",
+ "stil": {
+  "bg1": "#060b1f",
+  "bg2": "#12204a",
+  "akzent": "#3ff0ff",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "Kraken haben <b>3&nbsp;Herzen</b>",
+  "szene": 0
+ },
+ "szenen": [
+  {
+   "kopf": "Kraken haben <b>3&nbsp;Herzen</b>",
+   "text": "Kraken haben drei Herzen, blaues Blut und quasi neun Gehirne. Und das ist noch nicht mal das Verrückteste.",
+   "foto": "bilder/k1.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "2 für die <b>Kiemen</b>",
+   "text": "Zwei der Herzen pumpen das Blut nur durch die Kiemen. Das dritte versorgt den ganzen restlichen Körper.",
+   "foto": "bilder/k2.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Herz <b>aus!</b>",
+   "text": "Und jetzt kommt's: Wenn ein Krake schwimmt, hört sein Hauptherz einfach auf zu schlagen.",
+   "foto": "bilder/k3.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Lieber <b>krabbeln</b>",
+   "text": "Deshalb krabbeln Kraken lieber über den Meeresboden. Schwimmen ist für sie richtig anstrengend.",
+   "foto": "bilder/k4.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Warum <b>blau?</b>",
+   "text": "Ihr Blut ist blau, weil es Sauerstoff mit Kupfer statt mit Eisen transportiert. Das funktioniert besser im kalten Wasser.",
+   "foto": "bilder/k5.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Jeder Arm <b>denkt mit</b>",
+   "text": "Und die neun Gehirne? Eins im Kopf und ein eigenes Nervenzentrum in jedem der acht Arme. Zwei Drittel ihrer Nervenzellen stecken in den Armen.",
+   "foto": "bilder/k6.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Wusstest du das? Dann folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "ueber": "<defs><radialGradient id=\"gl564421\"><stop offset=\"0\" stop-color=\"#ff4fd8\" stop-opacity=\".85\"/><stop offset=\".55\" stop-color=\"#ff4fd8\" stop-opacity=\".35\"/><stop offset=\"1\" stop-color=\"#ff4fd8\" stop-opacity=\"0\"/></radialGradient></defs><g data-a=\"pop blink\" data-l=\"0.35\" data-wort=\"folg\"><circle cx=\"564\" cy=\"421\" r=\"224.0\" fill=\"url(#gl564421)\" style=\"mix-blend-mode:screen\"/></g><g data-a=\"sonar\" data-wort=\"folg\"><circle cx=\"564\" cy=\"421\" r=\"182.0\" fill=\"none\" stroke=\"#ff4fd8\" stroke-width=\"8\"/></g>",
+   "bild": ""
+  }
+ ]
+}

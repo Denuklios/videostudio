@@ -28,16 +28,24 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 ## Einstellungen des Nutzers
 
 - Kanal: **„Wusstest du's?“** – TikTok `@wusstestdu_s`. Instagram noch offen.
-- Look: erwachsen, nicht kindlich. Profilbild `kanal/profilbild.png` (Neon-Krake, deren Arme ein Fragezeichen
-  bilden). Canva-Stil für alle Szenen: „modern dark cinematic illustration, deep navy background, glowing neon
-  cyan and magenta accents, sleek, premium, slightly realistic, not childish, no text“. Wenn es passt, taucht die
-  Neon-Krake als wiederkehrendes Markenzeichen auf (z. B. in der Schluss-Szene).
+- Look: erwachsen, nicht kindlich. **Bildstil passt zum Thema** (z. B. realistisch-fotografisch fürs Weltall,
+  Gemälde-Look für Geschichte, Makro-Foto für Körper/Tiere), immer **dunkel und filmisch**, mit **Cyan (#3ff0ff)
+  und Magenta (#ff4fd8) als Lichtakzente** – nicht zwingend Neon-Linien. Canva-Prompt-Grundgerüst:
+  „<Motiv>, dark cinematic <Stil passend zum Thema>, deep navy shadows, subtle cyan and magenta light accents,
+  premium, not childish, no text“. Wiedererkennung kommt vom festen Rahmen: gleiche Schrift, Untertitel-Stil,
+  Akzentfarben Cyan/Magenta für Überschrift-Hervorhebung und Effekte, gleiche Stimme, gleiches Logo am Ende.
+  Profilbild: `kanal/profilbild.png`.
 - Schluss-Szene: gesprochen immer **„Wusstest du das? Dann folg für mehr!“** – nie „Wusstest-du's“ in den
   Sprechtext schreiben, das spricht die Stimme falsch aus. Als Überschrift (kopf) darf „Wusstest du's?“ stehen.
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
   und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
   Instagram `wunsch_fabrik_dk` ist das Geschäftskonto und bekommt nie diese Videos.
-- Stimme: ElevenLabs (Schlüssel ist als Netzwerk-Geheimnis der Umgebung hinterlegt, Gratis-Tarif, Guthaben ab 28. Nov. wieder voll); ist es leer, nimmt `stimme.py` automatisch `de-DE-ConradNeural` (edge-tts).
+- Stimme: immer **`de-DE-KillianNeural`** (edge-tts, kostenlos) – Standard in `stimme.py`, im Projekt nichts angeben.
+  Kein `stimme`/`anbieter` überschreiben. (Später evtl. Gemini-Stimme, wenn der Nutzer es sagt. ElevenLabs nur auf
+  ausdrücklichen Wunsch mit `"anbieter": "elevenlabs"`.)
+- **Logo / Schluss-Szene:** Die letzte Szene nutzt IMMER `kanal/schluss.png` (die Neon-Krake, deren Arme ein
+  Fragezeichen bilden) als `"foto": "../../kanal/schluss.png"`, Überschrift „Wusstest <b>du's?</b>“, Effekt
+  `leuchten(564, 421, 140, "#ff4fd8", wort="folg")`. Kein neues Logo-Bild erzeugen.
 
 ## Automatischer Tagesbetrieb
 

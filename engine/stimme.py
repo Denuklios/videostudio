@@ -103,9 +103,9 @@ def main():
     audio.mkdir(exist_ok=True)
 
     # "auto" (Standard): ElevenLabs, solange Guthaben da ist, sonst die kostenlose Edge-Stimme
-    wunsch = projekt.get("anbieter", "auto")
+    wunsch = projekt.get("anbieter", "edge")  # Standard: Edge-Stimme Killian (Wunsch des Nutzers)
     reihenfolge = ["elevenlabs", "edge"] if wunsch in ("auto", "elevenlabs") else ["edge"]
-    stimme = projekt.get("stimme", "de-DE-ConradNeural")
+    stimme = projekt.get("stimme", "de-DE-KillianNeural")
     tempo = projekt.get("tempo", "+8%")
 
     for anbieter in reihenfolge:
