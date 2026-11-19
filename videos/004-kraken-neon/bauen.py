@@ -25,15 +25,15 @@ szenen = [
 EFFEKTE = [""] * 6
 effekte_datei = Path(__file__).with_name("effekte.py")
 if effekte_datei.exists():
-    ns = {}
-    exec(effekte_datei.read_text(), globals(), ns)
+    ns = dict(globals())
+    exec(effekte_datei.read_text(), ns)
     EFFEKTE = ns["EFFEKTE"]
 for i, sz in enumerate(szenen[:-1]):
     sz["foto"] = f"bilder/k{i+1}.png"
     sz["ueber"] = EFFEKTE[i]
 # Schluss-Szene: immer das feste Logo
 szenen[-1]["foto"] = "../../kanal/schluss.png"
-szenen[-1]["ueber"] = leuchten(564, 421, 140, MAG, wort="folg")
+szenen[-1]["ueber"] = hervorheben(540, 860, maske=str(Path(__file__).resolve().parents[2] / "kanal/maske_logo.png"), art="puls", glanz=MAG, halten=None, wort="folg")
 for sz in szenen:
     sz["bild"] = ""
 projekt = {
