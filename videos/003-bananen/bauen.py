@@ -10,7 +10,7 @@ szenen = [
     {"kopf": "Bananen sind <b>radioaktiv</b>",
      "text": "Deine Banane ist radioaktiv. Kein Witz. Und du bist es auch.",
      "ueber": ""},
-    {"kopf": "Schuld ist <b>Kalium-40</b>",
+    {"kopf": "Schuld ist <b style=\"white-space:nowrap\">Kalium-40</b>",
      "text": "Bananen stecken voller Kalium. Ein winziger Teil davon ist Kalium-40, ein natürlich radioaktives Atom.",
      "ueber": ""},
     {"kopf": "<b>15</b> Zerfälle pro Sekunde",
@@ -29,10 +29,32 @@ szenen = [
      "text": "Folg für mehr Wusstest-du's!",
      "min_dauer": 3.0, "ueber": ""},
 ]
-EFFEKTE = Path(__file__).with_name("effekte.json")
-if EFFEKTE.exists():
-    for sz, u in zip(szenen, json.loads(EFFEKTE.read_text())):
-        sz["ueber"] = u
+effekte = [
+    leuchten(562, 886, 150, GIFT, wort="radioaktiv")
+    + sonar(778, 713, 45, GIFT, wort="radioaktiv", plus=0.2) + sonar(162, 1112, 45, GIFT, wort="radioaktiv", plus=0.35)
+    + sonar(875, 1231, 45, GIFT, wort="radioaktiv", plus=0.5)
+    + schild(540, 1380, "DU AUCH!", MAG, WEISS, wort="auch"),
+
+    kreis(529, 1210, 270, 300, CYAN, wort="kalium")
+    + leuchten(562, 734, 95, MAG, wort="kalium-40") + schild(850, 620, "K-40", MAG, WEISS, wort="kalium-40", plus=0.2),
+
+    schild(800, 1000, "15 Bq", GIFT, wort="15")
+    + sonar(402, 1150, 120, MAG, wort="zerfallen")
+    + kreis(518, 486, 240, wort="sekunde"),
+
+    kreis(324, 994, 140, 230, GIFT, wort="banane") + schild(330, 1300, "0,1 µSv", GIFT, wort="0,1")
+    + kreis(626, 691, 300, 170, MAG, wort="flug") + schild(760, 950, "HUNDERTFACH", MAG, WEISS, wort="hundert"),
+
+    leuchten(540, 778, 110, CYAN, wort="konstant")
+    + pfeil(600, 1150, 900, 1380, biegung=0.2, farbe=CYAN, wort="scheidest"),
+
+    leuchten(531, 880, 230, CYAN, wort="körper") + schild(820, 560, "1000+ Bq", CYAN, wort="tausend")
+    + kreis(356, 1430, 70, farbe=GIFT, wort="banane"),
+
+    leuchten(564, 421, 140, MAG, wort="folg"),
+]
+for sz, u in zip(szenen, effekte):
+    sz["ueber"] = u
 for i, sz in enumerate(szenen):
     sz["foto"] = f"bilder/b{i+1}.png"
     sz["bild"] = ""

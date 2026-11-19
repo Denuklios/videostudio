@@ -7,7 +7,6 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Offen
 
-- [ ] Warum Bananen leicht radioaktiv sind
 - [ ] Dein Magen erneuert seine Schleimhaut ständig – sonst würde er sich selbst verdauen
 - [ ] Auf der Venus dauert ein Tag länger als ein Jahr
 - [ ] Honig verdirbt praktisch nie – essbarer Honig aus ägyptischen Gräbern
@@ -39,3 +38,5 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 - [ ] Warum du dich an Träume kaum erinnerst
 
 ## Erledigt
+
+- [x] Warum Bananen leicht radioaktiv sind → videos/003-bananen (geplant 2026-11-19 19:00)
