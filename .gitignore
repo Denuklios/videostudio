@@ -1,0 +1,3 @@
+videos/*/audio/
+videos/*/timing.json
+node_modules/
