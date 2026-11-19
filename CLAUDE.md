@@ -28,6 +28,10 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 ## Einstellungen des Nutzers
 
 - Kanal: **„Wusstest du's?“** – TikTok `@wusstestdu_s`. Instagram noch offen.
+- Look: erwachsen, nicht kindlich. Profilbild `kanal/profilbild.png` (Neon-Krake, deren Arme ein Fragezeichen
+  bilden). Canva-Stil für alle Szenen: „modern dark cinematic illustration, deep navy background, glowing neon
+  cyan and magenta accents, sleek, premium, slightly realistic, not childish, no text“. Wenn es passt, taucht die
+  Neon-Krake als wiederkehrendes Markenzeichen auf (z. B. in der Schluss-Szene).
 - Schluss-Szene: Aufruf zum Folgen mit Kanalnamen, z. B. „Folg für mehr Wusstest-du's!“
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
   und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
