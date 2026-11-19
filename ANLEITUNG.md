@@ -21,6 +21,9 @@ Danach wird das Video über Metricool auf Instagram (und TikTok, sobald verbunde
    - Die Bild-Jobs liefern nur Vorschaubilder. Volle Auflösung: `create-design` (Format „Instagram Story“,
      `references` = die Media-IDs in Reihenfolge, Brief: „exactly N pages, each one image full bleed, no text“),
      dann `export-design` als PNG 1080×1920 und die URLs nach `bilder/` herunterladen.
+     **Achtung:** Canva fügt bei langen Designs gern eigene Werbetexte ein oder lässt Bilder weg. Deshalb
+     höchstens 3–4 Bilder pro Design, im Brief ausdrücklich „Do NOT add any text, headlines, slogans …“,
+     und jedes exportierte Bild ansehen. Hängt ein Design länger als 2 Minuten, kleinere Designs neu starten.
    - In der Szene `"foto": "bilder/xyz.png"` setzen; `bild` (SVG) bleibt leer oder legt Extras darüber.
    - **Effekte über dem Bild** (`engine/effekte.py`, Beispiel `videos/002-kraken-canva/bauen.py`):
      `leuchten`, `sonar`, `kreis`, `pfeil`, `schild`, `durchstreichen`, `ekg`, `tropfen`, `tempo_linien`.
