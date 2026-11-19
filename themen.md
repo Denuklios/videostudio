@@ -39,4 +39,5 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Erledigt
 
-- [x] Warum Bananen leicht radioaktiv sind → videos/003-bananen (geplant 2026-11-19 19:00)
+- [x] Warum Bananen leicht radioaktiv sind → videos/003-bananen (Entwurf 19.11., automatisch 2026-11-20 08:00)
+- [x] Kraken haben 3 Herzen → videos/004-kraken-neon (geplant 2026-11-19 21:20)
