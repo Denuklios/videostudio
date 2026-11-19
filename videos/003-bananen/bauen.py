@@ -29,37 +29,41 @@ szenen = [
      "text": "Wusstest du das? Dann folg für mehr!",
      "min_dauer": 3.0, "ueber": ""},
 ]
+B = Path(__file__).resolve().parent / "bilder"
+M = lambda n: str(B / f"maske_{n}.png")
 effekte = [
-    leuchten(562, 886, 150, GIFT, wort="radioaktiv")
-    + sonar(778, 713, 45, GIFT, wort="radioaktiv", plus=0.2) + sonar(162, 1112, 45, GIFT, wort="radioaktiv", plus=0.35)
-    + sonar(875, 1231, 45, GIFT, wort="radioaktiv", plus=0.5)
+    hervorheben(562, 886, maske=M("banane"), art="puls", glanz=GIFT, wort="radioaktiv")
     + schild(540, 1380, "DU AUCH!", MAG, WEISS, wort="auch"),
 
-    kreis(529, 1210, 270, 300, CYAN, wort="kalium")
-    + leuchten(562, 734, 95, MAG, wort="kalium-40") + schild(850, 620, "K-40", MAG, WEISS, wort="kalium-40", plus=0.2),
+    hervorheben(485, 1225, maske=M("scheibe"), glanz=CYAN, wort="kalium")
+    + hervorheben(560, 730, maske=M("atom"), art="blink", glanz=MAG, wort="kalium-40")
+    + schild(850, 620, "K-40", MAG, WEISS, wort="kalium-40", plus=0.2),
 
     schild(800, 1000, "15 Bq", GIFT, wort="15")
-    + sonar(402, 1150, 120, MAG, wort="zerfallen")
-    + kreis(518, 486, 240, wort="sekunde"),
+    + hervorheben(470, 1165, maske=M("kern"), art="blink", glanz=MAG, wort="zerfallen")
+    + hervorheben(515, 435, maske=M("stoppuhr"), art="puls", glanz=CYAN, wort="sekunde"),
 
-    kreis(324, 994, 140, 230, GIFT, wort="banane") + schild(330, 1300, "0,1 µSv", GIFT, wort="0,1")
-    + kreis(626, 691, 300, 170, MAG, wort="flug") + schild(760, 950, "HUNDERTFACH", MAG, WEISS, wort="hundert"),
+    hervorheben(335, 985, maske=M("banane4"), glanz=GIFT, wort="banane") + schild(330, 1300, "0,1 µSv", GIFT, wort="0,1")
+    + hervorheben(660, 690, maske=M("flugzeug"), art="puls", glanz=MAG, wort="flug")
+    + schild(760, 950, "HUNDERTFACH", MAG, WEISS, wort="hundert"),
 
-    leuchten(540, 778, 110, CYAN, wort="konstant")
+    hervorheben(540, 755, maske=M("waage"), art="blink", glanz=CYAN, wort="konstant")
     + pfeil(600, 1150, 900, 1380, biegung=0.2, farbe=CYAN, wort="scheidest"),
 
-    leuchten(531, 880, 230, CYAN, wort="körper") + schild(820, 560, "1000+ Bq", CYAN, wort="tausend")
-    + kreis(356, 1430, 70, farbe=GIFT, wort="banane"),
+    hervorheben(540, 1020, maske=M("mensch"), art="puls", glanz=CYAN, wort="körper")
+    + schild(820, 560, "1000+ Bq", CYAN, wort="tausend")
+    + hervorheben(365, 1480, maske=M("minibanane"), art="blink", glanz=GIFT, halten=None, wort="banane"),
 
-    leuchten(564, 421, 140, MAG, wort="folg"),
+    hervorheben(540, 860, maske=str(Path(__file__).resolve().parents[2] / "kanal/maske_logo.png"),
+                art="puls", glanz=MAG, halten=None, wort="folg"),
 ]
 for sz, u in zip(szenen, effekte):
     sz["ueber"] = u
 for i, sz in enumerate(szenen):
-    sz["foto"] = f"bilder/b{i+1}.png"
+    sz["foto"] = f"bilder/b{i+1}.png" if i < len(szenen) - 1 else "../../kanal/schluss.png"
     sz["bild"] = ""
 projekt = {
-    "titel": "Bananen sind radioaktiv", "datei": "bananen-radioaktiv-v2",
+    "titel": "Bananen sind radioaktiv", "datei": "bananen-radioaktiv-v3",
     "stil": {"bg1": "#060b1f", "bg2": "#12204a", "akzent": GIFT, "text": "#ffffff", "form": CYAN},
     "cover": {"titel": "Bananen sind <b>radioaktiv</b>", "szene": 0},
     "szenen": szenen,
