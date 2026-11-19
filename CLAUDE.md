@@ -38,6 +38,24 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   Instagram `wunsch_fabrik_dk` ist das Geschäftskonto und bekommt nie diese Videos.
 - Stimme: ElevenLabs (Schlüssel ist als Netzwerk-Geheimnis der Umgebung hinterlegt, Gratis-Tarif, Guthaben ab 28. Nov. wieder voll); ist es leer, nimmt `stimme.py` automatisch `de-DE-ConradNeural` (edge-tts).
 
+## Automatischer Tagesbetrieb
+
+Ein Zeitplan startet jeden Tag einen neuen Chat mit dem Auftrag „Tageslauf“. Dann:
+
+1. Repository holen, falls nicht da (siehe Auftrag), `git pull`.
+2. Die **zwei obersten offenen Themen** aus `themen.md` nehmen und für jedes den ganzen Ablauf oben durchziehen.
+   Ein Thema, dessen Fakten sich nicht belegen lassen, wird mit Begründung nach „Erledigt“ verschoben
+   (`- [~] … übersprungen: Grund`) und das nächste genommen.
+3. Veröffentlichung über Metricool, nur TikTok, Uhrzeiten **12:00 und 19:00** Europe/Copenhagen am selben Tag
+   (ist 12:00 schon vorbei, das erste Video 2 Stunden nach jetzt).
+4. **Freigabe:** Die ersten 3 Videos des Kanals mit `autoPublish: false` (der Nutzer bekommt eine Nachricht in der
+   Metricool-App und veröffentlicht mit einem Tipp). Ab dem 4. Video `autoPublish: true`.
+   Zähler: Anzahl `- [x]`-Zeilen in `themen.md` vor dem Lauf.
+5. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), nach „Erledigt“ verschieben, committen, pushen.
+6. Sind weniger als 10 offene Themen übrig: 20 neue, gut belegbare Themen-Ideen ergänzen (Mischung aus Tiere,
+   Körper, Weltall, Geschichte, Alltagsirrtümer). Wenn Metricool-Analysen zeigen, was gut läuft, mehr davon.
+7. Zum Schluss eine kurze Zusammenfassung: welche Videos, wann geplant, Auffälligkeiten.
+
 ## Technik
 
 - edge-tts wird vom Setup-Skript der Umgebung installiert. Hinter dem Proxy liest `stimme.py`
