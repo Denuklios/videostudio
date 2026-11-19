@@ -22,6 +22,10 @@ Danach wird das Video über Metricool auf Instagram (und TikTok, sobald verbunde
      `references` = die Media-IDs in Reihenfolge, Brief: „exactly N pages, each one image full bleed, no text“),
      dann `export-design` als PNG 1080×1920 und die URLs nach `bilder/` herunterladen.
    - In der Szene `"foto": "bilder/xyz.png"` setzen; `bild` (SVG) bleibt leer oder legt Extras darüber.
+   - **Effekte über dem Bild** (`engine/effekte.py`, Beispiel `videos/002-kraken-canva/bauen.py`):
+     `leuchten`, `sonar`, `kreis`, `pfeil`, `schild`, `durchstreichen`, `ekg`, `tropfen`, `tempo_linien`.
+     Koordinaten im 1080×1920-Bild; Start per `wort="…"` (gesprochenes Wort, Wortanfang reicht), `plus=` Sekunden.
+     Positionen vorher mit einem Raster über dem Bild ablesen. Nichts in die Ränder (< 80 px) oder unter Überschrift/Untertitel legen.
    - Ohne Canva: SVG-Illustrationen selbst zeichnen (siehe `videos/001-kraken`).
 3. **Bauen und rendern:**
    ```bash

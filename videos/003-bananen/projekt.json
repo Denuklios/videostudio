@@ -1,0 +1,67 @@
+{
+ "titel": "Bananen sind radioaktiv",
+ "datei": "bananen-radioaktiv",
+ "stil": {
+  "bg1": "#060b1f",
+  "bg2": "#12204a",
+  "akzent": "#c6ff3f",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "Bananen sind <b>radioaktiv</b>",
+  "szene": 0
+ },
+ "szenen": [
+  {
+   "kopf": "Bananen sind <b>radioaktiv</b>",
+   "text": "Deine Banane ist radioaktiv. Kein Witz. Und du bist es auch.",
+   "ueber": "",
+   "foto": "bilder/b1.png",
+   "bild": ""
+  },
+  {
+   "kopf": "Schuld ist <b>Kalium-40</b>",
+   "text": "Bananen stecken voller Kalium. Ein winziger Teil davon ist Kalium-40, ein natürlich radioaktives Atom.",
+   "ueber": "",
+   "foto": "bilder/b2.png",
+   "bild": ""
+  },
+  {
+   "kopf": "<b>15</b> Zerfälle pro Sekunde",
+   "text": "Eine Banane hat etwa 15 Becquerel. Das heißt: In ihr zerfallen jede Sekunde rund 15 Atome.",
+   "ueber": "",
+   "foto": "bilder/b3.png",
+   "bild": ""
+  },
+  {
+   "kopf": "Harmloser als <b>Fliegen</b>",
+   "text": "Eine Banane bringt dir etwa 0,1 Mikrosievert. Ein Flug nach New York bringt dir mehrere hundert Mal so viel.",
+   "ueber": "",
+   "foto": "bilder/b4.png",
+   "bild": ""
+  },
+  {
+   "kopf": "Kein <b>Risiko</b>",
+   "text": "Und keine Sorge: Dein Körper hält den Kaliumspiegel konstant. Was zu viel ist, scheidest du einfach wieder aus.",
+   "ueber": "",
+   "foto": "bilder/b5.png",
+   "bild": ""
+  },
+  {
+   "kopf": "Du strahlst <b>mehr</b>",
+   "text": "Übrigens: Dein eigener Körper hat mehrere tausend Becquerel. Du strahlst also mehr als jede Banane.",
+   "ueber": "",
+   "foto": "bilder/b6.png",
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Folg für mehr Wusstest-du's!",
+   "min_dauer": 3.0,
+   "ueber": "",
+   "foto": "bilder/b7.png",
+   "bild": ""
+  }
+ ]
+}
