@@ -27,8 +27,10 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 ## Einstellungen des Nutzers
 
-- Metricool-Marke: noch offen (verbunden ist nur `wunsch_fabrik_dk`, ein Geschäftskonto – nicht ungefragt dorthin posten).
-- TikTok: in Metricool noch nicht verbunden.
+- Kanal: **„Wusstest du's?“** – TikTok `@wusstestdu_s`. Instagram noch offen.
+- Schluss-Szene: Aufruf zum Folgen mit Kanalnamen, z. B. „Folg für mehr Wusstest-du's!“
+- Metricool: TikTok `@wusstestdu_s` noch nicht verbunden. Verbunden ist nur `wunsch_fabrik_dk`
+  (Geschäftskonto – dorthin nie posten).
 - Stimme: ElevenLabs (Schlüssel ist als Netzwerk-Geheimnis der Umgebung hinterlegt, Gratis-Tarif, Guthaben ab 28. Nov. wieder voll); ist es leer, nimmt `stimme.py` automatisch `de-DE-ConradNeural` (edge-tts).
 
 ## Technik
