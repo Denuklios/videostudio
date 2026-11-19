@@ -29,8 +29,9 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 - Kanal: **„Wusstest du's?“** – TikTok `@wusstestdu_s`. Instagram noch offen.
 - Schluss-Szene: Aufruf zum Folgen mit Kanalnamen, z. B. „Folg für mehr Wusstest-du's!“
-- Metricool: TikTok `@wusstestdu_s` noch nicht verbunden. Verbunden ist nur `wunsch_fabrik_dk`
-  (Geschäftskonto – dorthin nie posten).
+- Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
+  und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
+  Instagram `wunsch_fabrik_dk` ist das Geschäftskonto und bekommt nie diese Videos.
 - Stimme: ElevenLabs (Schlüssel ist als Netzwerk-Geheimnis der Umgebung hinterlegt, Gratis-Tarif, Guthaben ab 28. Nov. wieder voll); ist es leer, nimmt `stimme.py` automatisch `de-DE-ConradNeural` (edge-tts).
 
 ## Technik
