@@ -26,7 +26,7 @@ szenen = [
      "text": "Übrigens: Dein eigener Körper hat mehrere tausend Becquerel. Du strahlst also mehr als jede Banane.",
      "ueber": ""},
     {"kopf": "Wusstest <b>du's?</b>",
-     "text": "Folg für mehr Wusstest-du's!",
+     "text": "Wusstest du das? Dann folg für mehr!",
      "min_dauer": 3.0, "ueber": ""},
 ]
 effekte = [
@@ -59,7 +59,7 @@ for i, sz in enumerate(szenen):
     sz["foto"] = f"bilder/b{i+1}.png"
     sz["bild"] = ""
 projekt = {
-    "titel": "Bananen sind radioaktiv", "datei": "bananen-radioaktiv",
+    "titel": "Bananen sind radioaktiv", "datei": "bananen-radioaktiv-v2",
     "stil": {"bg1": "#060b1f", "bg2": "#12204a", "akzent": GIFT, "text": "#ffffff", "form": CYAN},
     "cover": {"titel": "Bananen sind <b>radioaktiv</b>", "szene": 0},
     "szenen": szenen,

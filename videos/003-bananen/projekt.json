@@ -1,6 +1,6 @@
 {
  "titel": "Bananen sind radioaktiv",
- "datei": "bananen-radioaktiv",
+ "datei": "bananen-radioaktiv-v2",
  "stil": {
   "bg1": "#060b1f",
   "bg2": "#12204a",
@@ -57,7 +57,7 @@
   },
   {
    "kopf": "Wusstest <b>du's?</b>",
-   "text": "Folg für mehr Wusstest-du's!",
+   "text": "Wusstest du das? Dann folg für mehr!",
    "min_dauer": 3.0,
    "ueber": "<defs><radialGradient id=\"gl564421\"><stop offset=\"0\" stop-color=\"#ff4fd8\" stop-opacity=\".85\"/><stop offset=\".55\" stop-color=\"#ff4fd8\" stop-opacity=\".35\"/><stop offset=\"1\" stop-color=\"#ff4fd8\" stop-opacity=\"0\"/></radialGradient></defs><g data-a=\"pop blink\" data-l=\"0.35\" data-wort=\"folg\"><circle cx=\"564\" cy=\"421\" r=\"224.0\" fill=\"url(#gl564421)\" style=\"mix-blend-mode:screen\"/></g><g data-a=\"sonar\" data-wort=\"folg\"><circle cx=\"564\" cy=\"421\" r=\"182.0\" fill=\"none\" stroke=\"#ff4fd8\" stroke-width=\"8\"/></g>",
    "foto": "bilder/b7.png",

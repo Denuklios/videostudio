@@ -32,7 +32,8 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   bilden). Canva-Stil für alle Szenen: „modern dark cinematic illustration, deep navy background, glowing neon
   cyan and magenta accents, sleek, premium, slightly realistic, not childish, no text“. Wenn es passt, taucht die
   Neon-Krake als wiederkehrendes Markenzeichen auf (z. B. in der Schluss-Szene).
-- Schluss-Szene: Aufruf zum Folgen mit Kanalnamen, z. B. „Folg für mehr Wusstest-du's!“
+- Schluss-Szene: gesprochen immer **„Wusstest du das? Dann folg für mehr!“** – nie „Wusstest-du's“ in den
+  Sprechtext schreiben, das spricht die Stimme falsch aus. Als Überschrift (kopf) darf „Wusstest du's?“ stehen.
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
   und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
   Instagram `wunsch_fabrik_dk` ist das Geschäftskonto und bekommt nie diese Videos.
