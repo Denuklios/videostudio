@@ -40,7 +40,7 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 ## Automatischer Tagesbetrieb
 
-Ein Zeitplan startet jeden Tag einen neuen Chat mit dem Auftrag „Tageslauf“. Dann:
+Ein Zeitplan schickt jeden Tag um 9:17 Uhr den Auftrag „Tageslauf“ in den Chat, in dem das Projekt eingerichtet wurde (dort sind Canva und Metricool verbunden). Dann:
 
 1. Repository holen, falls nicht da (siehe Auftrag), `git pull`.
 2. Die **zwei obersten offenen Themen** aus `themen.md` nehmen und für jedes den ganzen Ablauf oben durchziehen.
