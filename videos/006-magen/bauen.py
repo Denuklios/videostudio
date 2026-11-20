@@ -28,7 +28,7 @@ datei = HIER / "effekte.py"
 if datei.exists():
     ns = dict(globals()); exec(datei.read_text(), ns); EFFEKTE = ns["EFFEKTE"]
 for i, sz in enumerate(szenen[:-1]):
-    sz["foto"] = f"bilder/m{[1,2,3,4,5,2][i]}.png"
+    sz["foto"] = f"bilder/m{[1 if (HIER / 'bilder/m1.png').exists() else 2,2,3,4,5,2][i]}.png"
     sz["ueber"] = EFFEKTE[i]
 szenen[-1]["foto"] = "../../kanal/schluss.png"
 szenen[-1]["ueber"] = hervorheben(540, 860, maske=str(HIER.parents[1] / "kanal/maske_logo.png"),
