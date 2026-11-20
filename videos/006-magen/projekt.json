@@ -1,0 +1,67 @@
+{
+ "titel": "Warum verdaut sich der Magen nicht selbst",
+ "datei": "magen-saeure",
+ "stil": {
+  "bg1": "#060b1f",
+  "bg2": "#12204a",
+  "akzent": "#3ff0ff",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "Warum verdaut sich dein <b>Magen</b> nicht?",
+  "szene": 0
+ },
+ "szenen": [
+  {
+   "kopf": "Warum verdaut er sich <b>nicht?</b>",
+   "text": "Dein Magen ist voller Säure. Warum verdaut er sich eigentlich nicht selbst?",
+   "foto": "bilder/m1.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Salzsäure im <b>Bauch</b>",
+   "text": "Im Magen steckt Salzsäure. Sie zersetzt dein Essen und tötet Keime ab.",
+   "foto": "bilder/m2.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Ein <b>Schutzschild</b>",
+   "text": "Damit sie dich nicht selbst angreift, ist die Magenwand mit einer dicken Schleimschicht bedeckt.",
+   "foto": "bilder/m3.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Bikarbonat gegen <b>Säure</b>",
+   "text": "In diesem Schleim steckt Bikarbonat. Es fängt die Säure ab, bevor sie deine Zellen erreicht.",
+   "foto": "bilder/m4.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Alle <b>3 bis 5 Tage</b> neu",
+   "text": "Und die oberste Zellschicht wird ständig erneuert. Etwa alle drei bis fünf Tage hast du eine neue Magenoberfläche.",
+   "foto": "bilder/m5.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Einfach <b>mitverdaut</b>",
+   "text": "Die alten Zellen lösen sich ab und werden einfach mitverdaut, zusammen mit deinem Essen.",
+   "foto": "bilder/m2.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Wusstest du das? Dann folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "bild": ""
+  }
+ ]
+}

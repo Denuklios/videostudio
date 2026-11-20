@@ -28,13 +28,12 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 ## Einstellungen des Nutzers
 
 - Kanal: **„Wusstest du's?“** – TikTok `@wusstestdu_s`. Instagram noch offen.
-- Look: erwachsen, nicht kindlich. **Bildstil passt zum Thema** (z. B. realistisch-fotografisch fürs Weltall,
-  Gemälde-Look für Geschichte, Makro-Foto für Körper/Tiere), immer **dunkel und filmisch**, mit **Cyan (#3ff0ff)
-  und Magenta (#ff4fd8) als Lichtakzente** – nicht zwingend Neon-Linien. Canva-Prompt-Grundgerüst:
-  „<Motiv>, dark cinematic <Stil passend zum Thema>, deep navy shadows, subtle cyan and magenta light accents,
-  premium, not childish, no text“. Wiedererkennung kommt vom festen Rahmen: gleiche Schrift, Untertitel-Stil,
-  Akzentfarben Cyan/Magenta für Überschrift-Hervorhebung und Effekte, gleiche Stimme, gleiches Logo am Ende.
-  Profilbild: `kanal/profilbild.png`.
+- Look: erwachsen, nicht kindlich, **KEIN Neon-Stil in den Bildern** (Wunsch des Nutzers 20.11.: „zu viel Neon“).
+  Bilder **realistisch mit natürlichen Farben und natürlichem Licht**, passend zum Thema (Foto-Look fürs Weltall,
+  Gemälde-Look für Geschichte, Makro-Foto für Körper/Tiere, Alltagsfotos für Alltagsthemen). Gern filmisch, aber
+  nicht neonbunt. Canva-Prompt-Grundgerüst: „<Motiv>, realistic cinematic photography, natural colors, natural
+  lighting, high detail, premium, not childish, no neon, no text“. Cyan (#3ff0ff) und Magenta (#ff4fd8) nur im festen
+  Rahmen: Überschrift-Hervorhebung, Untertitel, Effekte, Logo am Ende. Profilbild: `kanal/profilbild.png`.
 - Schluss-Szene: gesprochen immer **„Wusstest du das? Dann folg für mehr!“** – nie „Wusstest-du's“ in den
   Sprechtext schreiben, das spricht die Stimme falsch aus. Als Überschrift (kopf) darf „Wusstest du's?“ stehen.
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
