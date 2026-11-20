@@ -10,7 +10,6 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 - [ ] GTA 5: das erfolgreichste Unterhaltungsprodukt aller Zeiten? Umsatz, Verkäufe, Rekorde (Fakten prüfen) – Bezug zum GTA-6-Start
 - [ ] Vice City: von 2002 bis GTA 6 – Geschichte der Stadt und ihr Vorbild Miami (Fakten prüfen)
 - [ ] GTA 6 Launch-Rekorde: Streaming-Zuschauer, Vorbestellungen, erste Verkaufszahlen – nur offizielle/seriöse Zahlen
-- [ ] Dein Magen erneuert seine Schleimhaut ständig – sonst würde er sich selbst verdauen
 - [ ] Auf der Venus dauert ein Tag länger als ein Jahr
 - [ ] Honig verdirbt praktisch nie – essbarer Honig aus ägyptischen Gräbern
 - [ ] Warum Flamingos rosa sind (und grau zur Welt kommen)
@@ -45,3 +44,4 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 - [x] Warum Bananen leicht radioaktiv sind → videos/003-bananen (Entwurf 19.11., automatisch 2026-11-20 08:00)
 - [x] Kraken haben 3 Herzen → videos/004-kraken-neon (geplant 2026-11-19 21:20)
 - [x] GTA 6 ist da – 5 Fakten → videos/005-gta6 (veröffentlicht 2026-11-20 09:07)
+- [x] Dein Magen erneuert seine Schleimhaut → videos/006-magen (geplant 2026-11-20 12:00)
