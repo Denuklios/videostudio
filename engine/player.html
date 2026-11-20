@@ -157,6 +157,27 @@ function animiereElemente(root, t) {
 
 window.zeige = function (t) {
   const sz = T.szenen;
+  // Kamerafahrt je Szene: Zoom rein/raus, Schwenk links/rechts/hoch/runter.
+  // Lange Szenen werden in zwei Abschnitte mit kurzem Zoom-Ruck geteilt (wirkt wie ein Schnitt).
+  // Pro Szene festlegbar mit "kamera": ["rein","links"] in projekt.json.
+  function kamera(i, lokal, dauer) {
+    const FAHRTEN = ["rein", "links", "raus", "rechts", "hoch", "rein", "runter", "links", "raus"];
+    const eigene = (P.szenen[i] || {}).kamera;
+    const teile = dauer > 4.5 ? 2 : 1;
+    const len = dauer / teile, k = Math.min(teile - 1, Math.floor(lokal / len));
+    const q = clamp((lokal - k * len) / len), e = q < .5 ? 2 * q * q : 1 - Math.pow(-2 * q + 2, 2) / 2;
+    const art = (eigene && eigene[k]) || FAHRTEN[(i * 2 + k) % FAHRTEN.length];
+    let s = 1.16, x = 0, y = 0;
+    if (art === "rein") s = 1.08 + 0.22 * e;
+    else if (art === "raus") s = 1.30 - 0.22 * e;
+    else if (art === "links") x = 70 - 140 * e;
+    else if (art === "rechts") x = -70 + 140 * e;
+    else if (art === "hoch") y = 110 - 220 * e;
+    else if (art === "runter") y = -110 + 220 * e;
+    const ruck = k > 0 ? 0.10 * Math.max(0, 1 - (lokal - k * len) / 0.25) : 0;  // Zoom-Schlag beim 2. Abschnitt
+    return `scale(${s + ruck}) translate(${x}px, ${y}px)`;
+  }
+
   let idx = sz.findIndex(s => t >= s.start && t < s.start + s.dauer);
   if (idx < 0) idx = t <= 0 ? 0 : sz.length - 1;
   const lokal = t - sz[idx].start;
@@ -179,10 +200,7 @@ window.zeige = function (t) {
     const kopf = el.querySelector(".kopf");
     if (kopf) { const p = clamp((lokal - 0.05) / 0.45); kopf.style.transform = `translateY(${(1 - back(p)) * -60}px) scale(${0.85 + 0.15 * back(p)})`; kopf.style.opacity = clamp(p * 3); }
     const img = el.querySelector(".foto .ebene");
-    if (img) {  // Kamerafahrt: langsamer Zoom + Schwenk, Richtung wechselt je Szene
-      const q = lokal / sz[i].dauer, r = i % 2 ? -1 : 1;
-      img.style.transform = `scale(${1.02 + 0.05 * q}) translate(${r * (q - 0.5) * 14}px, ${(0.5 - q) * 10}px)`;
-    }
+    if (img) img.style.transform = kamera(i, lokal, sz[i].dauer);
     animiereElemente(el, lokal);
   });
 
