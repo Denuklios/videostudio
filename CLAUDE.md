@@ -72,6 +72,8 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   - Kamerafahrten, wechselnde Übergänge, Soundeffekte (Wusch, Klick, Pling, Bass) macht die Engine automatisch.
   - **post.txt** endet IMMER mit „Wusstest du's? Schreib's in die Kommentare! 👇“ (Wunsch des Nutzers 20.11.), davor gern eine
     passende Frage zum Thema. Im Text darf „Wusstest du's?“ stehen – nur im Sprechtext nicht.
+- **Überarbeitungen:** Wird ein Video neu gebaut oder neu gerendert, IMMER alle aktuellen Regeln mit einbauen
+  (Schlusssatz, Hook, Post-Text …) – auch wenn dafür die Stimme neu erzeugt werden muss (Wunsch des Nutzers 20.11.).
 - **Keine Bilder wiederverwenden:** Jedes Video bekommt eigene, neue Bilder. Bilder aus früheren Videos NIE erneut
   nutzen (Wunsch des Nutzers 20.11.). Lieber ein Video später veröffentlichen als mit alten Bildern.
 - **Hashtags:** 4–6 passende, spezifische Hashtags (Thema + `#wusstestdu` + `#fakten`). Kein `#fyp`/`#foryou`.

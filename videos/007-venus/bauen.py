@@ -21,7 +21,7 @@ szenen = [
     {"kopf": "Warum? <b>Unklar</b>",
      "text": "Warum das so ist, weiß niemand genau. Vielleicht hat ein riesiger Einschlag sie einst ausgebremst."},
     {"kopf": "Wusstest <b>du's?</b>",
-     "text": "Wusstest du das? Dann folg für mehr!", "min_dauer": 3.0},
+     "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!", "min_dauer": 3.0},
 ]
 EFFEKTE = [""] * 6
 BILDER = ["v4", "v2", "v2", "v4", "v5", "v5"]
