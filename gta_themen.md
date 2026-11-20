@@ -13,3 +13,4 @@ Nur belegbare Fakten. Keine Spielszenen, Trailer-Clips, Rockstar-Logos oder Spie
 ## Erledigt
 
 - [x] GTA 6 ist da – 5 Fakten → videos/005-gta6 (veröffentlicht 2026-11-20 09:07)
+- [x] GTA 6 bricht das Internet (Streaming-Rekorde, GTA-Grippe) → videos/008-gta6-streams (geplant 2026-11-20 17:00)
