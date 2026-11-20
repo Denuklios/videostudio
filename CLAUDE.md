@@ -98,7 +98,8 @@ davon mindestens 1 GTA-Video**, solange der GTA-6-Hype läuft.
 5. **Veröffentlichung immer automatisch:** `autoPublish: true`. Mit `false` landet das Video nur als Entwurf.
 6. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), committen, pushen.
 7. Sind in `themen.md` weniger als 10 offene Themen: 20 neue, gut belegbare Themen ergänzen.
-8. Kurze Zusammenfassung an den Nutzer: welche Videos, wann geplant, Auffälligkeiten.
+8. **Nur am 21.11.:** zusätzlich das Comic-Test-Video nach `comic_test.md` bauen (Termin 20:30).
+9. Kurze Zusammenfassung an den Nutzer: welche Videos, wann geplant, Auffälligkeiten.
 
 ## Technik
 
