@@ -24,11 +24,12 @@ szenen = [
      "text": "Wusstest du das? Dann folg für mehr!", "min_dauer": 3.0},
 ]
 EFFEKTE = [""] * 6
+BILDER = ["v4", "v2", "v2", "v4", "v5", "v5"]
 datei = HIER / "effekte.py"
 if datei.exists():
     ns = dict(globals()); exec(datei.read_text(), ns); EFFEKTE = ns["EFFEKTE"]
 for i, sz in enumerate(szenen[:-1]):
-    sz["foto"] = f"bilder/v{i+1}.png"
+    sz["foto"] = f"bilder/{BILDER[i]}.png"
     sz["ueber"] = EFFEKTE[i]
 szenen[-1]["foto"] = "../../kanal/schluss.png"
 szenen[-1]["ueber"] = hervorheben(540, 860, maske=str(HIER.parents[1] / "kanal/maske_logo.png"),
