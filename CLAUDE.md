@@ -57,6 +57,8 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   **Verboten:** `kreis()`, `sonar()`, `leuchten()` und `hervorheben()` ohne `maske`.
   Erlaubt ergänzend: `schild()` für Zahlen/Begriffe, `pfeil()` nur für Bewegungen/Richtungen, `ekg()`, `tempo_linien()`.
 
+- **Keine Bilder wiederverwenden:** Jedes Video bekommt eigene, neue Bilder. Bilder aus früheren Videos NIE erneut
+  nutzen (Wunsch des Nutzers 20.11.). Lieber ein Video später veröffentlichen als mit alten Bildern.
 - **Hashtags:** 4–6 passende, spezifische Hashtags (Thema + `#wusstestdu` + `#fakten`). Kein `#fyp`/`#foryou`.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
@@ -78,7 +80,7 @@ davon mindestens 1 GTA-Video**, solange der GTA-6-Hype läuft.
    „quota_cooldown“ (≈ 1 Bild / 45 min nach mehreren Bildern): Bilder einzeln anfordern, bei Cooldown mit
    `send_later` (45 min) weitermachen, erzeugte Media-IDs in `videos/NNN/canva_ids.txt` notieren. Reihenfolge:
    zuerst alle Bilder fürs 12-Uhr-Video, dann 16, dann 19. Exporte max. 3 Bilder pro Design, Duplikate prüfen.
-   Wird es für ein Video zu knapp (< 2 h vor Termin), mit vorhandenen Bildern bauen.
+   Wird es für ein Video zu knapp, den Termin verschieben (nächste freie Lücke) – NICHT mit Bildern aus anderen Videos bauen.
 5. **Veröffentlichung immer automatisch:** `autoPublish: true`. Mit `false` landet das Video nur als Entwurf.
 6. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), committen, pushen.
 7. Sind in `themen.md` weniger als 10 offene Themen: 20 neue, gut belegbare Themen ergänzen.
