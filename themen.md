@@ -7,6 +7,7 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Offen
 
+- [ ] GTA 6 ist da (erschienen 19.11.2026): 5 Dinge über GTA 6, die du nicht wusstest – nur belegbare Fakten; KEINE Spielszenen/Trailer-Clips, kein Rockstar-Logo, keine Spielfiguren; eigene Bilder im Look: Miami bei Nacht, Neon, Sportwagen, Palmen
 - [ ] Dein Magen erneuert seine Schleimhaut ständig – sonst würde er sich selbst verdauen
 - [ ] Auf der Venus dauert ein Tag länger als ein Jahr
 - [ ] Honig verdirbt praktisch nie – essbarer Honig aus ägyptischen Gräbern
