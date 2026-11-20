@@ -80,7 +80,7 @@ def schild(x, y, text, farbe=GELB, textfarbe=DUNKEL, groesse=70, **z):
     """Schild mit kurzem Text, das hineinfedert (z. B. „Cu“, „2/3“, „×9“)."""
     b = max(groesse * 1.4, len(text) * groesse * 0.62 + groesse * 0.9)
     h = groesse * 1.45
-    return (f'<g data-a="federn"{_zeit(**z)}><rect x="{x-b/2:.0f}" y="{y-h/2:.0f}" width="{b:.0f}" height="{h:.0f}" rx="{h/2:.0f}" fill="{farbe}" stroke="{DUNKEL}" stroke-width="8"/>'
+    return (f'<g data-a="federn" data-ton="klick"{_zeit(**z)}><rect x="{x-b/2:.0f}" y="{y-h/2:.0f}" width="{b:.0f}" height="{h:.0f}" rx="{h/2:.0f}" fill="{farbe}" stroke="{DUNKEL}" stroke-width="8"/>'
             f'<text x="{x}" y="{y + groesse*0.36:.0f}" text-anchor="middle" font-family="Titel" font-size="{groesse}" fill="{textfarbe}">{text}</text></g>')
 
 
@@ -188,3 +188,19 @@ def _hervorheben_maske(x, y, maske, art, abdunkeln, glanz, halten, **z):
             f'<image href="__FOTO__" x="0" y="0" width="1080" height="1920" preserveAspectRatio="xMidYMid slice" '
             f'mask="url(#hm{i})"/></g>')
     return out
+
+
+def zaehler(x, y, bis, von=0, vor="", nach="", nachkomma=0, farbe=GELB, textfarbe=DUNKEL, groesse=70, dauer=1.2, **z):
+    """Schild, in dem eine Zahl hochzählt (z. B. 0 → 225 TAGE). Mit „Pling“ am Ende.
+    Beispiel: zaehler(800, 1060, 225, nach=" TAGE", wort="225")"""
+    end = f"{vor}{bis:,.{nachkomma}f}{nach}".replace(",", "X").replace(".", ",").replace("X", ".")
+    b = max(groesse * 1.4, len(end) * groesse * 0.62 + groesse * 0.9)
+    h = groesse * 1.45
+    return (f'<g data-a="federn" data-ton="pling" data-tondauer="{dauer}"{_zeit(**z)}><rect x="{x-b/2:.0f}" y="{y-h/2:.0f}" width="{b:.0f}" height="{h:.0f}" rx="{h/2:.0f}" fill="{farbe}" stroke="{DUNKEL}" stroke-width="8"/>'
+            f'<text x="{x}" y="{y + groesse*0.36:.0f}" text-anchor="middle" font-family="Titel" font-size="{groesse}" fill="{textfarbe}" '
+            f'data-zaehl="1" data-von="{von}" data-bis="{bis}" data-vor="{vor}" data-nach="{nach}" data-nk="{nachkomma}" data-zdauer="{dauer}">{end}</text></g>')
+
+
+def beben(staerke=1.0, dauer=0.5, **z):
+    """Bildschirm wackelt kurz (mit Bass-Schlag) – für krasse Fakten."""
+    return f'<g data-beben="{staerke}" data-bdauer="{dauer}" data-ton="bass"{_zeit(**z)}></g>'

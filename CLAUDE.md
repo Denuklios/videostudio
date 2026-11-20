@@ -57,6 +57,20 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   **Verboten:** `kreis()`, `sonar()`, `leuchten()` und `hervorheben()` ohne `maske`.
   Erlaubt ergänzend: `schild()` für Zahlen/Begriffe, `pfeil()` nur für Bewegungen/Richtungen, `ekg()`, `tempo_linien()`.
 
+- **Zuschauer halten – Pflicht in jedem Video (Wunsch des Nutzers 20.11.: „alles was Views bringt“):**
+  - **Länge 25–40 s**, 5–7 Szenen, kurze Sätze, auf Anhieb verständlich. Kein langsamer Einstieg.
+  - **Hook** in `projekt.json`: `"hook": {"text": "1 Tag &gt; <b>1 Jahr?!</b>", "dauer": 1.4}` – größte Zahl/krasseste
+    Behauptung, max. 4 Wörter, knallt mit Bass + Wackeln in der 1. Sekunde ins Bild. Gesprochener 1. Satz = sofort die Behauptung.
+  - **Loop:** Der letzte Fakt-Satz vor dem Schluss führt zurück zum Anfang (z. B. „… und genau deshalb ist ein Tag dort länger als ein Jahr.“).
+  - **Musik:** `"musik": "spannend" | "ruhig" | "episch"` (selbst erzeugt, `engine/musik/`, wird unter der Stimme automatisch leiser).
+  - **Emojis** in Untertiteln: `"emojis": {"venus": "🪐", "einschlag": "💥"}` (Wortanfang → Emoji), 4–7 pro Video.
+  - **Fortschritt:** `"label": "FAKT 1/3"` an den Fakt-Szenen – Leute bleiben bis zum letzten Fakt.
+  - **3D-Effekt:** pro Szene `"objekt": {"maske": "<abs. Pfad maske_X.png>", "x": .., "y": ..}` – das ausgeschnittene
+    Hauptobjekt schwebt vor dem Hintergrund. In fast jeder Szene nutzen.
+  - **Zahlen zählen hoch:** `zaehler(x, y, 225, nach=" TAGE", wort="225", plus=-0.4)` statt `schild()` bei Zahlen.
+  - **Beben:** `beben(wort="…")` bei dem krassesten Moment (1–2× pro Video).
+  - Kamerafahrten, wechselnde Übergänge, Soundeffekte (Wusch, Klick, Pling, Bass) macht die Engine automatisch.
+  - **post.txt** endet mit einer Frage an die Zuschauer (Kommentare!), z. B. „Hättest du das gedacht?“.
 - **Keine Bilder wiederverwenden:** Jedes Video bekommt eigene, neue Bilder. Bilder aus früheren Videos NIE erneut
   nutzen (Wunsch des Nutzers 20.11.). Lieber ein Video später veröffentlichen als mit alten Bildern.
 - **Hashtags:** 4–6 passende, spezifische Hashtags (Thema + `#wusstestdu` + `#fakten`). Kein `#fyp`/`#foryou`.

@@ -34,12 +34,21 @@ for i, sz in enumerate(szenen[:-1]):
 szenen[-1]["foto"] = "../../kanal/schluss.png"
 szenen[-1]["ueber"] = hervorheben(540, 860, maske=str(HIER.parents[1] / "kanal/maske_logo.png"),
                                   art="puls", glanz=MAG, halten=None, wort="folg")
+B = HIER / "bilder"
+OBJ = {0: ("venus4", 540, 1320), 1: ("sonne", 250, 1250), 2: ("venus2", 815, 780), 3: ("venus4", 540, 1320), 4: ("horizont_sonne", 750, 745)}
+for i, (m, x, y) in OBJ.items():
+    szenen[i]["objekt"] = {"maske": str(B / f"maske_{m}.png"), "x": x, "y": y}
+for i, l in {1: "FAKT 1/3", 3: "FAKT 2/3", 4: "FAKT 3/3"}.items():
+    szenen[i]["label"] = l
 for sz in szenen:
     sz["bild"] = ""
 projekt = {
     "titel": "Ein Tag auf der Venus", "datei": "venus-tag",
     "stil": {"bg1": "#060b1f", "bg2": "#12204a", "akzent": MAG, "text": "#ffffff", "form": CYAN},
     "cover": {"titel": "Ein Tag <b>länger</b> als ein Jahr", "szene": 0},
+    "hook": {"text": "1 Tag &gt; <b>1 Jahr?!</b>", "dauer": 1.4},
+    "musik": "episch",
+    "emojis": {"venus": "🪐", "sonne": "☀️", "erde": "🌍", "andersherum": "🔄", "einschlag": "💥", "unmöglich": "🤯"},
     "szenen": szenen,
 }
 (HIER / "projekt.json").write_text(json.dumps(projekt, ensure_ascii=False, indent=1))

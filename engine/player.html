@@ -41,12 +41,20 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
 #balken { position: absolute; left: 0; top: 0; height: 12px; background: var(--akzent); }
 #blitz { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
 #cover { position: absolute; inset: 0; display: none; }
+.szene .foto svg.objekt { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; filter: drop-shadow(0 18px 30px rgba(0,0,0,.6)); }
+.szene .label { position: absolute; left: 50%; top: 105px; transform: translateX(-50%); padding: 8px 28px 4px; border-radius: 40px;
+  font-family: "Titel"; font-size: 54px; letter-spacing: 2px; color: #000; background: var(--akzent); border: 6px solid #000; white-space: nowrap; }
+#hook { position: absolute; left: 40px; right: 40px; top: 640px; text-align: center; font-family: "Titel"; font-size: 200px; line-height: 1;
+  color: #fff; text-transform: uppercase; -webkit-text-stroke: 22px #000; paint-order: stroke fill; text-shadow: 0 14px 0 rgba(0,0,0,.5); opacity: 0; z-index: 5; }
+#hook b { color: var(--akzent); font-weight: normal; }
+#untertitel span.emo { -webkit-text-stroke: 0; text-shadow: none; font-family: "Noto Color Emoji"; font-size: 92px; }
 </style>
 </head>
 <body>
 <div id="buehne">
   <svg id="hg" viewBox="0 0 1296 2304" preserveAspectRatio="none"></svg>
   <div id="szenen"></div>
+  <div id="hook"></div>
   <div id="untertitel"></div>
   <div id="balken"></div>
   <div id="blitz"></div>
@@ -80,13 +88,29 @@ function aufbauen() {
   }
   hg.innerHTML = h;
 
+  window.EREIGNISSE = [];
+  if (P.hook) { document.getElementById("hook").innerHTML = P.hook.text; window.EREIGNISSE.push({ t: 0.05, art: "bass" }); }
   const cont = document.getElementById("szenen");
   P.szenen.forEach((sz, i) => {
     const d = document.createElement("div");
     d.className = "szene";
-    d.innerHTML = (sz.foto ? `<div class="foto"><div class="ebene"><img src="${sz.foto}"><svg class="ueber" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">${(sz.ueber || "").split("__FOTO__").join(sz.foto)}</svg></div></div>` : "") + (sz.kopf ? `<div class="kopf">${sz.kopf}</div>` : "") + `<div class="bild">${sz.bild || ""}</div>`;
+    d.innerHTML = (sz.foto ? `<div class="foto"><div class="ebene"><img src="${sz.foto}">${sz.objekt ? `<svg class="objekt" viewBox="0 0 1080 1920" style="transform-origin:${sz.objekt.x}px ${sz.objekt.y}px"><defs><mask id="om${i}"><image href="${sz.objekt.maske}" width="1080" height="1920"/></mask></defs><image href="${sz.foto}" width="1080" height="1920" preserveAspectRatio="xMidYMid slice" mask="url(#om${i})"/></svg>` : ""}<svg class="ueber" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">${(sz.ueber || "").split("__FOTO__").join(sz.foto)}</svg></div></div>` : "") + (sz.kopf ? `<div class="kopf">${sz.kopf}</div>` : "") + `<div class="bild">${sz.bild || ""}</div>` + (sz.label ? `<div class="label">${sz.label}</div>` : "");
     cont.appendChild(d);
     szenenEls.push(d);
+    // Hervorhebungen desselben Objekts mit der 3D-Objekt-Ebene mitbewegen
+    if (sz.objekt) {
+      const stem = sz.objekt.maske.split("/").pop().replace(/\.png$/, "");
+      [...d.querySelectorAll("svg.ueber mask")].filter(m => (m.querySelector("image")?.getAttribute("href") || "").includes(stem)).forEach(m => {
+        d.querySelectorAll(`svg.ueber [mask="url(#${m.id})"]`).forEach(x => {
+          let g = x; while (g.parentNode && !g.parentNode.matches("svg.ueber")) g = g.parentNode;
+          if (g.parentNode.classList?.contains("mitobjekt")) return;
+          const w = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          w.setAttribute("class", "mitobjekt");
+          w.setAttribute("style", `transform-box:view-box;transform-origin:${sz.objekt.x}px ${sz.objekt.y}px`);
+          g.parentNode.insertBefore(w, g); w.appendChild(g);
+        });
+      });
+    }
     // Animationen an gesprochene Wörter koppeln: data-wort="herzen" (optional data-n="2" für das 2. Vorkommen)
     const norm = x => x.toLowerCase().normalize("NFC").replace(/[^a-z0-9äöüß]/g, "");
     const wsz = T.woerter.filter(w => w.szene === i);
@@ -103,6 +127,11 @@ function aufbauen() {
       const z = zeitVon(el.dataset.ausWort, +el.dataset.ausN);
       if (z !== null) el.dataset.aus = z;
     });
+    d.querySelectorAll("[data-ton]").forEach(el => {
+      if (el.dataset.d === undefined) return;
+      const tz = T.szenen[i].start + parseFloat(el.dataset.d) + (el.dataset.ton === "pling" ? parseFloat(el.dataset.tondauer || 0) : 0);
+      window.EREIGNISSE.push({ t: +tz.toFixed(3), art: el.dataset.ton });
+    });
     // Zeichenlängen für "draw"-Animation vorberechnen
     d.style.display = "block";
     d.querySelectorAll('[data-a~="draw"]').forEach(el => {
@@ -115,7 +144,13 @@ function aufbauen() {
   woerter = T.woerter;
 }
 
+const fmtDE = (v, nk) => v.toFixed(nk).replace(".", "#").replace(/\B(?=(\d{3})+(?!\d))/g, ".").replace("#", ",");
 function animiereElemente(root, t) {
+  root.querySelectorAll("[data-zaehl]").forEach(el => {
+    const g = el.closest("[data-d]"), st = parseFloat(g ? g.dataset.d : 0), dz = +el.dataset.zdauer;
+    const p = ease(clamp((t - st) / dz)), von = +el.dataset.von, bis = +el.dataset.bis;
+    el.textContent = el.dataset.vor + fmtDE(von + (bis - von) * p, +el.dataset.nk) + el.dataset.nach;
+  });
   root.querySelectorAll("[data-a]").forEach(el => {
     const arten = el.dataset.a.split(/\s+/);
     const start = parseFloat(el.dataset.d || 0), dauer = parseFloat(el.dataset.l || 0.6);
@@ -192,20 +227,42 @@ window.zeige = function (t) {
   szenenEls.forEach((el, i) => {
     if (i !== idx) { el.style.display = "none"; return; }
     el.style.display = "block";
-    // Einstieg: Zoom-Schlag, danach langsamer Kamera-Zoom
-    const ein = clamp(lokal / 0.35);
-    const zoom = 1 + 0.12 * (1 - ease(ein)) + 0.05 * (lokal / sz[i].dauer);
-    el.style.transform = `scale(${zoom})`;
-    el.style.opacity = ease(ein);
+    // Einstieg: wechselnde Übergänge (Zoom-Schlag, Wischen, Hochschieben, Dreh-Zoom)
+    const ein = clamp(lokal / 0.35), e1 = 1 - ease(ein);
+    const typ = i === 0 ? "zoom" : ["wisch", "zoom", "hoch", "dreh"][i % 4];
+    let tf = "";
+    if (typ === "zoom") tf = `scale(${1 + 0.12 * e1})`;
+    else if (typ === "wisch") tf = `translateX(${e1 * 1080 * (i % 8 < 4 ? 1 : -1)}px)`;
+    else if (typ === "hoch") tf = `translateY(${e1 * 900}px)`;
+    else tf = `rotate(${e1 * 8}deg) scale(${1 + 0.25 * e1})`;
+    // Beben: kurzes Wackeln bei krassen Fakten
+    el.querySelectorAll("[data-beben]").forEach(b => {
+      const st = parseFloat(b.dataset.d || 99), bd = parseFloat(b.dataset.bdauer), p = (lokal - st) / bd;
+      if (p >= 0 && p < 1) { const a = 26 * +b.dataset.beben * (1 - p); tf += ` translate(${Math.sin(lokal * 71) * a}px, ${Math.cos(lokal * 53) * a}px) rotate(${Math.sin(lokal * 37) * a * 0.04}deg)`; }
+    });
+    el.style.transform = tf;
+    el.style.opacity = typ === "zoom" ? ease(ein) : 1;
+    const obj = el.querySelector(".foto svg.objekt");
+    if (obj) { const q = clamp(lokal / sz[i].dauer); obj.style.transform = `scale(${1.03 + 0.09 * ease(q)}) translateY(${-24 * ease(q)}px)`;
+      el.querySelectorAll(".mitobjekt").forEach(w => w.style.transform = obj.style.transform); }
     const kopf = el.querySelector(".kopf");
-    if (kopf) { const p = clamp((lokal - 0.05) / 0.45); kopf.style.transform = `translateY(${(1 - back(p)) * -60}px) scale(${0.85 + 0.15 * back(p)})`; kopf.style.opacity = clamp(p * 3); }
+    const hd = i === 0 && P.hook ? (P.hook.dauer || 1.4) : 0;
+    if (kopf) { const p = clamp((lokal - 0.05 - hd) / 0.45); kopf.style.transform = `translateY(${(1 - back(p)) * -60}px) scale(${0.85 + 0.15 * back(p)})`; kopf.style.opacity = clamp(p * 3); }
     const img = el.querySelector(".foto .ebene");
     if (img) img.style.transform = kamera(i, lokal, sz[i].dauer);
     animiereElemente(el, lokal);
   });
 
-  // Blitz beim Szenenwechsel
-  document.getElementById("blitz").style.opacity = idx > 0 ? Math.max(0, 0.35 - lokal * 2.2) : 0;
+  // Hook: große Zahl/Frage in der ersten Sekunde, mit Wackeln
+  const hk = document.getElementById("hook");
+  if (P.hook) {
+    const hd = P.hook.dauer || 1.4, p = clamp(t / 0.25), aus = clamp((t - hd + 0.25) / 0.25);
+    const a = 18 * Math.max(0, 1 - t / 0.6);
+    hk.style.opacity = t < hd ? clamp(p * 3) * (1 - aus) : 0;
+    hk.style.transform = `translate(${Math.sin(t * 70) * a}px, ${Math.cos(t * 55) * a}px) rotate(-4deg) scale(${back(p) * (1 + 0.04 * t) + aus * 0.3})`;
+  }
+  // Blitz beim Szenenwechsel (nur beim Zoom-Übergang)
+  document.getElementById("blitz").style.opacity = idx > 0 && idx % 4 === 1 ? Math.max(0, 0.35 - lokal * 2.2) : 0;
   document.getElementById("balken").style.width = (t / T.gesamt * 100) + "%";
 
   // Untertitel: Gruppen von bis zu 3 Wörtern, aktives Wort hervorgehoben
@@ -217,7 +274,9 @@ window.zeige = function (t) {
     const aktiv = t >= w.start && t < (w.naechst ?? w.ende + 0.3);
     const p = clamp((t - w.start) / 0.12);
     const s = aktiv ? 1 + 0.12 * (1 - p) + 0.06 : 1;
-    return `<span class="${aktiv ? "an" : ""}" style="transform:scale(${s})">${w.wort}</span>`;
+    const nw = w.wort.toLowerCase().replace(/[^a-z0-9äöüß]/g, "");
+    const emo = Object.entries(P.emojis || {}).find(([k]) => nw.startsWith(k.toLowerCase()));
+    return `<span class="${aktiv ? "an" : ""}" style="transform:scale(${s})">${w.wort}</span>` + (emo && t >= w.start ? `<span class="emo" style="transform:scale(${back(clamp((t - w.start) / 0.3))})">${emo[1]}</span>` : "");
   }).join(" ");
   const gp = clamp((t - g.start) / 0.15);
   ut.style.transform = `translateY(${(1 - ease(gp)) * 30}px)`;
