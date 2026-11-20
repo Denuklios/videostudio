@@ -12,6 +12,6 @@ Alltagsärger den jeder kennt, kleine Geschichte mit Eskalation und Pointe, Schn
 - 12–20 schnelle Einstellungen (Totale Schlange, Nahaufnahme Gesicht, Hände, Kassen-Display, Uhr), 30–45 s.
 - Kaum Sprache: kurze Gedanken-Sprüche von Killian oder nur Untertitel-Gags; Musik „spannend“, viele Soundeffekte.
 - Bewegung: Figurenteile animieren (Augen, Mund, Arme, Schwitzen, Wackeln), Kamera-Zooms auf Gesichter.
-- Schluss-Szene wie immer: Logo + „Wusstest du das? Dann folg für mehr!“ – hier ggf. „Kennst du das? Dann folg für mehr!“.
+- Schluss-Szene wie immer: Logo + „Kennst du das? Schreib's in die Kommentare und folg für mehr!“.
 - Zusätzlich zu den 3 normalen Videos, Termin 20:30 Uhr. Post-Text endet mit Frage („Wer kennt so jemanden? 😤“).
 - Danach Aufrufe/Likes mit den Fakten-Videos vergleichen und dem Nutzer berichten.
