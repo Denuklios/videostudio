@@ -63,20 +63,26 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 ## Automatischer Tagesbetrieb
 
-Ein Zeitplan schickt jeden Tag um 9:17 Uhr den Auftrag „Tageslauf“ in den Chat, in dem das Projekt eingerichtet wurde (dort sind Canva und Metricool verbunden). Dann:
+Ein Zeitplan schickt jeden Tag um **7:17 Uhr** den Auftrag „Tageslauf“ in den Chat, in dem das Projekt eingerichtet
+wurde (dort sind Canva und Metricool verbunden). Ziel (Wunsch des Nutzers 20.11.): **mindestens 3 Videos pro Tag,
+davon mindestens 1 GTA-Video**, solange der GTA-6-Hype läuft.
 
-1. Repository holen, falls nicht da (siehe Auftrag), `git pull`.
-2. Die **zwei obersten offenen Themen** aus `themen.md` nehmen und für jedes den ganzen Ablauf oben durchziehen.
-   Ein Thema, dessen Fakten sich nicht belegen lassen, wird mit Begründung nach „Erledigt“ verschoben
-   (`- [~] … übersprungen: Grund`) und das nächste genommen.
-3. Veröffentlichung über Metricool, nur TikTok, Uhrzeiten **12:00 und 19:00** Europe/Copenhagen am selben Tag
-   (ist 12:00 schon vorbei, das erste Video 2 Stunden nach jetzt).
-4. **Veröffentlichung immer automatisch:** `autoPublish: true` (Wunsch des Nutzers seit 19.11.2026).
-   Mit `autoPublish: false` landet das Video nur als Entwurf im TikTok-Posteingang und bleibt liegen.
-5. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), nach „Erledigt“ verschieben, committen, pushen.
-6. Sind weniger als 10 offene Themen übrig: 20 neue, gut belegbare Themen-Ideen ergänzen (Mischung aus Tiere,
-   Körper, Weltall, Geschichte, Alltagsirrtümer). Wenn Metricool-Analysen zeigen, was gut läuft, mehr davon.
-7. Zum Schluss eine kurze Zusammenfassung: welche Videos, wann geplant, Auffälligkeiten.
+1. `git pull`.
+2. **Themenwahl:** 1 Thema aus `gta_themen.md` (oberstes offenes) + 2 oberste offene Themen aus `themen.md`.
+   Sind in `gta_themen.md` weniger als 5 offen: per WebSearch aktuelle GTA-6-News/Fakten suchen und neue,
+   belegbare GTA-Themen ergänzen (Story-Hintergründe, Rekorde, Karte, Fahrzeuge, Easter Eggs, Vergleich GTA 5,
+   Reaktionen, Verkaufszahlen – nur belegte Zahlen). Regeln für fremdes Material gelten (keine Spielszenen/Logos/Figuren).
+3. **Zeitplan:** 12:00, 16:00, 19:00 Europe/Copenhagen (GTA-Video bevorzugt um 16:00). Ist eine Zeit schon vorbei
+   oder zu knapp, die nächste freie Lücke ≥ 2 h nach jetzt.
+4. **Canva-Bilder sparsam:** max. **4 Bilder pro Video** (Bilder dürfen in 2 Szenen vorkommen). Canva hat
+   „quota_cooldown“ (≈ 1 Bild / 45 min nach mehreren Bildern): Bilder einzeln anfordern, bei Cooldown mit
+   `send_later` (45 min) weitermachen, erzeugte Media-IDs in `videos/NNN/canva_ids.txt` notieren. Reihenfolge:
+   zuerst alle Bilder fürs 12-Uhr-Video, dann 16, dann 19. Exporte max. 3 Bilder pro Design, Duplikate prüfen.
+   Wird es für ein Video zu knapp (< 2 h vor Termin), mit vorhandenen Bildern bauen.
+5. **Veröffentlichung immer automatisch:** `autoPublish: true`. Mit `false` landet das Video nur als Entwurf.
+6. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), committen, pushen.
+7. Sind in `themen.md` weniger als 10 offene Themen: 20 neue, gut belegbare Themen ergänzen.
+8. Kurze Zusammenfassung an den Nutzer: welche Videos, wann geplant, Auffälligkeiten.
 
 ## Technik
 
