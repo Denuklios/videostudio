@@ -1,9 +1,14 @@
-# GTA-Themen (jeden Tag mindestens 1 Video)
+# GTA-Themen (jeden Tag 2 Videos)
 
 Nur belegbare Fakten. Keine Spielszenen, Trailer-Clips, Rockstar-Logos oder Spielfiguren – eigene Bilder.
 
 ## Offen
 
+- [ ] GTA 6: So wirst du schnell reich – Geld-Tipps je Kapitel (Banktresor bis 205.000 $, Juwelier 10–25.000 $, Autos an Moses verkaufen, in Kapitel 1 nicht farmen – Geld ist am Ende weg). Quellen: PowerPyx, GamesRadar, PC Gamer, VGC (Stand 20.11.)
+- [ ] GTA 6 Glitches gehen viral: fliegende Autos, verschwindende Figuren, Polizei-Bugs – Vergleich mit Cyberpunk 2077 (Gulf News, 20.11.) – nur eigene Bilder
+- [ ] Die meistgesehenen GTA-6-Clips: ohnePixel vorn mit über 519.000 Aufrufen (Streams Charts) – was Streamer zum Lachen bringt
+- [ ] Sogar das Weiße Haus macht mit: GTA-Montage als Werbung (Axios, 20.11.) – ein Spiel vereint das Internet
+- [ ] GTA 6 und echte Florida-Momente: Trailer zitiert virale „Florida Man“-Videos (Sportskeeda) – welche echten Vorbilder
 - [ ] GTA 5: das erfolgreichste Unterhaltungsprodukt aller Zeiten? Umsatz, Verkäufe, Rekorde (Fakten prüfen) – Bezug zum GTA-6-Start
 - [ ] Vice City: von 2002 bis GTA 6 – Geschichte der Stadt und ihr Vorbild Miami (Fakten prüfen)
 - [ ] GTA 6 Launch-Rekorde: Streaming-Zuschauer, Vorbestellungen, erste Verkaufszahlen – nur offizielle/seriöse Zahlen
