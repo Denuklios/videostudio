@@ -77,6 +77,12 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 - **Keine Bilder wiederverwenden:** Jedes Video bekommt eigene, neue Bilder. Bilder aus früheren Videos NIE erneut
   nutzen (Wunsch des Nutzers 20.11.). Lieber ein Video später veröffentlichen als mit alten Bildern.
 - **Hashtags:** 4–6 passende, spezifische Hashtags (Thema + `#wusstestdu` + `#fakten`). Kein `#fyp`/`#foryou`.
+- **GTA-Videos – Look (Wunsch des Nutzers 20.11.: „extrem gut, professionell, nicht billig“):** eigene Canva-Bilder im
+  echten Vice-City-/Miami-Look (Nacht-Skyline, Ocean Drive, Sportwagen, Strand, Banküberfall, Polizei-Verfolgung, Geldbündel,
+  Palmen, Sonnenuntergang) – filmisch wie ein Spiel-Screenshot. Hier ist **Neon erlaubt**, weil es zum Vice-City-Look gehört.
+  Prompt-Grundgerüst: „<Motiv>, Vice City Miami vibe, cinematic video game screenshot style, ultra realistic, dramatic
+  lighting, neon reflections at night, high detail, no text, no logos, no real persons“. KEINE Rockstar-Figuren, -Logos,
+  Screenshots oder Trailer. Sobald der Nutzer die PC-Version hat: eigene Spielaufnahmen (Google Drive) schneiden.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
