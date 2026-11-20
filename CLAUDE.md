@@ -98,6 +98,7 @@ davon mindestens 1 GTA-Video**, solange der GTA-6-Hype läuft.
    `send_later` (45 min) weitermachen, erzeugte Media-IDs in `videos/NNN/canva_ids.txt` notieren. Reihenfolge:
    zuerst alle Bilder fürs 12-Uhr-Video, dann 16, dann 19. Exporte max. 3 Bilder pro Design, Duplikate prüfen.
    Wird es für ein Video zu knapp, den Termin verschieben (nächste freie Lücke) – NICHT mit Bildern aus anderen Videos bauen.
+5. **Metricool sperrt Beiträge kurz vor dem Termin** (ca. 15–20 min): Änderungen/Austausch spätestens 30 min vorher.
 5. **Veröffentlichung immer automatisch:** `autoPublish: true`. Mit `false` landet das Video nur als Entwurf.
 6. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), committen, pushen.
 7. Sind in `themen.md` weniger als 10 offene Themen: 20 neue, gut belegbare Themen ergänzen.
