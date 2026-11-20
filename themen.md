@@ -7,7 +7,6 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Offen
 
-- [ ] Auf der Venus dauert ein Tag länger als ein Jahr
 - [ ] Honig verdirbt praktisch nie – essbarer Honig aus ägyptischen Gräbern
 - [ ] Warum Flamingos rosa sind (und grau zur Welt kommen)
 - [ ] Kleopatra lebte näher an der Mondlandung als am Bau der Cheops-Pyramide
@@ -42,3 +41,4 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 - [x] Kraken haben 3 Herzen → videos/004-kraken-neon (geplant 2026-11-19 21:20)
 - [x] GTA 6 ist da – 5 Fakten → videos/005-gta6 (veröffentlicht 2026-11-20 09:07)
 - [x] Dein Magen erneuert seine Schleimhaut → videos/006-magen (geplant 2026-11-20 12:00)
+- [x] Auf der Venus dauert ein Tag länger als ein Jahr → videos/007-venus (geplant 2026-11-20 19:00)
