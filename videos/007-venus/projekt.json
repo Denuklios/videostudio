@@ -1,0 +1,67 @@
+{
+ "titel": "Ein Tag auf der Venus",
+ "datei": "venus-tag",
+ "stil": {
+  "bg1": "#060b1f",
+  "bg2": "#12204a",
+  "akzent": "#ff4fd8",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "Ein Tag <b>länger</b> als ein Jahr",
+  "szene": 0
+ },
+ "szenen": [
+  {
+   "kopf": "Ein Tag <b>länger</b> als ein Jahr",
+   "text": "Auf der Venus dauert ein Tag länger als ein ganzes Jahr. Klingt unmöglich? Ist aber so.",
+   "foto": "bilder/v1.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "<b>225 Tage</b> pro Jahr",
+   "text": "Für eine Runde um die Sonne braucht die Venus etwa 225 Erdtage.",
+   "foto": "bilder/v2.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "<b>243 Tage</b> pro Drehung",
+   "text": "Aber um sich einmal um sich selbst zu drehen, braucht sie rund 243 Tage. Kein Planet dreht sich langsamer.",
+   "foto": "bilder/v3.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Sie dreht sich <b>rückwärts</b>",
+   "text": "Und sie dreht sich auch noch andersherum als die Erde und fast alle anderen Planeten.",
+   "foto": "bilder/v4.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Sonne geht im <b>Westen</b> auf",
+   "text": "Deshalb geht auf der Venus die Sonne im Westen auf und im Osten unter.",
+   "foto": "bilder/v5.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Warum? <b>Unklar</b>",
+   "text": "Warum das so ist, weiß niemand genau. Vielleicht hat ein riesiger Einschlag sie einst ausgebremst.",
+   "foto": "bilder/v6.png",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Wusstest du das? Dann folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "bild": ""
+  }
+ ]
+}
