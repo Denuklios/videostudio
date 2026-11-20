@@ -84,14 +84,14 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 Ein Zeitplan schickt jeden Tag um **7:17 Uhr** den Auftrag „Tageslauf“ in den Chat, in dem das Projekt eingerichtet
 wurde (dort sind Canva und Metricool verbunden). Ziel (Wunsch des Nutzers 20.11.): **mindestens 3 Videos pro Tag,
-davon mindestens 1 GTA-Video**, solange der GTA-6-Hype läuft.
+davon 2 GTA-Videos** (ab 21.11., weil GTA am besten läuft: 567 Aufrufe/18 Likes in 2 h), solange der GTA-6-Hype läuft.
 
 1. `git pull`.
-2. **Themenwahl:** 1 Thema aus `gta_themen.md` (oberstes offenes) + 2 oberste offene Themen aus `themen.md`.
-   Sind in `gta_themen.md` weniger als 5 offen: per WebSearch aktuelle GTA-6-News/Fakten suchen und neue,
+2. **Themenwahl:** 2 Themen aus `gta_themen.md` (oberste offene) + 1 oberstes offenes Thema aus `themen.md`.
+   Sind in `gta_themen.md` weniger als 8 offen: per WebSearch aktuelle GTA-6-News/Fakten suchen und neue,
    belegbare GTA-Themen ergänzen (Story-Hintergründe, Rekorde, Karte, Fahrzeuge, Easter Eggs, Vergleich GTA 5,
    Reaktionen, Verkaufszahlen – nur belegte Zahlen). Regeln für fremdes Material gelten (keine Spielszenen/Logos/Figuren).
-3. **Zeitplan:** 12:00, 16:00, 19:00 Europe/Copenhagen (GTA-Video bevorzugt um 16:00). Ist eine Zeit schon vorbei
+3. **Zeitplan:** 12:00 Fakten-Video, 16:00 und 19:00 GTA-Videos (Europe/Copenhagen). Ist eine Zeit schon vorbei
    oder zu knapp, die nächste freie Lücke ≥ 2 h nach jetzt.
 4. **Canva-Bilder sparsam:** max. **4 Bilder pro Video** (Bilder dürfen in 2 Szenen vorkommen). Canva hat
    „quota_cooldown“ (≈ 1 Bild / 45 min nach mehreren Bildern): Bilder einzeln anfordern, bei Cooldown mit
