@@ -46,7 +46,7 @@ projekt = {
     "titel": "Ein Tag auf der Venus", "datei": "venus-tag",
     "stil": {"bg1": "#060b1f", "bg2": "#12204a", "akzent": MAG, "text": "#ffffff", "form": CYAN},
     "cover": {"titel": "Ein Tag <b>länger</b> als ein Jahr", "szene": 0},
-    "hook": {"text": "1 Tag &gt; <b>1 Jahr?!</b>", "dauer": 1.4},
+    "hook": {"text": "1 Tag &gt;<br><b>1&nbsp;Jahr?!</b>", "dauer": 1.4},
     "musik": "episch",
     "emojis": {"venus": "🪐", "sonne": "☀️", "erde": "🌍", "andersherum": "🔄", "einschlag": "💥", "unmöglich": "🤯"},
     "szenen": szenen,

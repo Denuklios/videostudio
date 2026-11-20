@@ -13,7 +13,7 @@
   "szene": 0
  },
  "hook": {
-  "text": "1 Tag &gt; <b>1 Jahr?!</b>",
+  "text": "1 Tag &gt;<br><b>1&nbsp;Jahr?!</b>",
   "dauer": 1.4
  },
  "musik": "episch",

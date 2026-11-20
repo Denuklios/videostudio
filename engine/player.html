@@ -233,7 +233,7 @@ window.zeige = function (t) {
     const letzte = i === P.szenen.length - 1;
     const typ = i === 0 || letzte ? "zoom" : ["wisch", "zoom", "hoch", "dreh"][i % 4];
     let tf = "";
-    if (typ === "zoom") tf = letzte ? "" : `scale(${1 + 0.12 * e1})`;
+    if (typ === "zoom") tf = letzte || i === 0 ? "" : `scale(${1 + 0.12 * e1})`;
     else if (typ === "wisch") tf = `translateX(${e1 * 1080 * (i % 8 < 4 ? 1 : -1)}px)`;
     else if (typ === "hoch") tf = `translateY(${e1 * 900}px)`;
     else tf = `rotate(${e1 * 8}deg) scale(${1 + 0.25 * e1})`;
@@ -243,7 +243,7 @@ window.zeige = function (t) {
       if (p >= 0 && p < 1) { const a = 10 * +b.dataset.beben * (1 - p); tf += ` translate(${Math.sin(lokal * 71) * a}px, ${Math.cos(lokal * 53) * a}px) rotate(${Math.sin(lokal * 37) * a * 0.04}deg)`; }
     });
     el.style.transform = tf;
-    el.style.opacity = typ === "zoom" ? ease(ein) : 1;
+    el.style.opacity = typ === "zoom" && i > 0 ? ease(ein) : 1;
     const obj = el.querySelector(".foto svg.objekt");
     if (obj) { const q = clamp(lokal / sz[i].dauer); obj.style.transform = `scale(${1.02 + 0.04 * ease(q)}) translateY(${-10 * ease(q)}px)`;
       el.querySelectorAll(".mitobjekt").forEach(w => w.style.transform = obj.style.transform); }
@@ -258,9 +258,9 @@ window.zeige = function (t) {
   // Hook: große Zahl/Frage in der ersten Sekunde, mit Wackeln
   const hk = document.getElementById("hook");
   if (P.hook) {
-    const hd = P.hook.dauer || 1.4, p = clamp(t / 0.25), aus = clamp((t - hd + 0.25) / 0.25);
+    const hd = P.hook.dauer || 1.4, p = 0.75 + 0.25 * clamp(t / 0.15), aus = clamp((t - hd + 0.25) / 0.25);
     const a = 8 * Math.max(0, 1 - t / 0.4);
-    hk.style.opacity = t < hd ? clamp(p * 3) * (1 - aus) : 0;
+    hk.style.opacity = t < hd ? 1 - aus : 0;
     hk.style.transform = `translate(${Math.sin(t * 70) * a}px, ${Math.cos(t * 55) * a}px) rotate(-4deg) scale(${back(p) * (1 + 0.04 * t) + aus * 0.3})`;
   }
   // Blitz beim Szenenwechsel (nur beim Zoom-Übergang)
