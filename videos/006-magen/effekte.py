@@ -9,7 +9,7 @@ s1 = (hervorheben(565, 980, maske=M("magen"), art="puls", glanz=CYAN, wort="säu
 EFFEKTE = [
     s1,
     hervorheben(420, 1050, maske=M("essen"), art="puls", glanz=MAG, wort="zersetzt")
-    + schild(540, 470, "SALZSÄURE", MAG, WEISS, wort="salzsäure"),
+    + schild(540, 1330, "SALZSÄURE", MAG, WEISS, wort="salzsäure"),
     hervorheben(540, 740, maske=M("schleim"), art="puls", glanz=CYAN, halten=None, wort="schleimschicht"),
     hervorheben(560, 560, maske=M("saeure"), art="blink", glanz=MAG, wort="säure")
     + schild(540, 1330, "BIKARBONAT", CYAN, wort="bikarbonat"),
