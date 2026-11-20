@@ -23,13 +23,13 @@ szenen = [
     {"kopf": "Wusstest <b>du's?</b>",
      "text": "Wusstest du das? Dann folg für mehr!", "min_dauer": 3.0},
 ]
-BILDER = ["stadt", "publikum", "publikum", "handys", "grippe", "grippe"]
+BILDER = ["stadt", "publikum", "publikum", "publikum", "grippe", "grippe"]
 EFFEKTE = [""] * 6
 datei = HIER / "effekte.py"
 if datei.exists():
     ns = dict(globals()); exec(datei.read_text(), ns); EFFEKTE = ns["EFFEKTE"]
 for i, sz in enumerate(szenen[:-1]):
-    sz["foto"] = f"bilder/s_{BILDER[i]}.png" if (HIER / f"bilder/s_{BILDER[i]}.png").exists() else "bilder/s_zimmer.png"
+    sz["foto"] = f"bilder/s_{BILDER[i]}.png" 
     sz["ueber"] = EFFEKTE[i]
 szenen[-1]["foto"] = "../../kanal/schluss.png"
 szenen[-1]["ueber"] = hervorheben(540, 860, maske=str(HIER.parents[1] / "kanal/maske_logo.png"),
