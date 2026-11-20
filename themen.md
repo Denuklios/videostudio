@@ -7,6 +7,9 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Offen
 
+- [ ] GTA 5: das erfolgreichste Unterhaltungsprodukt aller Zeiten? Umsatz, Verkäufe, Rekorde (Fakten prüfen) – Bezug zum GTA-6-Start
+- [ ] Vice City: von 2002 bis GTA 6 – Geschichte der Stadt und ihr Vorbild Miami (Fakten prüfen)
+- [ ] GTA 6 Launch-Rekorde: Streaming-Zuschauer, Vorbestellungen, erste Verkaufszahlen – nur offizielle/seriöse Zahlen
 - [ ] Dein Magen erneuert seine Schleimhaut ständig – sonst würde er sich selbst verdauen
 - [ ] Auf der Venus dauert ein Tag länger als ein Jahr
 - [ ] Honig verdirbt praktisch nie – essbarer Honig aus ägyptischen Gräbern
