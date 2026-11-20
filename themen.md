@@ -7,7 +7,6 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Offen
 
-- [ ] GTA 6 ist da (erschienen 19.11.2026): 5 Dinge über GTA 6, die du nicht wusstest – nur belegbare Fakten; KEINE Spielszenen/Trailer-Clips, kein Rockstar-Logo, keine Spielfiguren; eigene Bilder im Look: Miami bei Nacht, Neon, Sportwagen, Palmen
 - [ ] Dein Magen erneuert seine Schleimhaut ständig – sonst würde er sich selbst verdauen
 - [ ] Auf der Venus dauert ein Tag länger als ein Jahr
 - [ ] Honig verdirbt praktisch nie – essbarer Honig aus ägyptischen Gräbern
@@ -42,3 +41,4 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 - [x] Warum Bananen leicht radioaktiv sind → videos/003-bananen (Entwurf 19.11., automatisch 2026-11-20 08:00)
 - [x] Kraken haben 3 Herzen → videos/004-kraken-neon (geplant 2026-11-19 21:20)
+- [x] GTA 6 ist da – 5 Fakten → videos/005-gta6 (veröffentlicht 2026-11-20 09:07)
