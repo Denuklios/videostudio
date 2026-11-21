@@ -103,6 +103,14 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   Lemo-Befehl `export PATH=/root/ffmpeg7/ffmpeg-7.0.2-amd64-static:$PATH`. Fehlt der Ordner (neue Umgebung): vom Nutzer erlaubt (21.11.),
   `mkdir -p /root/ffmpeg7 && cd /root/ffmpeg7 && curl -sLO https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz`,
   md5 mit der `.md5`-Datei daneben prüfen, entpacken. Unsere eigene Engine nutzt weiter das System-ffmpeg.
+- **Whisper + Piper (Wunsch des Nutzers 21.11., lokal und kostenlos):** venv `/root/stimme-venv` (piper-tts, faster-whisper).
+  - **Sprachcheck:** `/root/stimme-venv/bin/python engine/sprachcheck.py <wav> "Text"` → erkannter Text + Übereinstimmung %;
+    bei < 85 % Zeile umformulieren/neu erzeugen. Für wichtige Sätze (Hook, Pointe, Zahlen) nutzen.
+  - **Piper-Stimmen** in `/root/piper-voices` (de_DE thorsten-high, thorsten_emotional, kerstin, pavoque); Hörproben in
+    `kanal/stimmproben/piper/`. Standard bleibt Killian, bis der Nutzer sich anders entscheidet.
+  - Fehlt die venv (neue Umgebung): `python3 -m venv /root/stimme-venv && /root/stimme-venv/bin/pip install piper-tts faster-whisper`,
+    Stimmen von huggingface.co/rhasspy/piper-voices (de/de_DE/…).
+  - Ollama (lokales Sprachmodell) wird nicht gebraucht.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
