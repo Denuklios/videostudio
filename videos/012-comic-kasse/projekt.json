@@ -1,0 +1,137 @@
+{
+ "titel": "Kalle an der Kasse",
+ "datei": "comic-kasse",
+ "stil": {
+  "bg1": "#efe6d2",
+  "bg2": "#e8dcc4",
+  "akzent": "#ff4fd8",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "POV: <b>Supermarktkasse</b> 😤",
+  "szene": 2
+ },
+ "hook": {
+  "text": "Nur 1 Person<br><b>vor mir…</b>",
+  "dauer": 1.4
+ },
+ "musik": "spannend",
+ "tempo": "+18%",
+ "emojis": {
+  "portemonnaie": "👛",
+  "minute": "⏰",
+  "kleingeld": "🪙",
+  "karte": "💳",
+  "koche": "🤬",
+  "karma": "😏"
+ },
+ "szenen": [
+  {
+   "foto": "bilder/k01_totale.png",
+   "text": "Samstag. Nur noch eine Person vor mir.",
+   "kopf": "POV: <b>Supermarkt</b>",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k02_display.png",
+   "text": "Siebenundvierzig Euro dreiundachtzig.",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k03_wuehlt.png",
+   "text": "Und jetzt sucht sie ihr Portemonnaie.",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k04_skeptisch.png",
+   "text": "Ernsthaft?",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k05_uhr.png",
+   "text": "Eine Minute. Zwei Minuten.",
+   "kopf": "",
+   "ueber": "<g data-a=\"federn\" data-ton=\"klick\" data-wort=\"zwei\"><rect x=\"401\" y=\"1316\" width=\"277\" height=\"87\" rx=\"44\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1382\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"60\" fill=\"#ffffff\">+2 MIN</text></g>",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k06_schlange.png",
+   "text": "Die Schlange wird immer länger.",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k07_muenzen.png",
+   "text": "Kleingeld. Cent für Cent.",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k08_karte.png",
+   "text": "Dann Karte. Abgelehnt.",
+   "kopf": "",
+   "ueber": "<g data-beben=\"0.8\" data-bdauer=\"0.4\" data-ton=\"bass\" data-wort=\"abgelehnt\"></g>",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k09_wuetend.png",
+   "text": "Ich koche.",
+   "kopf": "",
+   "ueber": "<g data-beben=\"1.0\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"koche\"></g>",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k10_dran.png",
+   "text": "Endlich dran.",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k11_display2.png",
+   "text": "Zwölf Euro neunzig.",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k12_taschen.png",
+   "text": "Moment. Mein Portemonnaie?",
+   "kopf": "",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k13_schock.png",
+   "text": "Liegt zu Hause.",
+   "kopf": "",
+   "ueber": "<g data-beben=\"1.3\" data-bdauer=\"0.6\" data-ton=\"bass\" data-wort=\"hause\"></g>",
+   "bild": ""
+  },
+  {
+   "foto": "bilder/k14_karma.png",
+   "text": "Karma.",
+   "kopf": "<b>KARMA.</b>",
+   "ueber": "",
+   "bild": ""
+  },
+  {
+   "kopf": "Kennst du <b>das?</b>",
+   "text": "Kennst du das? Schreib's in die Kommentare und folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "bild": "",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>"
+  }
+ ]
+}
