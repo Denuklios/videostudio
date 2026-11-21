@@ -9,7 +9,7 @@ from sfx import SR, t_, env_exp, bp, lp, hp, noise, norm, brown, add, compress, 
 
 HERE = Path(__file__).parent; OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
 DUR = 30.4; N = int(DUR * SR)
-EV = json.loads((HERE / "events.json").read_text())["ev"]
+EV = [dict(e, t=e["t"] - 1.6) for e in json.loads((HERE / "events.json").read_text())["ev"] if e["t"] >= 1.6]
 VO = {"k1": 0.25, "k2": 4.05, "r1": 7.85, "k3": 9.1, "n1": 13.6, "n2": 16.2, "n3": 18.5, "r2": 23.4, "cta": 26.0}
 BPM = 112; B = 60 / BPM
 mf = lambda m: 440 * 2 ** ((m - 69) / 12)
@@ -149,6 +149,14 @@ music[int(20.2 * SR):int(25.6 * SR)] = 0
 mix = music * .8 + fx * .9 + amb + voice * 1.1
 mix = mix / max(1e-9, np.abs(mix).max()) * .9
 mix = np.stack([limit(mix[:, 0]), limit(mix[:, 1])], axis=1)
+# —— Cold Open davor (1.6 s): Bass, Deckel, „NEIN!!!“, Wusch ——
+HOOK = 1.6; pre = np.zeros((int(HOOK * SR), 2))
+tt = t_(.9); chord = sum(np.sign(np.sin(2 * np.pi * mf(m) * tt)) for m in (50, 56, 62, 65))
+add(pre, lp(chord, 2200) * np.exp(-tt / .25) * .3, 0.02); add(pre, kick(1.0), 0.02); add(pre, lid() * .8, .1)
+with wave.open(str(HERE / "voices" / "n3.wav")) as w: nv = np.frombuffer(w.readframes(w.getnframes()), np.int16) / 32768
+add(pre, norm(nv, .9) * 1.0, .25); add(pre, sfx.whoosh(.4, .8), 1.25)
+pre = pre / max(1e-9, np.abs(pre).max()) * .9
+mix = np.concatenate([pre, mix])
 with wave.open(str(OUT / "mix.wav"), "wb") as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((np.clip(mix, -1, 1) * 32767).astype(np.int16).tobytes())

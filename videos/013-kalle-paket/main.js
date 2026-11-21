@@ -220,11 +220,37 @@ const SH = [
     } },
 ];
 function shotAt(t) { for (let i = SH.length - 1; i >= 0; i--) if (t >= SH[i].t) return SH[i]; return SH[0]; }
-window.DUR = DUR;
-window.render = t => {
+// —— Cold Open (Hook): Vorblende aus der Mülltonne ——
+const HOOK = 1.6;
+function coldOpen(t) {
+  frame(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
+  const sh = t < .7 ? 20 * (1 - t / .7) : 0;
+  cam(560, 900, 1.12 + t * .05, sh, t); welt_tonne(13);
+  kalle(K(t, { x: 540, y: FLOOR - 330, brow: -1, nerv: 1, eyeS: 1.2, pupil: 3.5, look: [.2, -.2], peel: true,
+    mouth: { o: .85 + .1 * Math.sin(t * 30), w: 1.15, sm: -.7 }, armL: { h: [-90, -150], bend: -30, fist: true }, armR: { h: [90, -150], bend: 30, fist: true } }));
+  shape(rr(320, 990, 440, 510, 24), { fill: '#6b6f78', lw: 8, shade: () => fillOnly(rect(640, 970, 140, 550), '#55585f', { boil: .3 }) }); stroke([[350, 1070], [730, 1070]], 6);
+  // Hook-Text
+  const p = back(clamp(t / .25), 1.6);
+  g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2 + (sh ? (hash(Math.floor(t * 24)) - .5) * sh : 0), 300); g.rotate(-.05); g.scale(p, p);
+  g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+  g.font = '400 66px "Titan One"'; g.lineWidth = 16; g.strokeStyle = INK; g.strokeText('Mein Paket liegt in der', 0, -70); g.fillStyle = '#fff'; g.fillText('Mein Paket liegt in der', 0, -70);
+  g.font = '400 120px "Titan One"'; g.lineWidth = 20; g.strokeText('MÜLLTONNE?!', 0, 60); g.fillStyle = '#ff4fd8'; g.fillText('MÜLLTONNE?!', 0, 60);
+  g.restore();
+  if (t > HOOK - .2) screenRect('#ffffff', (t - (HOOK - .2)) / .2 * .9);   // Blitz-Schnitt
+}
+function flashback(t) {   // Einblendung „Eine Stunde vorher…“
+  if (t > 1.4) return; const a = Math.min(1, t / .15) * (1 - seg(t, 1.1, 1.4));
+  g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = a; g.font = '800 64px "Baloo 2"'; g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.lineWidth = 14; g.strokeStyle = INK; g.strokeText('Eine Stunde vorher…', W / 2, 260); g.fillStyle = '#ffd84d'; g.fillText('Eine Stunde vorher…', W / 2, 260); g.globalAlpha = 1;
+}
+window.DUR = DUR + HOOK;
+window.render = T => {
+  if (T < HOOK) return coldOpen(T);
+  const t = T - HOOK;
   frame(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   const s = shotAt(t); S.lw = 7; s.f(t, clamp((t - s.t) / s.d));
   if (s.sw) swirl(seg(t, s.sw[0], s.sw[1]));
-  subtitles(t);
+  subtitles(t); flashback(t);
 };
-window.EV = EV; window.VO = VO; window.TEXTS = t => []; window.READY = true;
+window.EV = [{ t: 0.02, type: 'stab' }, { t: 0.1, type: 'lid' }, { t: 1.45, type: 'swirl' }, ...EV.map(e => ({ ...e, t: e.t + HOOK }))];
+window.VO = VO; window.TEXTS = t => []; window.READY = true;
