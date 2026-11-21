@@ -3,3 +3,4 @@ videos/*/timing.json
 node_modules/
 __pycache__/
 videos/*/_bild.mp4
+videos/*/render.log
