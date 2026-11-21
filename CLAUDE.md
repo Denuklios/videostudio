@@ -125,6 +125,9 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
     Ryan/Aiden sprechen Deutsch) und 1.7B-VoiceDesign (Stimme per Beschreibung, z. B. „tiefe, warme deutsche Männerstimme,
     Doku-Erzähler“), ~30–40 s pro Satz auf CPU. Proben `kanal/stimmproben/qwen3/`. Achtung Speicher: Modelle liegen in
     `~/.cache/huggingface` (mehrere GB); bei Platzmangel `~/.cache/pip` leeren.
+- **Comic-Videos (Wunsch des Nutzers 21.11.: Kassen-Comic „ganz schlecht, unterirdisch“, gelöscht):** NIE mehr mit
+  starren SVG-Zeichnungen und Erzählerstimme. Comics nur noch als echte Animation mit Lemo-Opuscar (wie Kalle) und eigenen
+  Figurenstimmen, und erst nachdem der Nutzer das fertige Video gesehen und freigegeben hat – nie automatisch einplanen.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
