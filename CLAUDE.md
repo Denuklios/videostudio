@@ -131,6 +131,17 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
+## Vorschau vor dem Veröffentlichen (Wunsch des Nutzers 21.11.)
+
+Der Nutzer will JEDES Video vorher sehen – in einem eigenen Chat nur mit Videos: Sitzung **„🎬 Video-Vorschau“**
+(`session_01VgMNm1Fr1oLaBCUgzn9svM`). Ablauf je Video, sobald es geprüft und gepusht ist:
+1. `send_message` an diese Sitzung: „Neue Videos: videos/NNN-name/datei.mp4 – <Titel> – <Tag Uhrzeit>“ (mehrere in einer Nachricht).
+   Die Vorschau-Sitzung schickt nur die Videos, sonst nichts. Im Haupt-Chat Videos NICHT zusätzlich mit SendUserFile schicken.
+2. Videos so früh fertig machen, dass zwischen Vorschau und Termin **mindestens 2 h** liegen.
+3. Antwort des Nutzers kommt als Nachricht der Vorschau-Sitzung zurück: „ok“ → nichts tun. „nein …“ → sofort in Metricool
+   `draft: true` setzen (nicht veröffentlichen), Grund umsetzen, neu bauen, erneut zur Vorschau schicken.
+   Ohne Antwort bleibt der Termin bestehen (autoPublish).
+
 ## Automatischer Tagesbetrieb
 
 Ein Zeitplan schickt jeden Tag um **7:17 Uhr** den Auftrag „Tageslauf“ in den Chat, in dem das Projekt eingerichtet
@@ -154,7 +165,7 @@ davon 2 GTA-Videos** (ab 21.11., weil GTA am besten läuft: 567 Aufrufe/18 Likes
 6. Themen abhaken (`- [x] Thema → videos/NNN-name (geplant …)`), committen, pushen.
 7. Sind in `themen.md` weniger als 10 offene Themen: 20 neue, gut belegbare Themen ergänzen.
 8. **Nur am 21.11.:** zusätzlich das Comic-Test-Video nach `comic_test.md` bauen (Termin 20:30).
-9. Kurze Zusammenfassung an den Nutzer: welche Videos, wann geplant, Auffälligkeiten.
+9. Videos an die Vorschau-Sitzung schicken (siehe oben); im Haupt-Chat nur eine kurze Zusammenfassung: welche Videos, wann geplant, Auffälligkeiten.
 
 ## Technik
 
