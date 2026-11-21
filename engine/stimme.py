@@ -111,6 +111,9 @@ def qwen_vorbereiten(projekt, audio, ordner):
         a, b = ww[zu[last]]["ende"], ww[zu[nxt]]["start"]
         grenzen.append(round((a + b) / 2 if b > a else a, 3))
     grenzen.append(ffprobe_dauer(gesamt_wav))
+    for k in range(1, len(grenzen)):   # Schutz: jede Szene mindestens 0,3 s (sehr kurze Szenen wie „Karma.“)
+        if grenzen[k] < grenzen[k - 1] + .3: grenzen[k] = grenzen[k - 1] + .3
+    if grenzen[-1] > ffprobe_dauer(gesamt_wav): grenzen[-1] = ffprobe_dauer(gesamt_wav) + .3
     teile = []
     for i in range(len(texte)):
         t0, t1 = grenzen[i], grenzen[i + 1]; mp3 = audio / f"qwen_{i:02d}.mp3"
