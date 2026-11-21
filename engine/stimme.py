@@ -86,15 +86,56 @@ def qwen_stimme_fuer(ordner, projekt):
     return st
 
 
+def _lade_mono(wav, sr=24000):
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(wav), "-f", "f32le", "-ac", "1", "-ar", str(sr), "-"],
+                         capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
+
+
+def _leiseste_stelle(sig, a, b, sr=24000):
+    """Schnittpunkt zwischen zwei Wörtern: die leiseste Stelle in der Pause (nicht blind die Mitte),
+    damit kein Wortanfang/-ende abgeschnitten wird. Whisper-Zeiten sind ungenau, daher etwas Spielraum."""
+    import numpy as np
+    rand = .06 if b - a > .15 else .2
+    lo, hi = max(0, int((min(a, b) - rand) * sr)), min(len(sig), int((max(a, b) + rand) * sr))
+    if hi - lo < int(.03 * sr):
+        return round((a + b) / 2, 3)
+    fen, schritt = int(.03 * sr), int(.005 * sr)
+    best, best_e = lo, 1e9
+    for x in range(lo, hi - fen, schritt):
+        e = float(np.sqrt(np.mean(sig[x:x + fen] ** 2)))
+        if e < best_e: best, best_e = x, e
+    return round((best + fen / 2) / sr, 3)
+
+
+def _schneiden(sig, t0, t1, ziel, sr=24000):
+    """Stück aus der Gesamtaufnahme schneiden (Original-Zeit), 8 ms weich ein-/ausblenden, dann Tempo ×1,1 als WAV."""
+    import numpy as np, wave
+    teil = sig[int(t0 * sr):int(t1 * sr)].copy()
+    f = min(int(.008 * sr), len(teil) // 2)
+    if f > 0:
+        teil[:f] *= np.linspace(0, 1, f); teil[-f:] *= np.linspace(1, 0, f)
+    roh = Path(str(ziel) + ".roh.wav")
+    with wave.open(str(roh), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes((np.clip(teil, -1, 1) * 32767).astype("<i2").tobytes())
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(roh), "-af", "atempo=1.1", str(ziel)], check=True)
+    roh.unlink()
+
+
 def qwen_vorbereiten(projekt, audio, ordner):
     """Ganzer Text in einem Durchgang (gleiche Stimme), dann mit Whisper-Wortzeiten in Szenen schneiden."""
     import difflib, re
     st = qwen_stimme_fuer(ordner, projekt)
     texte = [sz["text"].strip() for sz in projekt["szenen"]]
     gesamt_wav, wjson = audio / "qwen_gesamt.wav", audio / "qwen_woerter.json"
-    (audio / "qwen_in.json").write_text(json.dumps({"text": " ".join(texte), "stimme": st}, ensure_ascii=False))
-    subprocess.run([QWEN_PY, str(Path(__file__).with_name("qwen_stimme.py")), str(audio / "qwen_in.json"), str(gesamt_wav)], check=True)
-    subprocess.run([WHISPER_PY, str(Path(__file__).with_name("woerter.py")), str(gesamt_wav), str(wjson)], check=True)
+    ein = json.dumps({"text": " ".join(texte), "stimme": st}, ensure_ascii=False)
+    alt = (audio / "qwen_in.json").read_text() if (audio / "qwen_in.json").exists() else ""
+    if alt != ein or not gesamt_wav.exists() or not wjson.exists():   # gleicher Text + Stimme → Aufnahme wiederverwenden
+        (audio / "qwen_in.json").write_text(ein)
+        subprocess.run([QWEN_PY, str(Path(__file__).with_name("qwen_stimme.py")), str(audio / "qwen_in.json"), str(gesamt_wav)], check=True)
+        subprocess.run([WHISPER_PY, str(Path(__file__).with_name("woerter.py")), str(gesamt_wav), str(wjson)], check=True)
     ww = json.loads(wjson.read_text())
     norm = lambda x: re.sub(r"[^a-zäöüß0-9]", "", x.lower())
     tw, szene_von, textwoerter = [], [], []
@@ -105,19 +146,20 @@ def qwen_vorbereiten(projekt, audio, ordner):
     for tag, a1, a2, b1, b2 in difflib.SequenceMatcher(None, tw, hw, autojunk=False).get_opcodes():
         for k in range(a2 - a1): zu[a1 + k] = min(b2 - 1, b1 + k) if b2 > b1 else max(0, b1 - 1)
     # Schnittpunkte zwischen den Szenen
+    sig = _lade_mono(gesamt_wav)
     grenzen = [0.0]
     for i in range(len(texte) - 1):
         last = max(j for j, s_ in enumerate(szene_von) if s_ == i); nxt = last + 1
         a, b = ww[zu[last]]["ende"], ww[zu[nxt]]["start"]
-        grenzen.append(round((a + b) / 2 if b > a else a, 3))
-    grenzen.append(ffprobe_dauer(gesamt_wav))
+        grenzen.append(_leiseste_stelle(sig, a, b))
+    grenzen.append(len(sig) / 24000)
     for k in range(1, len(grenzen)):   # Schutz: jede Szene mindestens 0,3 s (sehr kurze Szenen wie „Karma.“)
         if grenzen[k] < grenzen[k - 1] + .3: grenzen[k] = grenzen[k - 1] + .3
-    if grenzen[-1] > ffprobe_dauer(gesamt_wav): grenzen[-1] = ffprobe_dauer(gesamt_wav) + .3
+    grenzen[-1] = max(grenzen[-1], len(sig) / 24000)
     teile = []
     for i in range(len(texte)):
-        t0, t1 = grenzen[i], grenzen[i + 1]; mp3 = audio / f"qwen_{i:02d}.mp3"
-        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(gesamt_wav), "-ss", str(t0), "-to", str(t1), "-af", "atempo=1.1", str(mp3)], check=True)
+        t0, t1 = grenzen[i], grenzen[i + 1]; mp3 = audio / f"qwen_{i:02d}.wav"
+        _schneiden(sig, t0, t1, mp3)   # Schnitt in der ORIGINAL-Zeit, erst danach Tempo ×1,1 (vorher verrutschten die Schnitte)
         # Wörter aus dem SKRIPT (damit Effekte per Wort auslösen), Zeiten von Whisper
         ws = []
         for k, (txw, s_) in enumerate(zip(textwoerter, szene_von)):
@@ -141,7 +183,8 @@ def vertonen(projekt, audio, anbieter, stimme, tempo, qwen=None):
         else:
             woerter = asyncio.run(edge_vertonen(sz["text"], stimme, tempo, mp3))
         dauer_ton = ffprobe_dauer(mp3)
-        dauer = round(max(dauer_ton + PAUSE_NACH_SZENE, sz.get("min_dauer", 0)), 3)
+        pause = 0.12 if anbieter == "qwen" else PAUSE_NACH_SZENE   # Qwen hat schon natürliche Pausen
+        dauer = round(max(dauer_ton + pause, sz.get("min_dauer", 0)), 3)
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(mp3), "-af",
                         f"apad=whole_dur={dauer}", "-ar", str(SR), "-ac", "2", str(wav)], check=True)
         for w in woerter:
