@@ -111,6 +111,9 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   - Fehlt die venv (neue Umgebung): `python3 -m venv /root/stimme-venv && /root/stimme-venv/bin/pip install piper-tts faster-whisper`,
     Stimmen von huggingface.co/rhasspy/piper-voices (de/de_DE/…).
   - Ollama (lokales Sprachmodell) wird nicht gebraucht.
+  - **Chatterbox Multilingual** (MIT, Deutsch, Emotionsregler `exaggeration`): venv `/root/tts2-venv` (CPU-Torch + chatterbox-tts),
+    Test-Skript `/root/cb_test.py`, ~20 s pro Satz auf CPU. Proben `kanal/stimmproben/chatterbox/`. Gut für lebhafte Comic-Stimmen.
+  - Alle deutschen Microsoft-Stimmen als Proben: `kanal/stimmproben/weitere/`.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
