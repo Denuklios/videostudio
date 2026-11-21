@@ -59,6 +59,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; 
   <div id="balken"></div>
   <div id="blitz"></div>
 </div>
+<script src="fx.js"></script>
 <script>
 // Wird von render.js befüllt: window.PROJEKT und window.TIMING
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
@@ -142,6 +143,13 @@ function aufbauen() {
     d.style.display = "none";
   });
   woerter = T.woerter;
+  // Motion-Design-Effekte (fx.js)
+  const normW = x => x.toLowerCase().normalize("NFC").replace(/[^a-z0-9äöüß]/g, "");
+  window.fxAufbauen(P, T, (i, wort, n) => {
+    const ziel = normW(wort); let k = 0;
+    for (const w of T.woerter) if (w.szene === i && normW(w.wort).startsWith(ziel) && ++k >= (n || 1)) return w.start - T.szenen[i].start;
+    console.warn("fx: Wort nicht gefunden:", wort); return null;
+  });
 }
 
 const fmtDE = (v, nk) => v.toFixed(nk).replace(".", "#").replace(/\B(?=(\d{3})+(?!\d))/g, ".").replace("#", ",");
@@ -255,6 +263,7 @@ window.zeige = function (t) {
     animiereElemente(el, lokal);
   });
 
+  window.fxZeige(t);
   // Hook: große Zahl/Frage in der ersten Sekunde, mit Wackeln
   const hk = document.getElementById("hook");
   if (P.hook) {

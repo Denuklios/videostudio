@@ -204,3 +204,71 @@ def zaehler(x, y, bis, von=0, vor="", nach="", nachkomma=0, farbe=GELB, textfarb
 def beben(staerke=1.0, dauer=0.5, **z):
     """Bildschirm wackelt kurz (mit Bass-Schlag) – für krasse Fakten."""
     return f'<g data-beben="{staerke}" data-bdauer="{dauer}" data-ton="bass"{_zeit(**z)}></g>'
+
+
+# —— Motion-Design-Effekte (Canvas-Ebene, engine/fx.js) ——
+# Diese Funktionen liefern Einträge für szene["fx"] (Liste), NICHT für szene["ueber"].
+# Sparsam nutzen: 2–3 pro Video, an den stärksten Stellen.
+#   szene["fx"] = [fx_explosion(205000, nach=" $", unter="PRO TRESOR", wort="zweihundertfünftausend")]
+
+def _fx(typ, dauer, wort=None, n=None, plus=0.0, d=0.0, **o):
+    e = {"typ": typ, "dauer": dauer, **{k: v for k, v in o.items() if v is not None}}
+    if wort:
+        e["wort"] = wort
+    else:
+        e["d"] = d
+    if n:
+        e["n"] = n
+    if plus:
+        e["plus"] = plus
+    return e
+
+
+def fx_streifen(text, unter=None, voll=False, farbe=None, y=None, dauer=1.6, **z):
+    """Große Schrift fliegt in Streifen herein und wieder hinaus (Zahl/Kernaussage). voll=True: eigene helle Fläche."""
+    return _fx("streifen", dauer, text=text, unter=unter, voll=voll, farbe=farbe, y=y, **z)
+
+
+def fx_laufband(text, y=1180, dauer=2.2, **z):
+    """Zwei schräge Laufbänder mit Text quer über dem Bild (z. B. „GTA 6“)."""
+    return _fx("laufband", dauer, text=text, y=y, **z)
+
+
+def fx_muster(dauer=0.8, **z):
+    """Wellen-Kachelmuster wischt als Übergang übers Bild (am Szenenanfang: d=0)."""
+    return _fx("muster", dauer, **z)
+
+
+def fx_punktkugel(x=540, y=900, r=300, text=None, dauer=2.4, **z):
+    """Drehende 3D-Punktkugel (Planeten, Atome, Erde …)."""
+    return _fx("punktkugel", dauer, x=x, y=y, r=r, text=text, **z)
+
+
+def fx_explosion(zahl, vor="", nach="", unter=None, x=540, y=820, von=0, dauer=2.0, **z):
+    """Speichen-Explosion mit hochzählender Zahl (größte Zahl im Video)."""
+    return _fx("explosion", dauer, zahl=zahl, vor=vor, nach=nach, unter=unter, x=x, y=y, von=von, **z)
+
+
+def fx_uhr(text=None, x=540, y=820, r=330, dauer=2.0, **z):
+    """Zifferblatt mit Zeigern – für Zeit-Fakten („3 TAGE“, „225 JAHRE“)."""
+    return _fx("uhr", dauer, text=text, x=x, y=y, r=r, **z)
+
+
+def fx_punkte(text, unter=None, y=820, dauer=2.0, **z):
+    """Punkte fliegen herbei und formen eine Zahl/ein kurzes Wort (z. B. „17 %“)."""
+    return _fx("punkte", dauer, text=text, unter=unter, y=y, **z)
+
+
+def fx_play(text=None, x=540, y=860, dauer=1.4, **z):
+    """Play-Symbol mit kreisenden Punkten („Gleich geht's los“)."""
+    return _fx("play", dauer, text=text, x=x, y=y, **z)
+
+
+def fx_farbschnitte(woerter, dauer=1.6, **z):
+    """Harte Farbflächen im Takt, je ein Wort (z. B. ["3", "TIPPS", "FÜR", "GELD"])."""
+    return _fx("farbschnitte", dauer, woerter=list(woerter), **z)
+
+
+def fx_strahlen(x=540, y=860, dauer=3.0, **z):
+    """Rotierende Lichtstrahlen, z. B. hinter dem Logo in der Schluss-Szene."""
+    return _fx("strahlen", dauer, x=x, y=y, **z)

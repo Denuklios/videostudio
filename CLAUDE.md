@@ -71,6 +71,11 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
     Hauptobjekt schwebt vor dem Hintergrund. In fast jeder Szene nutzen.
   - **Zahlen zählen hoch:** `zaehler(x, y, 225, nach=" TAGE", wort="225", plus=-0.4)` statt `schild()` bei Zahlen.
   - **Beben:** `beben(wort="…")` bei dem krassesten Moment (1–2× pro Video).
+  - **Motion-Design-Effekte (Wunsch des Nutzers 21.11.):** pro Video **2–3** Effekte aus `engine/fx.js` an den stärksten Stellen,
+    über `szene["fx"] = [fx_…(…, wort="…")]` (Funktionen in `effekte.py`): `fx_explosion` (größte Zahl zählt hoch),
+    `fx_streifen` (Kernaussage in Streifen), `fx_punkte` (Punkte formen Zahl), `fx_uhr` (Zeit-Fakten), `fx_laufband`,
+    `fx_punktkugel` (Planeten/Atome), `fx_muster` (Übergang), `fx_farbschnitte` (Wortfolge im Takt), `fx_play`,
+    `fx_strahlen` (hinter dem Logo am Ende). Jedes Video etwas anders kombinieren. Beispiel: `videos/demo-fx`.
   - Kamerafahrten, wechselnde Übergänge, Soundeffekte (Wusch, Klick, Pling, Bass) macht die Engine automatisch.
   - **post.txt** endet IMMER mit „Wusstest du's? Schreib's in die Kommentare! 👇“ (Wunsch des Nutzers 20.11.), davor gern eine
     passende Frage zum Thema. Im Text darf „Wusstest du's?“ stehen – nur im Sprechtext nicht.
