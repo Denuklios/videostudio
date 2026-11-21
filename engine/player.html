@@ -278,12 +278,43 @@ window.zeige = function (t) {
     const s = aktiv ? 1 + 0.12 * (1 - p) + 0.06 : 1;
     const nw = w.wort.toLowerCase().replace(/[^a-z0-9äöüß]/g, "");
     const emo = Object.entries(P.emojis || {}).find(([k]) => nw.startsWith(k.toLowerCase()));
-    return `<span class="${aktiv ? "an" : ""}" style="transform:scale(${s})">${w.wort}</span>` + (emo && t >= w.start ? `<span class="emo" style="transform:scale(${back(clamp((t - w.start) / 0.3))})">${emo[1]}</span>` : "");
+    const anz = zahlwort(w.wort);
+    const gross = anz.length > 11 ? `font-size:${Math.max(44, Math.round(78 * 11 / anz.length))}px;` : "";
+    return `<span class="${aktiv ? "an" : ""}" style="${gross}transform:scale(${s})">${anz}</span>` + (emo && t >= w.start ? `<span class="emo" style="transform:scale(${back(clamp((t - w.start) / 0.3))})">${emo[1]}</span>` : "");
   }).join(" ");
   const gp = clamp((t - g.start) / 0.15);
   ut.style.transform = `translateY(${(1 - ease(gp)) * 30}px)`;
 };
 
+// Ausgeschriebene Zahlen in Untertiteln als Ziffern zeigen (die Stimme spricht sie trotzdem aus)
+const ZAHL = { null: 0, ein: 1, eins: 1, eine: 1, einen: 1, zwei: 2, drei: 3, vier: 4, fünf: 5, sechs: 6, sieben: 7, acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12,
+  dreizehn: 13, vierzehn: 14, fünfzehn: 15, sechzehn: 16, siebzehn: 17, achtzehn: 18, neunzehn: 19, zwanzig: 20, dreißig: 30, vierzig: 40,
+  fünfzig: 50, sechzig: 60, siebzig: 70, achtzig: 80, neunzig: 90 };
+function unter100(t) {
+  if (t in ZAHL) return ZAHL[t];
+  const m = t.match(/^(.+?)und(zwanzig|dreißig|vierzig|fünfzig|sechzig|siebzig|achtzig|neunzig)$/);
+  if (m && m[1] in ZAHL && ZAHL[m[1]] < 10) return ZAHL[m[1]] + ZAHL[m[2]];
+  return null;
+}
+function unter1000(t) {
+  if (t === "") return 0;
+  const m = t.match(/^(.*?)hundert(.*)$/);
+  if (m) { const h = m[1] === "" ? 1 : unter100(m[1]); const r = unter1000(m[2]); return h === null || r === null ? null : h * 100 + r; }
+  return unter100(t);
+}
+function zahlwert(t) {
+  const m = t.match(/^(.*?)tausend(.*)$/);
+  if (m) { const a = m[1] === "" ? 1 : unter1000(m[1]); const b = unter1000(m[2]); return a === null || b === null ? null : a * 1000 + b; }
+  return unter1000(t);
+}
+function zahlwort(wort) {
+  const m = wort.match(/^([A-Za-zÄÖÜäöüß]+)([^A-Za-zÄÖÜäöüß]*)$/);
+  if (!m) return wort;
+  const t = m[1].toLowerCase();
+  if (t.length < 9 || !/(hundert|tausend|zig|ßig|zehn)/.test(t)) return wort;  // kurze Zahlwörter bleiben Wörter
+  const v = zahlwert(t);
+  return v === null ? wort : v.toLocaleString("de-DE") + m[2];
+}
 function gruppieren(ws) {
   const out = []; let akt = [];
   ws.forEach((w, i) => {
