@@ -1,0 +1,104 @@
+{
+ "titel": "GTA 6: So wirst du schnell reich",
+ "datei": "gta6-geld",
+ "stil": {
+  "bg1": "#0a0418",
+  "bg2": "#2a0a3a",
+  "akzent": "#ff4fd8",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "GTA 6: <b>205.000 $</b> pro Coup",
+  "szene": 0
+ },
+ "hook": {
+  "text": "205.000 $<br><b>pro Coup?!</b>",
+  "dauer": 1.4
+ },
+ "musik": "spannend",
+ "emojis": {
+  "banküberfall": "🏦",
+  "geld": "💰",
+  "autos": "🚗",
+  "juweliere": "💎",
+  "dollar": "💵",
+  "banktresore": "🔓"
+ },
+ "szenen": [
+  {
+   "kopf": "Bis zu <b>205.000 $</b>",
+   "text": "In GTA 6 bringt ein Banküberfall bis zu zweihundertfünftausend Dollar. So kommst du hin.",
+   "foto": "bilder/g_tresor.png",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_tresor.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_tresor_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"banküberfall\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"banküberfall\" style=\"transform-box:view-box;transform-origin:690px 1050px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g><g data-a=\"federn\" data-ton=\"pling\" data-tondauer=\"1.2\" data-wort=\"zweihundertfünftausend\" data-plus=\"-0.6\"><rect x=\"313\" y=\"1249\" width=\"454\" height=\"102\" rx=\"51\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1325\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"70\" fill=\"#ffffff\" data-zaehl=\"1\" data-von=\"0\" data-bis=\"205000\" data-vor=\"\" data-nach=\" $\" data-nk=\"0\" data-zdauer=\"1.2\">205.000 $</text></g>",
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/010-gta6-geld/bilder/maske_tresor.png",
+    "x": 690,
+    "y": 1050
+   },
+   "bild": ""
+  },
+  {
+   "kopf": "Kapitel 1: <b>nicht farmen</b>",
+   "label": "TIPP 1/4",
+   "text": "Tipp eins: Sammel in Kapitel eins kein Geld. Am Ende des Kapitels ist es nämlich weg.",
+   "foto": "bilder/g_skyline.png",
+   "ueber": "<defs><mask id=\"hm2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_turm.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_turm_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"kapitel\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn2)\"/></g><g data-a=\"heben\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"kapitel\" style=\"transform-box:view-box;transform-origin:860px 720px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm2)\"/></g><g data-a=\"federn\" data-ton=\"klick\" data-wort=\"weg\"><rect x=\"327\" y=\"1206\" width=\"426\" height=\"87\" rx=\"44\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1272\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"60\" fill=\"#ffffff\">GELD WEG ❌</text></g>",
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/010-gta6-geld/bilder/maske_turm.png",
+    "x": 860,
+    "y": 720
+   },
+   "bild": ""
+  },
+  {
+   "kopf": "Autos an <b>Moses</b>",
+   "label": "TIPP 2/4",
+   "text": "Tipp zwei: Ab Kapitel zwei verkaufst du geklaute Autos an Moses, für ein paar tausend Dollar.",
+   "foto": "bilder/g_auto.png",
+   "ueber": "<g data-a=\"breit links\" data-l=\"0.4\" data-wort=\"autos\"><path d=\"M-16.0 940.0 h176.0\" stroke=\"#ffffff\" stroke-width=\"12\" stroke-linecap=\"round\" opacity=\".85\"/></g><g data-a=\"breit links\" data-l=\"0.4\" data-wort=\"autos\" data-plus=\"0.12\"><path d=\"M-60.0 1000.0 h220.0\" stroke=\"#ffffff\" stroke-width=\"12\" stroke-linecap=\"round\" opacity=\".85\"/></g><g data-a=\"breit links\" data-l=\"0.4\" data-wort=\"autos\" data-plus=\"0.24\"><path d=\"M-16.0 1060.0 h176.0\" stroke=\"#ffffff\" stroke-width=\"12\" stroke-linecap=\"round\" opacity=\".85\"/></g><g data-a=\"federn\" data-ton=\"klick\" data-wort=\"tausend\"><rect x=\"202\" y=\"1209\" width=\"675\" height=\"81\" rx=\"41\" fill=\"#3ff0ff\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1270\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"56\" fill=\"#14101f\">+ EIN PAAR 1.000 $</text></g>",
+   "bild": ""
+  },
+  {
+   "kopf": "<b>Juweliere</b> knacken",
+   "label": "TIPP 3/4",
+   "text": "Tipp drei: Danach lohnen sich Juweliere. Zehn- bis fünfundzwanzigtausend Dollar pro Überfall.",
+   "foto": "bilder/g_juwelier.png",
+   "ueber": "<defs><mask id=\"hm3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_juwelier.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_juwelier_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"juweliere\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn3)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"juweliere\" style=\"transform-box:view-box;transform-origin:760px 960px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm3)\"/></g><g data-a=\"federn\" data-ton=\"klick\" data-wort=\"zehn\"><rect x=\"197\" y=\"1206\" width=\"686\" height=\"87\" rx=\"44\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1272\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"60\" fill=\"#ffffff\">10.000 – 25.000 $</text></g>",
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/010-gta6-geld/bilder/maske_juwelier.png",
+    "x": 760,
+    "y": 960
+   },
+   "bild": ""
+  },
+  {
+   "kopf": "Der <b>Banktresor</b>",
+   "label": "TIPP 4/4",
+   "text": "Tipp vier: Ende Kapitel vier schaltet eine Nebenmission die Banktresore frei.",
+   "foto": "bilder/g_tresor.png",
+   "ueber": "<defs><mask id=\"hm4\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_tresor.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn4\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/010-gta6-geld/bilder/maske_tresor_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"banktresore\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn4)\"/></g><g data-a=\"fade blink\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"banktresore\" style=\"transform-box:view-box;transform-origin:690px 1050px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm4)\"/></g><g data-a=\"federn\" data-ton=\"klick\" data-wort=\"kapitel\"><rect x=\"272\" y=\"1209\" width=\"536\" height=\"81\" rx=\"41\" fill=\"#3ff0ff\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1270\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"56\" fill=\"#14101f\">ENDE KAPITEL 4</text></g>",
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/010-gta6-geld/bilder/maske_tresor.png",
+    "x": 690,
+    "y": 1050
+   },
+   "bild": ""
+  },
+  {
+   "kopf": "<b>205.000 $</b> pro Tresor",
+   "text": "Und dann holst du bis zu zweihundertfünftausend Dollar, pro Tresor.",
+   "foto": "bilder/g_dollar.png",
+   "ueber": "<g data-a=\"federn\" data-ton=\"pling\" data-tondauer=\"1.2\" data-wort=\"zweihundertfünftausend\" data-plus=\"-0.6\"><rect x=\"294\" y=\"1195\" width=\"492\" height=\"110\" rx=\"55\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1277\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"76\" fill=\"#ffffff\" data-zaehl=\"1\" data-von=\"0\" data-bis=\"205000\" data-vor=\"\" data-nach=\" $\" data-nk=\"0\" data-zdauer=\"1.2\">205.000 $</text></g><g data-beben=\"1.2\" data-bdauer=\"0.6\" data-ton=\"bass\" data-wort=\"tresor\"></g>",
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "ueber": "<defs><mask id=\"hm5\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn5\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn5)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm5)\"/></g>",
+   "bild": ""
+  }
+ ]
+}
