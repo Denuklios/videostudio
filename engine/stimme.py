@@ -97,9 +97,9 @@ def qwen_vorbereiten(projekt, audio, ordner):
     subprocess.run([WHISPER_PY, str(Path(__file__).with_name("woerter.py")), str(gesamt_wav), str(wjson)], check=True)
     ww = json.loads(wjson.read_text())
     norm = lambda x: re.sub(r"[^a-zäöüß0-9]", "", x.lower())
-    tw, szene_von = [], []
+    tw, szene_von, textwoerter = [], [], []
     for i, tx in enumerate(texte):
-        for w in tx.split(): tw.append(norm(w)); szene_von.append(i)
+        for w in tx.split(): tw.append(norm(w)); szene_von.append(i); textwoerter.append(w)
     hw = [norm(w["wort"]) for w in ww]
     zu = {}   # Textwort-Index → Whisper-Index
     for tag, a1, a2, b1, b2 in difflib.SequenceMatcher(None, tw, hw, autojunk=False).get_opcodes():
@@ -115,7 +115,12 @@ def qwen_vorbereiten(projekt, audio, ordner):
     for i in range(len(texte)):
         t0, t1 = grenzen[i], grenzen[i + 1]; mp3 = audio / f"qwen_{i:02d}.mp3"
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(gesamt_wav), "-ss", str(t0), "-to", str(t1), "-af", "atempo=1.1", str(mp3)], check=True)
-        ws = [{"wort": w["wort"], "start": max(0, (w["start"] - t0) / 1.1), "ende": max(0, (w["ende"] - t0) / 1.1)} for w in ww if t0 <= w["start"] < t1]
+        # Wörter aus dem SKRIPT (damit Effekte per Wort auslösen), Zeiten von Whisper
+        ws = []
+        for k, (txw, s_) in enumerate(zip(textwoerter, szene_von)):
+            if s_ != i or k not in zu: continue
+            w = ww[zu[k]]
+            ws.append({"wort": txw, "start": max(0, (w["start"] - t0) / 1.1), "ende": max(0, (w["ende"] - t0) / 1.1)})
         teile.append((mp3, ws))
     print("Qwen3-Stimme:", st)
     return teile
