@@ -90,6 +90,11 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   Gut für echte Orte/Dinge: Miami-Fotos für GTA/Vice City, NASA-Fotos fürs Weltall, Tiere, Geschichte (Gemälde, gemeinfrei).
   Nur cc0/pdm/by. Bei „by“ in `post.txt` vor den Hashtags „📷 Fotos: <Urheber> (CC BY)“. Keine Bilder mit Wasserzeichen,
   erkennbaren Privatpersonen im Fokus, fremden Logos oder Spiel-/Film-Screenshots. Auch Klänge (`--audio`), z. B. Soundeffekte.
+- **OpenMontage (Wunsch des Nutzers 21.11.):** Open-Source-Videostudio mit ~80 Skills, liegt in `/home/user/OpenMontage`
+  (fehlt es: `git clone --depth 1 https://github.com/calesthio/OpenMontage /home/user/OpenMontage && cd /home/user/OpenMontage && make setup`).
+  Nutzen: echte Videoclips aus freien Archiven (`tools/video/direct_clip_search.py`, Quellen ohne Schlüssel: nasa, archive_org,
+  wikimedia, openverse, loc). Coverr braucht inzwischen einen Schlüssel. Mit `PEXELS_API_KEY`/`PIXABAY_API_KEY` in
+  `/home/user/OpenMontage/.env` kommen hochwertige Stock-Videos dazu. Unsere eigene Engine bleibt für Untertitel/Effekte/Hook.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
