@@ -95,6 +95,11 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   Nutzen: echte Videoclips aus freien Archiven (`tools/video/direct_clip_search.py`, Quellen ohne Schlüssel: nasa, archive_org,
   wikimedia, openverse, loc). Coverr braucht inzwischen einen Schlüssel. Mit `PEXELS_API_KEY`/`PIXABAY_API_KEY` in
   `/home/user/OpenMontage/.env` kommen hochwertige Stock-Videos dazu. Unsere eigene Engine bleibt für Untertitel/Effekte/Hook.
+- **Lemo-Opuscar (Wunsch des Nutzers 21.11.):** Skill in `.claude/skills/lemo-opuscar` – 99 Filmstile, Kurzfilme komplett in Code
+  (Cartoon/Comic wie rubber-hose, midcentury-toon, manga-panels; Erklärstile wie dark-documentary, news-package, map-explainer;
+  neon-tubes, hologram-hud, pixel-rpg). Bibliothek: `sh .claude/skills/lemo-opuscar/scripts/setup.sh` (→ `~/lemo-opuscar`),
+  Werkzeuge: `… setup.sh deps` (core installiert). Ablauf: `$LIB/AGENTS.md` lesen und befolgen. Gut für Comic-/Alltags-Videos
+  (z. B. Kalle) mit echter Animation. Offen: ffmpeg 7+ fehlt (hier 6.x) – betrifft nur die Ton-Längenprüfung in `mux.sh`.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
