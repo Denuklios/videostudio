@@ -73,12 +73,62 @@ def elevenlabs_vertonen(text, stimme_id, ziel_mp3):
     return woerter
 
 
-def vertonen(projekt, audio, anbieter, stimme, tempo):
+QWEN_PY, WHISPER_PY = "/root/qwen-venv/bin/python", "/root/stimme-venv/bin/python"
+QWEN_STIMMEN = ["design", "Ryan", "Aiden"]   # Wechsel je Video (Wunsch des Nutzers 21.11.)
+
+
+def qwen_stimme_fuer(ordner, projekt):
+    if projekt.get("qwen_stimme"): return projekt["qwen_stimme"]
+    import re
+    m = re.match(r"(\d+)", ordner.name); n = int(m.group(1)) if m else 0
+    st = QWEN_STIMMEN[n % 3]
+    if st == "design": st = "design_tiktok" if "gta" in ordner.name.lower() else "design_erzaehler"
+    return st
+
+
+def qwen_vorbereiten(projekt, audio, ordner):
+    """Ganzer Text in einem Durchgang (gleiche Stimme), dann mit Whisper-Wortzeiten in Szenen schneiden."""
+    import difflib, re
+    st = qwen_stimme_fuer(ordner, projekt)
+    texte = [sz["text"].strip() for sz in projekt["szenen"]]
+    gesamt_wav, wjson = audio / "qwen_gesamt.wav", audio / "qwen_woerter.json"
+    (audio / "qwen_in.json").write_text(json.dumps({"text": " ".join(texte), "stimme": st}, ensure_ascii=False))
+    subprocess.run([QWEN_PY, str(Path(__file__).with_name("qwen_stimme.py")), str(audio / "qwen_in.json"), str(gesamt_wav)], check=True)
+    subprocess.run([WHISPER_PY, str(Path(__file__).with_name("woerter.py")), str(gesamt_wav), str(wjson)], check=True)
+    ww = json.loads(wjson.read_text())
+    norm = lambda x: re.sub(r"[^a-zäöüß0-9]", "", x.lower())
+    tw, szene_von = [], []
+    for i, tx in enumerate(texte):
+        for w in tx.split(): tw.append(norm(w)); szene_von.append(i)
+    hw = [norm(w["wort"]) for w in ww]
+    zu = {}   # Textwort-Index → Whisper-Index
+    for tag, a1, a2, b1, b2 in difflib.SequenceMatcher(None, tw, hw, autojunk=False).get_opcodes():
+        for k in range(a2 - a1): zu[a1 + k] = min(b2 - 1, b1 + k) if b2 > b1 else max(0, b1 - 1)
+    # Schnittpunkte zwischen den Szenen
+    grenzen = [0.0]
+    for i in range(len(texte) - 1):
+        last = max(j for j, s_ in enumerate(szene_von) if s_ == i); nxt = last + 1
+        a, b = ww[zu[last]]["ende"], ww[zu[nxt]]["start"]
+        grenzen.append(round((a + b) / 2 if b > a else a, 3))
+    grenzen.append(ffprobe_dauer(gesamt_wav))
+    teile = []
+    for i in range(len(texte)):
+        t0, t1 = grenzen[i], grenzen[i + 1]; mp3 = audio / f"qwen_{i:02d}.mp3"
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(gesamt_wav), "-ss", str(t0), "-to", str(t1), "-af", "atempo=1.1", str(mp3)], check=True)
+        ws = [{"wort": w["wort"], "start": max(0, (w["start"] - t0) / 1.1), "ende": max(0, (w["ende"] - t0) / 1.1)} for w in ww if t0 <= w["start"] < t1]
+        teile.append((mp3, ws))
+    print("Qwen3-Stimme:", st)
+    return teile
+
+
+def vertonen(projekt, audio, anbieter, stimme, tempo, qwen=None):
     szenen_info, alle_woerter, wavs, t = [], [], [], 0.0
     for i, sz in enumerate(projekt["szenen"]):
         mp3 = audio / f"szene_{i:02d}.mp3"
         wav = audio / f"szene_{i:02d}.wav"
-        if anbieter == "elevenlabs":
+        if anbieter == "qwen":
+            src, woerter = qwen[i]; mp3 = src
+        elif anbieter == "elevenlabs":
             woerter = elevenlabs_vertonen(sz["text"], projekt.get("elevenlabs_stimme", "JBFqnCBsd6RMkjVDRZzb"), mp3)
         else:
             woerter = asyncio.run(edge_vertonen(sz["text"], stimme, tempo, mp3))
@@ -103,14 +153,15 @@ def main():
     audio.mkdir(exist_ok=True)
 
     # "auto" (Standard): ElevenLabs, solange Guthaben da ist, sonst die kostenlose Edge-Stimme
-    wunsch = projekt.get("anbieter", "edge")  # Standard: Edge-Stimme Killian (Wunsch des Nutzers)
-    reihenfolge = ["elevenlabs", "edge"] if wunsch in ("auto", "elevenlabs") else ["edge"]
+    wunsch = projekt.get("anbieter", "qwen")  # Standard ab 21.11.: Qwen3 im Wechsel Design/Ryan/Aiden, Ausweich: Killian
+    reihenfolge = {"auto": ["elevenlabs", "edge"], "elevenlabs": ["elevenlabs", "edge"], "qwen": ["qwen", "edge"]}.get(wunsch, ["edge"])
     stimme = projekt.get("stimme", "de-DE-KillianNeural")
     tempo = projekt.get("tempo", "+8%")
 
     for anbieter in reihenfolge:
         try:
-            szenen_info, alle_woerter, wavs, t = vertonen(projekt, audio, anbieter, stimme, tempo)
+            qw = qwen_vorbereiten(projekt, audio, ordner) if anbieter == "qwen" else None
+            szenen_info, alle_woerter, wavs, t = vertonen(projekt, audio, anbieter, stimme, tempo, qw)
             break
         except Exception as e:  # z. B. Guthaben leer, Schlüssel fehlt
             grund = getattr(e, "read", lambda: b"")().decode(errors="ignore")[:200] or str(e)

@@ -39,9 +39,11 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
   und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
   Instagram `wunsch_fabrik_dk` ist das Geschäftskonto und bekommt nie diese Videos.
-- Stimme: immer **`de-DE-KillianNeural`** (edge-tts, kostenlos) – Standard in `stimme.py`, im Projekt nichts angeben.
-  Kein `stimme`/`anbieter` überschreiben. (Später evtl. Gemini-Stimme, wenn der Nutzer es sagt. ElevenLabs nur auf
-  ausdrücklichen Wunsch mit `"anbieter": "elevenlabs"`.)
+- Stimme (Wunsch des Nutzers 21.11.): **Qwen3-TTS im Wechsel Design / Ryan / Aiden** – Standard in `stimme.py`
+  (`anbieter` "qwen"), Videonummer % 3 wählt: 0 = Design (GTA: „design_tiktok“, sonst „design_erzaehler“), 1 = Ryan, 2 = Aiden.
+  Ganzer Text wird in EINEM Durchgang gesprochen (gleichbleibende Stimme) und per Whisper-Wortzeiten in Szenen geschnitten,
+  Tempo ×1,1. Dauer ca. 7 min pro Video – früh starten. Fällt Qwen aus: automatisch Killian (edge). Qwen spricht etwas
+  langsamer → Skripte knapp halten (Ziel 25–40 s). Comic-Videos mit eigenen Figurenstimmen sind die Ausnahme.
 - **Logo / Schluss-Szene:** Die letzte Szene nutzt IMMER `kanal/schluss.png` (= exakt das Profilbild `kanal/profilbild.png`, ins Hochformat verlängert; die Neon-Krake, deren Arme ein
   Fragezeichen bilden) als `"foto": "../../kanal/schluss.png"`, Überschrift „Wusstest <b>du's?</b>“, Effekt
   `hervorheben(540, 860, maske="../../kanal/maske_logo.png", art="puls", glanz="#ff4fd8", halten=None, wort="folg")`.
