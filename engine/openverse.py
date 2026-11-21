@@ -15,7 +15,7 @@ LIZENZ = "cc0,pdm,by"
 
 
 def hole(url, roh=False):
-    req = urllib.request.Request(url, headers={"User-Agent": "videostudio/1.0"})
+    req = urllib.request.Request(url, headers={"User-Agent": "videostudio/1.0 (open-source short-video tool)"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.read() if roh else json.load(r)
 
@@ -49,11 +49,21 @@ def suche(q, audio=False, hoch=False, n=12):
         g.save("ov_vorschau.jpg"); print("Vorschau: ov_vorschau.jpg")
 
 
+def _wikimedia_vorschau(url, breite):
+    """Wikimedia sperrt Original-Downloads schnell (429) – Standard-Vorschaugrößen sind erlaubt und reichen für 1080×1920."""
+    import re
+    m = re.match(r"https://upload\.wikimedia\.org/wikipedia/commons/(\w/\w\w)/([^/]+)$", url)
+    if not m or breite <= 1920:
+        return url
+    w = 3840 if breite > 3840 else 1920
+    return f"https://upload.wikimedia.org/wikipedia/commons/thumb/{m.group(1)}/{m.group(2)}/{w}px-{m.group(2)}" + (".png" if m.group(2).lower().endswith((".tif", ".tiff")) else "")
+
+
 def lade(id_, ziel, projekt=None, audio=None):
     ziel = Path(ziel)
     audio = ziel.suffix.lower() in (".mp3", ".wav", ".ogg") if audio is None else audio
     r = hole(f"{API}/{'audio' if audio else 'images'}/{id_}/")
-    daten = hole(r["url"], True)
+    daten = hole(_wikimedia_vorschau(r["url"], r.get("width") or 0), True)
     if audio:
         ziel.write_bytes(daten)
     else:

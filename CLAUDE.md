@@ -148,7 +148,9 @@ Ein Zeitplan schickt jeden Tag um **7:17 Uhr** den Auftrag „Tageslauf“ in de
 wurde (dort sind Canva und Metricool verbunden). Ziel (Wunsch des Nutzers 20.11.): **mindestens 3 Videos pro Tag,
 davon 2 GTA-Videos** (ab 21.11., weil GTA am besten läuft: 567 Aufrufe/18 Likes in 2 h), solange der GTA-6-Hype läuft.
 
-1. `git pull`.
+1. `git pull`. **Vorgebaute Videos:** Liegen für heute schon Ordner/Termine vor (z. B. am Vorabend gebaut, in den
+   Themenlisten mit „für <Datum> <Uhrzeit>“ markiert, oder in Metricool schon eingeplant), KEINE neuen Videos für diese
+   Uhrzeiten bauen – stattdessen die vorgebauten fertigstellen (fehlende Bilder, Rendern, Prüfen, Vorschau, Einplanen).
 2. **Themenwahl:** 2 Themen aus `gta_themen.md` (oberste offene) + 1 oberstes offenes Thema aus `themen.md`.
    Sind in `gta_themen.md` weniger als 8 offen: per WebSearch aktuelle GTA-6-News/Fakten suchen und neue,
    belegbare GTA-Themen ergänzen (Story-Hintergründe, Rekorde, Karte, Fahrzeuge, Easter Eggs, Vergleich GTA 5,

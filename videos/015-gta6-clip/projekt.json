@@ -1,0 +1,140 @@
+{
+ "titel": "GTA 6: Der meistgesehene Clip",
+ "datei": "gta6-clip",
+ "stil": {
+  "bg1": "#0a0418",
+  "bg2": "#2a0a3a",
+  "akzent": "#ff4fd8",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "GTA 6: <b>600.000 Views</b> für 1 Fehlklick",
+  "szene": 0
+ },
+ "hook": {
+  "text": "1 Fehlklick =<br><b>600.000 Views</b>",
+  "dauer": 1.4
+ },
+ "musik": "spannend",
+ "emojis": {
+  "fehlklicks": "🖱️",
+  "twitch": "🎮",
+  "knopf": "😳",
+  "chat": "💬",
+  "rastet": "🤯",
+  "klick": "👆"
+ },
+ "szenen": [
+  {
+   "kopf": "<b>600.000</b> Aufrufe",
+   "text": "Der meistgesehene GTA-6-Clip hat über sechshunderttausend Aufrufe. Und alles wegen eines Fehlklicks.",
+   "foto": "bilder/streamer.png",
+   "ueber": "",
+   "fx": [
+    {
+     "typ": "explosion",
+     "dauer": 2.2,
+     "zahl": 600000,
+     "vor": "",
+     "nach": "",
+     "unter": "AUFRUFE",
+     "x": 540,
+     "y": 820,
+     "von": 0,
+     "wort": "sechshunderttausend",
+     "plus": -0.3
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Live auf <b>Twitch</b>",
+   "label": "SCHRITT 1/3",
+   "text": "Streamer ohnePixel spielt GTA 6 live auf Twitch.",
+   "foto": "bilder/streamer.png",
+   "ueber": "",
+   "fx": [],
+   "bild": ""
+  },
+  {
+   "kopf": "Der <b>falsche</b> Knopf",
+   "label": "SCHRITT 2/3",
+   "text": "Im Club drückt er aus Versehen den falschen Knopf.",
+   "foto": "bilder/maus.png",
+   "ueber": "",
+   "fx": [
+    {
+     "typ": "farbschnitte",
+     "dauer": 1.2,
+     "woerter": [
+      "1",
+      "FALSCHER",
+      "KLICK"
+     ],
+     "wort": "falschen"
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Chat <b>eskaliert</b>",
+   "label": "SCHRITT 3/3",
+   "text": "Und kauft damit einen Privattanz. Sein Chat rastet komplett aus.",
+   "foto": "bilder/club.png",
+   "ueber": "<g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"rastet\"></g>",
+   "fx": [
+    {
+     "typ": "laufband",
+     "dauer": 2.0,
+     "text": "CHAT ESKALIERT",
+     "y": 1250,
+     "wort": "chat"
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Weit <b>vorne</b>",
+   "text": "Kein anderer GTA-6-Clip kommt auch nur in die Nähe.",
+   "foto": "bilder/club.png",
+   "ueber": "",
+   "fx": [],
+   "bild": ""
+  },
+  {
+   "kopf": "1 Klick = <b>Platz 1</b>",
+   "text": "Ein einziger falscher Klick. Und genau deshalb ist er der Nummer-eins-Clip zu GTA 6.",
+   "foto": "bilder/maus.png",
+   "ueber": "",
+   "fx": [
+    {
+     "typ": "punkte",
+     "dauer": 2.0,
+     "text": "#1",
+     "unter": "MEISTGESEHENER GTA-6-CLIP",
+     "y": 820,
+     "wort": "nummer"
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "fx": [
+    {
+     "typ": "strahlen",
+     "dauer": 4.0,
+     "x": 540,
+     "y": 860,
+     "d": 0.0
+    }
+   ],
+   "bild": ""
+  }
+ ]
+}

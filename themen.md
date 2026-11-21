@@ -7,7 +7,7 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 
 ## Offen
 
-- [ ] Warum Flamingos rosa sind (und grau zur Welt kommen)
+- [x] Warum Flamingos rosa sind (und grau zur Welt kommen) → videos/014-flamingos (für 22.11. 12:00)
 - [ ] Kleopatra lebte näher an der Mondlandung als am Bau der Cheops-Pyramide
 - [ ] Wombats machen würfelförmigen Kot – und warum
 - [ ] Warum wir im Flugzeug Tomatensaft bestellen
