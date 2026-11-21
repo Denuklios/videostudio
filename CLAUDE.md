@@ -114,6 +114,10 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   - **Chatterbox Multilingual** (MIT, Deutsch, Emotionsregler `exaggeration`): venv `/root/tts2-venv` (CPU-Torch + chatterbox-tts),
     Test-Skript `/root/cb_test.py`, ~20 s pro Satz auf CPU. Proben `kanal/stimmproben/chatterbox/`. Gut für lebhafte Comic-Stimmen.
   - Alle deutschen Microsoft-Stimmen als Proben: `kanal/stimmproben/weitere/`.
+  - **Qwen3-TTS** (Apache-2.0, Deutsch): venv `/root/qwen-venv`, Skript `/root/qwen_test.py`. 0.6B-CustomVoice (Sprecher
+    Ryan/Aiden sprechen Deutsch) und 1.7B-VoiceDesign (Stimme per Beschreibung, z. B. „tiefe, warme deutsche Männerstimme,
+    Doku-Erzähler“), ~30–40 s pro Satz auf CPU. Proben `kanal/stimmproben/qwen3/`. Achtung Speicher: Modelle liegen in
+    `~/.cache/huggingface` (mehrere GB); bei Platzmangel `~/.cache/pip` leeren.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
