@@ -1,0 +1,11 @@
+[
+ {"id":"k1","who":"KALLE","text":"Ich war da! Ich war die ganze Zeit da!","sub":"Ich war DA! Ich war die ganze Zeit da!"},
+ {"id":"k2","who":"KALLE","text":"Rudi. Heute krieg ich den Paketboten.","sub":"Rudi. Heute krieg ich den Paketboten."},
+ {"id":"r1","who":"RUDI","text":"Er klingelt nie.","sub":"Er klingelt nie."},
+ {"id":"k3","who":"KALLE","text":"Deshalb: ein Portal. Direkt in seinen Wagen.","sub":"Deshalb: ein Portal. Direkt in seinen Wagen."},
+ {"id":"r2","who":"RUDI","text":"Für ein Paket.","sub":"Für ein Paket."},
+ {"id":"k4","who":"KALLE","text":"Für mein Paket!","sub":"Für MEIN Paket!"},
+ {"id":"k5","who":"KALLE","text":"Hab es! Hab es!","sub":"Hab es! Hab es!"},
+ {"id":"r3","who":"RUDI","text":"Deine Klingel ist kaputt.","sub":"Deine Klingel ist kaputt."},
+ {"id":"cta","who":"KALLE","text":"Kennst du das? Schreib's in die Kommentare und folg für mehr!","sub":"Kennst du das? Schreib's in die Kommentare und folg für mehr!"}
+]

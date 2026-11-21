@@ -1,0 +1,7 @@
+Kalle und das Paket – Credits
+Stil: Sci-Fi Sitcom Toon aus der Lemo-Opuscar-Bibliothek (MIT-Lizenz, github.com/lemomo-ai/lemo-opuscar); Zeichen-Engine toon.js übernommen, Figuren, Kulissen und Geschichte eigen.
+Inspiriert von Sitcom-Cartoons für Erwachsene (nur Grammatik).
+Stimmen: Microsoft Edge Neural TTS über edge-tts (de-DE-KillianNeural, de-DE-ConradNeural).
+Musik und Geräusche: selbst synthetisiert (numpy), Geräusche teils mit Lemo core/audio/sfx.py.
+Schriften: Baloo 2, Titan One (Google Fonts, SIL Open Font License 1.1).
+Logo am Ende: Kanal-Logo „Wusstest du's?“ (eigenes Profilbild).
