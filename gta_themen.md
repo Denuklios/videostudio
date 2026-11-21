@@ -4,7 +4,6 @@ Nur belegbare Fakten. Keine Spielszenen, Trailer-Clips, Rockstar-Logos oder Spie
 
 ## Offen
 
-- [ ] GTA 6: So wirst du schnell reich – Geld-Tipps je Kapitel (Banktresor bis 205.000 $, Juwelier 10–25.000 $, Autos an Moses verkaufen, in Kapitel 1 nicht farmen – Geld ist am Ende weg). Quellen: PowerPyx, GamesRadar, PC Gamer, VGC (Stand 20.11.)
 - [ ] GTA 6 Glitches gehen viral: fliegende Autos, verschwindende Figuren, Polizei-Bugs – Vergleich mit Cyberpunk 2077 (Gulf News, 20.11.) – nur eigene Bilder
 - [ ] Die meistgesehenen GTA-6-Clips: ohnePixel vorn mit über 519.000 Aufrufen (Streams Charts) – was Streamer zum Lachen bringt
 - [ ] Sogar das Weiße Haus macht mit: GTA-Montage als Werbung (Axios, 20.11.) – ein Spiel vereint das Internet
@@ -19,3 +18,4 @@ Nur belegbare Fakten. Keine Spielszenen, Trailer-Clips, Rockstar-Logos oder Spie
 
 - [x] GTA 6 ist da – 5 Fakten → videos/005-gta6 (veröffentlicht 2026-11-20 09:07)
 - [x] GTA 6 bricht das Internet (Streaming-Rekorde, GTA-Grippe) → videos/008-gta6-streams (geplant 2026-11-20 17:00)
+- [x] GTA 6: So wirst du schnell reich → videos/010-gta6-geld (geplant 2026-11-21 16:00)
