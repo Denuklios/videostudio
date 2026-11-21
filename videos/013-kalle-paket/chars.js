@@ -89,7 +89,15 @@ function kalleHead(P, ner) {
   const hair = spline([[-92, -6], [-96, -60], [-70, -104], [-40, -96], [-20, -126], [10, -100], [40, -128], [56, -98], [92, -96], [96, -40], [80, -30], [60, -62], [20, -58], [-20, -70], [-60, -52], [-80, -20]]);
   if (!P.bald) shape(hair, { fill: P.hair || PAL.hair, lw: 7, shade: () => fillOnly(ell(50, -90, 50, 30, 20), PAL.hairS, { boil: .3 }) });
   else { stroke(arc(-60, -40, 30, 20, Math.PI, Math.PI * 1.6, 8), 5); stroke(arc(60, -40, 30, 20, Math.PI * 1.4, TAU, 8), 5); }
-  if (P.peel) { for (const a of [-.9, 0, .9]) { push(); translate(0, -96); rotate(a); shape(spline([[-16, 0], [16, 0], [12, -90], [0, -110], [-12, -90]]), { fill: '#ffd84d', lw: 6, shade: () => fillOnly(rect(4, -120, 20, 130), '#e8b923', { boil: .3 }) }); pop(); } shape(ell(0, -96, 34, 16, 18), { fill: '#e8b923', lw: 6 }); }
+  if (P.peel) {   // Bananenschale: Stiel oben, vier Lappen hängen weich über den Kopf
+    const lap = (ang, len) => { push(); translate(0, -104); rotate(ang);
+      shape(spline([[-26, 0], [26, 0], [34, len * .45], [20, len * .85], [0, len], [-20, len * .85], [-34, len * .45]]), { fill: '#ffe066', lw: 6,
+        shade: () => { fillOnly(spline([[-14, 6], [14, 6], [18, len * .5], [0, len * .8], [-18, len * .5]]), '#fff6c4', { boil: .3 }); fillOnly(ell(0, len - 6, 16, 10, 12), '#7a5230', { boil: .3 }); } });
+      pop(); };
+    lap(1.05, 125); lap(-1.05, 125); lap(.42, 70); lap(-.42, 70);
+    shape(spline([[-30, -96], [30, -96], [22, -132], [-22, -132]]), { fill: '#ffd43b', lw: 6, shade: () => fillOnly(rect(6, -140, 30, 50), '#e8b923', { boil: .3 }) });
+    shape(rr(-9, -170, 18, 42, 6), { fill: '#7a5230', lw: 5 });
+  }
   // Brauen: brow -1 wütend (innen tief), +1 besorgt (innen hoch)
   const br = P.brow ?? .3;
   stroke([[-70, -36 - br * 4], [-26, -40 - br * 12 + (br < 0 ? -br * 22 : 0)]], 8);

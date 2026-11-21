@@ -222,21 +222,23 @@ const SH = [
 function shotAt(t) { for (let i = SH.length - 1; i >= 0; i--) if (t >= SH[i].t) return SH[i]; return SH[0]; }
 // —— Cold Open (Hook): Vorblende aus der Mülltonne ——
 const HOOK = 1.6;
-function coldOpen(t) {
+function coldOpen(t) {   // Hook: ein Paket + groß „NICHT ANGETROFFEN“ als Stempel
   frame(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
-  const sh = t < .7 ? 20 * (1 - t / .7) : 0;
-  cam(560, 900, 1.12 + t * .05, sh, t); welt_tonne(13);
-  kalle(K(t, { x: 540, y: FLOOR - 330, brow: -1, nerv: 1, eyeS: 1.2, pupil: 3.5, look: [.2, -.2], peel: true,
-    mouth: { o: .85 + .1 * Math.sin(t * 30), w: 1.15, sm: -.7 }, armL: { h: [-90, -150], bend: -30, fist: true }, armR: { h: [90, -150], bend: 30, fist: true } }));
-  shape(rr(320, 990, 440, 510, 24), { fill: '#6b6f78', lw: 8, shade: () => fillOnly(rect(640, 970, 140, 550), '#55585f', { boil: .3 }) }); stroke([[350, 1070], [730, 1070]], 6);
-  // Hook-Text
-  const p = back(clamp(t / .25), 1.6);
-  g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2 + (sh ? (hash(Math.floor(t * 24)) - .5) * sh : 0), 300); g.rotate(-.05); g.scale(p, p);
-  g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
-  g.font = '400 66px "Titan One"'; g.lineWidth = 16; g.strokeStyle = INK; g.strokeText('Mein Paket liegt in der', 0, -70); g.fillStyle = '#fff'; g.fillText('Mein Paket liegt in der', 0, -70);
-  g.font = '400 120px "Titan One"'; g.lineWidth = 20; g.strokeText('MÜLLTONNE?!', 0, 60); g.fillStyle = '#ff4fd8'; g.fillText('MÜLLTONNE?!', 0, 60);
-  g.restore();
-  if (t > HOOK - .2) screenRect('#ffffff', (t - (HOOK - .2)) / .2 * .9);   // Blitz-Schnitt
+  const hit = .28, sh = t > hit && t < hit + .5 ? 22 * (1 - (t - hit) / .5) : 0;
+  cam(540, 1120, 1.35 + t * .04, sh, t); flur(t);
+  karton(540, 1500, 1.9, { label: 'KALLE' });
+  // Stempel knallt drauf
+  const u = clamp((t - .12) / (hit - .12)), sc = lerp(3.2, 1, ei(u));
+  if (t > .12) { g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2, 960); g.rotate(-.1); g.scale(sc, sc); g.globalAlpha = Math.min(1, u * 2);
+    g.lineJoin = 'round'; g.strokeStyle = '#d62839'; g.lineWidth = 22; g.strokeRect(-505, -250, 1010, 500);
+    g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#d62839';
+    g.font = '400 230px "Titan One"'; g.fillText('NICHT', 0, -95); g.font = '400 132px "Titan One"'; g.fillText('ANGETROFFEN', 0, 125);
+    g.restore(); g.globalAlpha = 1; }
+  // Oben: Kalles Protest
+  const p = back(clamp((t - .55) / .25), 1.6);
+  if (t > .55) { g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2, 330); g.scale(p, p); g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+    g.font = '400 112px "Titan One"'; g.lineWidth = 20; g.strokeStyle = INK; g.strokeText('Ich war ZUHAUSE!', 0, 0); g.fillStyle = '#fff'; g.fillText('Ich war ZUHAUSE!', 0, 0); g.restore(); }
+  if (t > HOOK - .2) screenRect('#ffffff', (t - (HOOK - .2)) / .2 * .9);
 }
 function flashback(t) {   // Einblendung „Eine Stunde vorher…“
   if (t > 1.4) return; const a = Math.min(1, t / .15) * (1 - seg(t, 1.1, 1.4));

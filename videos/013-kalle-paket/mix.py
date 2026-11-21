@@ -152,9 +152,8 @@ mix = np.stack([limit(mix[:, 0]), limit(mix[:, 1])], axis=1)
 # —— Cold Open davor (1.6 s): Bass, Deckel, „NEIN!!!“, Wusch ——
 HOOK = 1.6; pre = np.zeros((int(HOOK * SR), 2))
 tt = t_(.9); chord = sum(np.sign(np.sin(2 * np.pi * mf(m) * tt)) for m in (50, 56, 62, 65))
-add(pre, lp(chord, 2200) * np.exp(-tt / .25) * .3, 0.02); add(pre, kick(1.0), 0.02); add(pre, lid() * .8, .1)
-with wave.open(str(HERE / "voices" / "n3.wav")) as w: nv = np.frombuffer(w.readframes(w.getnframes()), np.int16) / 32768
-add(pre, norm(nv, .9) * 1.0, .25); add(pre, sfx.whoosh(.4, .8), 1.25)
+add(pre, slap() * 1.2, .28); add(pre, kick(1.0), .28); add(pre, lp(chord, 2200) * np.exp(-tt / .25) * .3, .28)
+add(pre, sfx.whoosh(.4, .8), 1.25)
 pre = pre / max(1e-9, np.abs(pre).max()) * .9
 mix = np.concatenate([pre, mix])
 with wave.open(str(OUT / "mix.wav"), "wb") as w:
