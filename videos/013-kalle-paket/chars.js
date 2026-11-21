@@ -44,13 +44,13 @@ const drop = (x, y, s = 1) => shape(spline([[x, y - 16 * s], [x + 9 * s, y + 4 *
 // —— Kalle ——
 // P: x,y,s,face,t, nerv, look, lid, brow (-1 wütend … 1 besorgt), mouth{o,w,sm}, armL/armR {h:[dx,dy],bend,fist}, legL/legR, lean, headTilt, sq, sweat, hold(fn)
 export function kalle(P) {
-  const f = P.face ?? 1, ner = P.nerv ?? 0;
+  const f = P.face ?? 1, ner = P.nerv ?? 0, C = { hood: P.hood || PAL.hood, hoodS: P.hoodS || PAL.hoodS, jeans: P.jeans || PAL.jeans };
   const jit = ner ? (hash(Math.floor((P.t || 0) * 12) * 3.3) - .5) * 7 * ner : 0;
   push(); translate(P.x + jit, P.y); scale((P.s ?? 1) * f, (P.s ?? 1) * (P.sq ?? 1));
   const legL = P.legL || [0, 0], legR = P.legR || [0, 0];
   for (const [sx, lg] of [[-1, legL], [1, legR]]) {
     const hip = [sx * 26, -110], ank = [sx * 30 + lg[0], -20 + lg[1]];
-    shape(noodle(hip, ank, sx * 4, 40, 34), { fill: PAL.jeans, lw: 6, shade: () => fillOnly(rect(sx > 0 ? 10 : -60, -140, 50, 140), PAL.jeansS, { boil: .3 }) });
+    shape(noodle(hip, ank, sx * 4, 40, 34), { fill: C.jeans, lw: 6, shade: () => fillOnly(rect(sx > 0 ? 10 : -60, -140, 50, 140), PAL.jeansS, { boil: .3 }) });
     shape(spline([[ank[0] - 26, ank[1] + 20], [ank[0] - 22, ank[1] - 6], [ank[0] + 12, ank[1] - 8], [ank[0] + 44, ank[1] + 8], [ank[0] + 42, ank[1] + 22]]), { fill: PAL.shoe, lw: 6, shade: () => fillOnly(rect(ank[0] - 40, ank[1] + 14, 100, 20), PAL.sole, { boil: .3 }) });
   }
   push(); rotate(P.lean ?? 0);
@@ -58,7 +58,7 @@ export function kalle(P) {
   const armB = P.armL || { h: [-14, 112], bend: -14 }, armF = P.armR || { h: [14, 112], bend: 14 };
   const drawArm = (sh, arm) => {
     const hp = [sh[0] + arm.h[0], sh[1] + arm.h[1]];
-    shape(noodle(sh, hp, arm.bend ?? 0, 34, 28), { fill: PAL.hood, lw: 6, shade: () => fillOnly(rect(-300, -400, 600, 40), PAL.hoodS, { boil: 0 }) });
+    shape(noodle(sh, hp, arm.bend ?? 0, 34, 28), { fill: C.hood, lw: 6 });
     hand(hp[0], hp[1], Math.atan2(hp[1] - sh[1], hp[0] - sh[0]), 17, PAL.skin, { fist: arm.fist });
     return hp;
   };
@@ -66,9 +66,9 @@ export function kalle(P) {
   // Körper: Hoodie mit Kängurutasche und Kordeln
   const body = spline([[0, -276], [62, -258], [84, -180], [74, -112], [0, -100], [-74, -112], [-84, -180], [-62, -258]]);
   shape(body, {
-    fill: PAL.hood, lw: 7, shade: () => {
-      fillOnly(spline([[24, -280], [90, -250], [104, -170], [86, -96], [44, -96], [66, -170]]), PAL.hoodS, { boil: .4 });
-      fillOnly(rr(-48, -170, 96, 50, 14), PAL.hoodS, { boil: .3 });
+    fill: C.hood, lw: 7, shade: () => {
+      fillOnly(spline([[24, -280], [90, -250], [104, -170], [86, -96], [44, -96], [66, -170]]), C.hoodS, { boil: .4 });
+      fillOnly(rr(-48, -170, 96, 50, 14), C.hoodS, { boil: .3 });
     }
   });
   stroke(spline([[-48, -122], [-40, -170], [40, -170], [48, -122]], false), 5);
@@ -87,7 +87,9 @@ function kalleHead(P, ner) {
   shape(spline([[0, -86], [70, -72], [88, 0], [62, 74], [0, 92], [-62, 74], [-88, 0], [-70, -72]]), { fill: PAL.skin, lw: 7, shade: () => fillOnly(ell(52, 30, 50, 70, 26), PAL.skinS, { boil: .3 }) });
   // Strubbelhaare
   const hair = spline([[-92, -6], [-96, -60], [-70, -104], [-40, -96], [-20, -126], [10, -100], [40, -128], [56, -98], [92, -96], [96, -40], [80, -30], [60, -62], [20, -58], [-20, -70], [-60, -52], [-80, -20]]);
-  shape(hair, { fill: PAL.hair, lw: 7, shade: () => fillOnly(ell(50, -90, 50, 30, 20), PAL.hairS, { boil: .3 }) });
+  if (!P.bald) shape(hair, { fill: P.hair || PAL.hair, lw: 7, shade: () => fillOnly(ell(50, -90, 50, 30, 20), PAL.hairS, { boil: .3 }) });
+  else { stroke(arc(-60, -40, 30, 20, Math.PI, Math.PI * 1.6, 8), 5); stroke(arc(60, -40, 30, 20, Math.PI * 1.4, TAU, 8), 5); }
+  if (P.peel) { for (const a of [-.9, 0, .9]) { push(); translate(0, -96); rotate(a); shape(spline([[-16, 0], [16, 0], [12, -90], [0, -110], [-12, -90]]), { fill: '#ffd84d', lw: 6, shade: () => fillOnly(rect(4, -120, 20, 130), '#e8b923', { boil: .3 }) }); pop(); } shape(ell(0, -96, 34, 16, 18), { fill: '#e8b923', lw: 6 }); }
   // Brauen: brow -1 wütend (innen tief), +1 besorgt (innen hoch)
   const br = P.brow ?? .3;
   stroke([[-70, -36 - br * 4], [-26, -40 - br * 12 + (br < 0 ? -br * 22 : 0)]], 8);

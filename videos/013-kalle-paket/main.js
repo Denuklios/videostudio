@@ -2,6 +2,7 @@
 import { clamp, lerp, seg, ss, eo, ei, eio, back, hash, TAU } from '/core/lib.js';
 import { W, H, INK, init, frame, g, push, pop, translate, rotate, scale, shape, fillOnly, stroke, ell, arc, rr, rect, spline, dot, text, screenRect, bands, S, reset, noodle } from './toon.js';
 import { kalle, rudi, zettel, karton, klingel, geraet, eye, PAL } from './chars.js';
+import { DUR, VO, SUB_END, EV } from './shots.js';
 
 init(document.getElementById('c'));
 const J = async f => { try { const r = await fetch(f); if (r.ok) return await r.json(); } catch (e) { } return null; };
@@ -10,16 +11,14 @@ const LINE = Object.fromEntries(LINES.map(l => [l.id, l]));
 await Promise.all(['800 58px "Baloo 2"', '800 34px "Baloo 2"', '400 110px "Titan One"'].map(f => document.fonts.load(f)));
 const logo = new Image(); logo.src = 'schluss.png'; await logo.decode().catch(() => { });
 
-export const DUR = 38.6;
-// Sprecheinsätze (s)
-const VO = { k1: 1.55, k2: 4.95, r1: 8.05, k3: 10.6, r2: 15.25, k4: 17.0, k5: 23.55, r3: 30.95, cta: 34.45 };
-const q = t => Math.floor(t * 12 + 1e-6) / 12;   // auf Zweien
+
+const q = t => Math.floor(t * 12 + 1e-6) / 12;
 const vdur = id => DURS[id] ?? 1;
 function talk(who, t) {
   const tq = q(t);
   for (const [id, t0] of Object.entries(VO)) {
     if (LINE[id].who !== who) continue;
-    if (tq >= t0 && tq < t0 + vdur(id)) {
+    if (tq >= t0 && tq < t0 + vdur(id) + .05) {
       const k = Math.floor((tq - t0) * 24), lp = LIPS[id];
       const o = lp ? (lp.o[k] ?? 0) : .4, b = lp ? (lp.b[k] ?? .5) : .5;
       return { o, w: .8 + .45 * b - .2 * o, on: true };
@@ -36,46 +35,64 @@ function cam(cx, cy, z, shake = 0, t = 0) {
 const landSq = (t, tl) => { const u = t - tl; if (u < 0 || u > .6) return 1; return 1 - .22 * Math.exp(-u * 9) * Math.cos(u * 30); };
 const blinkK = t => { const k = Math.floor(t * 12) % 40; return k === 0 || k === 1; };
 
-// —— Kulissen (Bühne: Boden bei y=1500) ——
+
 const FLOOR = 1500;
-function treppenhaus(t) {
-  bands(['#93a7b8', '#9db1c2', '#a8bccd'], -600, FLOOR, -1200, 2400);
-  fillOnly(rect(-1200, FLOOR, 3600, 900), '#6f7d8c', { boil: 0 });
-  stroke([[-1200, FLOOR], [2400, FLOOR]], 7);
-  // Tür
-  shape(rect(240, 380, 600, 1120), { fill: '#8a5a3c', lw: 8, shade: () => { fillOnly(rect(640, 360, 220, 1160), '#6e4329', { boil: .3 }); } });
-  shape(rr(300, 460, 480, 400, 14), { fill: '#9b6a49', lw: 6 }); shape(rr(300, 920, 480, 460, 14), { fill: '#9b6a49', lw: 6 });
-  shape(ell(760, 960, 22, 22, 16), { fill: '#d9a441', lw: 6 });
-  // Klingel neben der Tür – mit Klebeband „KAPUTT“ (Hinweis für die Pointe)
-  shape(rr(900, 820, 90, 140, 16), { fill: '#f4f1ea', lw: 6 }); shape(ell(945, 870, 22, 22, 16), { fill: '#d9a441', lw: 5 });
-  push(); translate(945, 872); rotate(-.35); shape(rr(-62, -16, 124, 32, 4), { fill: '#e9d9a8', lw: 4 }); text('KAPUTT', 0, 2, { font: '800 20px "Baloo 2"' }); pop();
+// —— Kulissen ——
+function flur(t, { slot = 0 } = {}) {   // Wohnungsflur von innen: Tür mit Briefschlitz
+  bands(['#d9c3e8', '#e2cfee', '#ead9f2'], -800, FLOOR, -1400, 2600);
+  fillOnly(rect(-1400, FLOOR, 4000, 900), '#8b6a8f', { boil: 0 }); stroke([[-1400, FLOOR], [2600, FLOOR]], 7);
+  shape(rect(300, 360, 560, 1140), { fill: '#7a5236', lw: 8, shade: () => fillOnly(rect(680, 340, 200, 1180), '#603f28', { boil: .3 }) });
+  shape(rr(350, 440, 460, 360, 14), { fill: '#8b5f40', lw: 6 }); shape(rr(350, 1050, 460, 380, 14), { fill: '#8b5f40', lw: 6 });
+  shape(ell(800, 960, 20, 20, 16), { fill: '#d9a441', lw: 6 });
+  // Briefschlitz (Klappe geht auf)
+  shape(rr(480, 880, 200, 60, 10), { fill: '#3a2a20', lw: 6 });
+  push(); translate(480, 880); scale(1, 1 - slot * .8); shape(rr(0, 0, 200, 60, 10), { fill: '#d9a441', lw: 6 }); pop();
+  shape(rr(-500, 300, 300, 380, 10), { fill: '#fff6d6', lw: 6, shade: () => fillOnly(rect(-500, 520, 300, 160), '#9bd0b8', { boil: .2 }) });   // Bild: Landschaft
 }
-function wohnzimmer(t, { fridge = true } = {}) {
-  bands(['#e9cfa5', '#efd7b1', '#f4dfbd'], -800, FLOOR, -1400, 2600);
-  fillOnly(rect(-1400, FLOOR, 4000, 900), '#a0714d', { boil: 0 });
-  for (let i = -6; i < 14; i++) stroke([[i * 180, FLOOR], [i * 180 - 120, 2400]], 4, { line: '#86593a' });
-  stroke([[-1400, FLOOR], [2600, FLOOR]], 7);
-  // Fenster
-  shape(rect(-260, 380, 420, 520), { fill: '#8fd3e8', lw: 8, shade: () => { fillOnly(rect(-260, 700, 420, 200), '#b6e3d0', { boil: .2 }); fillOnly(ell(60, 520, 50, 50, 20), '#fff3b0', { boil: .3 }); } });
-  stroke([[-50, 380], [-50, 900]], 7); stroke([[-260, 640], [160, 640]], 7);
-  // Sofa
-  shape(rr(620, 1180, 640, 260, 40), { fill: '#3a9b8f', lw: 8, shade: () => fillOnly(rect(620, 1340, 640, 120), '#2b7a70', { boil: .3 }) });
-  shape(rr(580, 1260, 110, 220, 30), { fill: '#3a9b8f', lw: 7 }); shape(rr(1200, 1260, 110, 220, 30), { fill: '#3a9b8f', lw: 7 });
-  // Kühlschrank (summt)
-  if (fridge) { shape(rr(-760, 720, 360, 780, 20), { fill: '#f1f3f4', lw: 8, shade: () => fillOnly(rect(-480, 700, 100, 820), '#d5dade', { boil: .3 }) }); stroke([[-760, 1000], [-400, 1000]], 6); stroke([[-440, 820], [-440, 920]], 9); stroke([[-440, 1060], [-440, 1200]], 9); }
-  // Bild an der Wand
-  shape(rr(300, 520, 220, 160, 8), { fill: '#ffcf6b', lw: 6, shade: () => fillOnly(spline([[300, 680], [380, 590], [450, 640], [520, 560], [520, 680]]), '#e98c43', { boil: .3 }) });
+function stuhl(x, y, s = 1) {   // Campingstuhl + Thermoskanne
+  push(); translate(x, y); scale(s);
+  stroke([[-120, 0], [100, -220]], 9); stroke([[120, 0], [-100, -220]], 9);
+  shape(spline([[-130, -230], [130, -230], [120, -150], [-120, -150]]), { fill: '#2b7fd6', lw: 7 });
+  shape(spline([[-120, -240], [-110, -420], [110, -420], [120, -240]]), { fill: '#3b8fe6', lw: 7 });
+  shape(rr(180, -170, 50, 170, 14), { fill: '#d6283f', lw: 6 }); shape(rr(176, -196, 58, 34, 8), { fill: '#444', lw: 5 });
+  pop();
 }
-function paketwagen(t) {
-  bands(['#ff7a2f', '#ff8f4a', '#ffa566', '#ffb862'], -900, FLOOR, -1400, 2600);
-  fillOnly(rect(-1400, FLOOR, 4000, 900), '#1f6f6c', { boil: 0 }); stroke([[-1400, FLOOR], [2600, FLOOR]], 7);
-  for (const sx of [-560, 1240]) {   // Regale
-    shape(rect(sx, 300, 400, 1200), { fill: '#2b9c98', lw: 8 });
-    for (let r = 0; r < 4; r++) { stroke([[sx, 560 + r * 280], [sx + 400, 560 + r * 280]], 7); for (let k = 0; k < 2; k++) shape(rect(sx + 30 + k * 190, 400 + r * 280 + (hash(r * 3 + k) * 40), 160, 150 - hash(r * 3 + k) * 40), { fill: hash(r + k * 7) > .5 ? PAL.box : '#d9a066', lw: 6 }); }
+function handy(t, { app = 0 } = {}) {   // Insert Handy: Push-Nachricht bzw. Sendungsverfolgung
+  bands(['#2a1f3d', '#33264a'], -400, 2400, -400, 1600);
+  shape(rr(170, 220, 740, 1480, 80), { fill: '#16121c', lw: 9 });
+  shape(rr(210, 300, 660, 1330, 40), { fill: app ? '#fff7e8' : '#2f6fd6', lw: 5 });
+  const pop_ = back(clamp((t - (app ? 6.15 : 3.25)) / .3), 1.6);
+  if (!app) {
+    text('Samstag', 540, 470, { font: '800 52px "Baloo 2"', fill: '#fff' }); text('14:37', 540, 600, { font: '400 150px "Titan One"', fill: '#fff' });
+    push(); translate(540, 900); scale(pop_); shape(rr(-300, -110, 600, 220, 30), { fill: '#ffffff', lw: 6 });
+    text('📦 PAKETDIENST', -110, -60, { font: '800 34px "Baloo 2"' }); text('Ihr Paket wurde', 0, -4, { font: '800 44px "Baloo 2"' }); text('ZUGESTELLT ✅', 0, 52, { font: '800 50px "Baloo 2"', fill: '#1f9d55' }); pop();
+  } else {
+    text('Sendungsverfolgung', 540, 400, { font: '800 50px "Baloo 2"' });
+    for (const [i, s_] of ['Paket im Zustellfahrzeug', 'Zustellversuch: niemand da', 'Abgelegt am sicheren Ort:'].entries()) { dot(270, 520 + i * 110, 12, '#1f9d55'); text(s_, 300, 520 + i * 110, { font: '700 40px "Baloo 2"', align: 'left' }); }
+    push(); translate(540, 980); scale(pop_); rotate(-.06);
+    shape(rr(-280, -90, 560, 180, 24), { fill: '#ff4f6d', lw: 7 }); text('MÜLLTONNE 🗑️', 0, 4, { font: '400 70px "Titan One"', fill: '#fff' }); pop();
   }
-  // Tür hinten mit Fenster
-  shape(rr(280, 420, 520, 900, 30), { fill: '#145653', lw: 8 }); shape(rr(360, 500, 360, 260, 20), { fill: '#ffe1b0', lw: 6 });
-  text('ZUSTELLUNG', 540, 1060, { font: '800 56px "Baloo 2"', fill: '#ffb862' });
+}
+// Welten (eigene Palette je Welt)
+function welt_tonne(t) {   // Hinterhof bei Nacht: grün/grau
+  bands(['#1f3b3a', '#24514a', '#2c6655'], -800, FLOOR, -1400, 2600);
+  fillOnly(rect(-1400, FLOOR, 4000, 900), '#3d4a3f', { boil: 0 }); stroke([[-1400, FLOOR], [2600, FLOOR]], 7);
+  for (const [x, c] of [[120, '#2e8b57'], [880, '#4a5fd6']]) { shape(rr(x - 170, 900, 340, 600, 20), { fill: c, lw: 8 }); stroke([[x - 140, 1000], [x + 140, 1000]], 6); }
+  shape(rr(320, 860, 440, 640, 24), { fill: '#6b6f78', lw: 8, shade: () => fillOnly(rect(640, 840, 140, 680), '#55585f', { boil: .3 }) });
+  push(); translate(330, 860); rotate(-.9 * ss(seg(t, 12.15, 12.4))); shape(rr(-20, -60, 460, 60, 14), { fill: '#55585f', lw: 7 }); pop();
+  dot(900, 300, 46, '#f6f0c4');
+}
+function welt_tanke(t) {   // Tankstellen-Shop: lila/gelb
+  bands(['#4b2a7a', '#5a3490', '#6a3fa6'], -800, FLOOR, -1400, 2600);
+  fillOnly(rect(-1400, FLOOR, 4000, 900), '#e8d34a', { boil: 0 }); stroke([[-1400, FLOOR], [2600, FLOOR]], 7);
+  shape(rect(-300, 360, 1700, 140), { fill: '#e8d34a', lw: 8 }); text('24/7 TANKE', 540, 434, { font: '400 90px "Titan One"', fill: '#4b2a7a' });
+  shape(rect(560, 600, 520, 900), { fill: '#3b2160', lw: 8 });   // Regal voller fremder Pakete
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 3; c++) shape(rect(590 + c * 160, 640 + r * 170, 140, 130), { fill: hash(r * 5 + c) > .5 ? '#c98b4f' : '#d9a066', lw: 5 });
+}
+function welt_nachbar(t) {   // Nachbarswohnung: mint/koralle, Paketberg
+  bands(['#9fe0c8', '#b2e8d4', '#c4efdf'], -800, FLOOR, -1400, 2600);
+  fillOnly(rect(-1400, FLOOR, 4000, 900), '#ff7f6b', { boil: 0 }); stroke([[-1400, FLOOR], [2600, FLOOR]], 7);
+  for (let i = 0; i < 26; i++) { const x = 520 + (i % 6) * 110 - (Math.floor(i / 6) % 2) * 50, y = FLOOR - 120 - Math.floor(i / 6) * 120; shape(rect(x, y, 120, 120), { fill: hash(i) > .5 ? '#c98b4f' : '#d9a066', lw: 5 }); }
 }
 // Portal (die einzige Glühfarbe: Magenta)
 function portal(cx, cy, r, t, open = 1) {
@@ -108,8 +125,9 @@ const SUB_COL = { KALLE: '#ff8a3d', RUDI: '#2ec4b6' };
 function subtitles(t) {
   const out = [];
   for (const [id, t0] of Object.entries(VO)) {
-    const L = LINE[id], t1 = t0 + Math.max(1.8, vdur(id) + .6);
+    const L = LINE[id], t1 = t0 + (id[0] === 'n' ? .9 : Math.max(1.8, vdur(id) + .6));
     if (id === 'cta') continue;
+    if (t >= SUB_END) continue;
     if (t >= t0 - .05 && t < t1) out.push(L);
   }
   if (!out.length) return;
@@ -128,111 +146,85 @@ function subtitles(t) {
   g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.font = '800 34px "Baloo 2"'; g.fillText(name, W / 2, y0 - 69);
 }
 
+
 // —— Posen ——
 const KX = 330, RX = 790;
 function K(t, o = {}) { const m = talk('KALLE', t), tq = q(t); return { x: KX, y: FLOOR, s: 1.55, face: 1, t, nerv: .25, look: [.4, 0], blink: blinkK(t), brow: .4, mouth: { o: m.o * 1.1, w: m.w, sm: .1 }, sq: 1 + .01 * Math.sin(tq * 2.6), headTilt: m.on ? (m.o - .3) * .1 : 0, ...o }; }
 function R(t, o = {}) { const m = talk('RUDI', t); return { x: RX, y: FLOOR, s: 1.25, t, o: m.o, look: [-.5, .1], lid: .5, stalk: .8, blink: Math.floor(t * 2) % 2 === 0, ...o }; }
-
-// —— Shots ——
+const nein = (t, t0) => { const u = t - t0; return u > -.05 && u < .6 ? 1 : 0; };
+function machineShot(t, l, world, t0, nId, extra, after) {   // gleiche Einstellung in jeder Welt, nur die Welt wechselt
+  const z = 1.0 + (nein(t, VO[nId]) ? .25 : 0), sh = nein(t, VO[nId]) ? 18 : 0;
+  cam(560, 1040, z, sh, t); world(t);
+  extra && extra(t);
+  const m = talk('KALLE', t), yell = nein(t, VO[nId]);
+  kalle(K(t, { brow: yell ? -1 : -.3, nerv: yell ? 1 : .4, eyeS: yell ? 1.2 : 1, pupil: yell ? 3.5 : 5, look: [.6, 0],
+    mouth: { o: yell ? Math.max(.7, m.o * 1.6) : 0, w: 1.15, sm: -.7 }, armL: yell ? { h: [-90, -150], bend: -30, fist: true } : undefined, armR: yell ? { h: [90, -150], bend: 30, fist: true } : undefined, peel: world === welt_tonne,
+    ...(world === welt_tonne ? { x: 540, y: FLOOR - 330 + 300 * (1 - eo(seg(t, 12.2, 12.5))), sq: landSq(t, 12.5) } : {}) }));
+  after && after(t);
+}
 const SH = [
-  { t: 0, d: 2.05, f: (t, l) => {   // 1 Insert: Zettel an der Tür
-      cam(560, 760 + l * 10, 1.9 + l * .12); treppenhaus(t); zettel(540, 700, 1.25, -.05 + Math.sin(q(t) * 3) * .01);
+  { t: 0, d: 3.2, f: (t, l) => {   // 1 Lauer-Posten vor der Tür
+      cam(560, 1080, 1.0 + l * .08); flur(t); stuhl(300, FLOOR, 1.2);
+      kalle(K(t, { x: 300, y: FLOOR - 170, sq: .9, nerv: .35, brow: -.5, lid: .3, lower: .25, look: [.7, -.1], armR: { h: [70, -110], bend: 20, fist: true }, armL: { h: [40, -120], bend: -20, fist: true },
+        hold: (a, b) => { push(); translate((a[0] + b[0]) / 2 + 20, (a[1] + b[1]) / 2 - 10); shape(rr(-50, -26, 46, 52, 14), { fill: '#333', lw: 5 }); shape(rr(6, -26, 46, 52, 14), { fill: '#333', lw: 5 }); pop(); } }));
+      rudi(R(t, { x: 860, s: 1.0, look: [-.6, -.2], lid: .62 }));
     } },
-  { t: 2.05, d: 2.6, f: (t, l) => {   // 2 Close Kalle schreit
-      const sh = (t > 2.15 && t < 2.6) ? 16 : 0;
-      cam(540, 1010, 2.1, sh, t); treppenhaus(t);
-      kalle(K(t, { x: 540, s: 1.6, brow: -1, nerv: 1, look: [0, -.1], eyeS: 1.15, pupil: 4, mouth: { o: talk('KALLE', t).o * 1.5, w: 1.1, sm: -.6 }, armL: { h: [-80, -60], bend: -30, fist: true }, armR: { h: [80, -60], bend: 30, fist: true }, hold: (a, b) => zettel(b[0] + 30, b[1] - 70, .45, .25) }));
+  { t: 3.2, d: .8, f: (t, l) => { cam(540, 960, 1.0); handy(t); } },
+  { t: 4.0, d: 1.9, f: (t, l) => {   // 3 Close Kalle: WO?!
+      cam(540, 1010, 2.1, t > 4.9 && t < 5.5 ? 18 : 0, t); flur(t);
+      kalle(K(t, { x: 540, s: 1.6, brow: -1, nerv: 1, eyeS: 1.2, pupil: 3.5, look: [0, -.1], mouth: { o: talk('KALLE', t).o * 1.6, w: 1.1, sm: -.7 } }));
     } },
-  { t: 4.65, d: 5.85, f: (t, l) => {   // 3 Two-Shot Wohnzimmer
-      cam(560, 1080, .98 + l * .04); wohnzimmer(t);
-      const kt = talk('KALLE', t);
-      kalle(K(t, { brow: kt.on ? -.4 : .6, look: t > 8 ? [.6, .2] : [.6, -.1], armR: t > 5.3 && t < 7.5 ? { h: [90, -40], bend: 40, fist: true } : undefined, lid: t > 8.9 ? .35 : .05 }));
-      rudi(R(t, { stalk: t > 7.8 ? .9 : .6 }));
+  { t: 5.9, d: 1.7, f: (t, l) => { cam(540, 960, 1.0 + l * .05); handy(t, { app: 1 }); } },
+  { t: 7.6, d: 1.4, f: (t, l) => {   // 5 Rudi Close
+      cam(790, 1050, 2.1); flur(t); rudi(R(t, { look: [0, .1], lid: .55, stalk: .9 }));
     } },
-  { t: 10.5, d: 4.4, f: (t, l) => {   // 4 Wide: Gerät + Portal öffnet
-      const open = t < 11.7 ? 0 : back(clamp((t - 11.7) / .32), 1.4);
-      cam(560 + l * 30, 1000, .92 + l * .1); wohnzimmer(t);
-      portal(840, 1040, 300, t, open);
+  { t: 9.0, d: 2.8, f: (t, l) => {   // 6 Portal auf
+      const open = t < 10.95 ? 0 : back(clamp((t - 10.95) / .3), 1.4);
+      cam(560, 1040, 1.0); flur(t); portal(560, 1000, 300, t, open);
       if (open > 0) screenRect('#ff4fd8', .06 * open);
-      reset(); cam(560 + l * 30, 1000, .92 + l * .1);
-      geraet(330 + 120, FLOOR - 520, 1.1, { press: t > 11.55 && t < 11.8 ? 1 : 0, glow: open });
-      kalle(K(t, { x: 260, look: [.7, -.1], brow: open ? -.2 : .2, armR: { h: [120, 20], bend: 30 }, mouth: { ...K(t).mouth, sm: open ? .7 : .1 } }));
-      rudi(R(t, { x: 640, s: .9, look: [.4, -.3], lid: .55 }));
+      reset(); cam(560, 1040, 1.0);
+      kalle(K(t, { x: 240, brow: -.6, look: [.7, -.1], armR: { h: [130, 10], bend: 30 }, hold: (a, b) => geraet(b[0] + 40, b[1] + 60, .8, { press: t > 10.8 && t < 11 ? 1 : 0, glow: open }) }));
+      rudi(R(t, { x: 870, s: .9 }));
+      swirl(seg(t, 11.4, 12.0));
     } },
-  { t: 14.9, d: 2.0, f: (t, l) => {   // 5 Reaction Close Rudi
-      cam(790, 1050, 2.1 + l * .05); wohnzimmer(t); portal(1150, 900, 300, t, 1);
-      rudi(R(t, { look: [0, .1], lid: .5, stalk: .9 }));
+  { t: 11.8, d: 2.8, f: (t, l) => machineShot(t, l, welt_tonne, 11.8, 'n1', null, t => { shape(rr(320, 990, 440, 510, 24), { fill: '#6b6f78', lw: 8, shade: () => fillOnly(rect(640, 970, 140, 550), '#55585f', { boil: .3 }) }); stroke([[350, 1070], [730, 1070]], 6); }), sw: [14.3, 14.8] },
+  { t: 14.6, d: 2.4, f: (t, l) => machineShot(t, l, welt_tanke, 14.6, 'n2'), sw: [16.7, 17.2] },
+  { t: 17.0, d: 2.4, f: (t, l) => machineShot(t, l, welt_nachbar, 17.0, 'n3', t => {   // Nachbar umarmt Kalles Paket
+      kalle({ x: 820, y: FLOOR, s: 1.35, face: -1, t, bald: true, hood: '#8e6bbf', hoodS: '#6b4f99', jeans: '#4a4a4a', brow: .2, lid: .5, look: [.3, 0], mouth: { o: 0, sm: .8 },
+        armL: { h: [60, -40], bend: -10 }, armR: { h: [-40, -40], bend: 10 }, hold: (a, b) => karton((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + 60, .55, { label: 'KALLE' }) });
+    }), sw: [19.0, 19.6] },
+  { t: 19.4, d: 3.2, f: (t, l) => {   // 10 Zurück, Stuhl, Stille, Briefschlitz
+      cam(560, 1080, 1.0); const slot = clamp((t - 21.6) / .15) * (1 - clamp((t - 22.3) / .2));
+      flur(t, { slot }); stuhl(300, FLOOR, 1.2);
+      const fall = eo(seg(t, 19.4, 19.6)), sq = landSq(t, 19.6);
+      kalle(K(t, { x: 300, y: FLOOR - 170 - (1 - fall) * 300, sq, nerv: 0, brow: .9, lid: .5, lower: .3, look: [0, .3], mouth: { o: 0, sm: -.8 }, armL: { h: [-80, 120], bend: -20 }, armR: { h: [80, 120], bend: 20 } }));
+      // Karte fliegt durch den Schlitz ins Gesicht
+      const u = seg(t, 21.65, 21.95);
+      if (t > 21.6) zettel(lerp(580, 300, eo(u)), lerp(900, FLOOR - 170 - 340 * 1.55 + 20, eo(u)), lerp(.25, .55, u), lerp(0, 4 * Math.PI + .2, u));
+      rudi(R(t, { x: 860, s: 1.0, look: [-.6, 0], lid: .6 }));
     } },
-  { t: 16.9, d: 2.5, f: (t, l) => {   // 6 Kalle springt, wird eingesaugt, Rush-Zoom
-      const z = t < 18.6 ? .95 : .95 + ei(seg(t, 18.6, 19.4)) * 3;
-      cam(lerp(560, 840, seg(t, 18.6, 19.4)), lerp(1000, 1040, seg(t, 18.6, 19.4)), z); wohnzimmer(t);
-      portal(840, 1040, 300, t, 1); screenRect('#ff4fd8', .06);
-      reset(); cam(lerp(560, 840, seg(t, 18.6, 19.4)), lerp(1000, 1040, seg(t, 18.6, 19.4)), z);
-      const ju = seg(t, 17.85, 18.6), x = lerp(300, 840, ju), y = FLOOR - Math.sin(ju * Math.PI) * 420 - ju * 300;
-      const suck = seg(t, 18.35, 18.75), s = 1.5 * (1 - suck * .9);
-      if (suck < 1) kalle(K(t, { x, y, s, sq: 1 + ju * .3, lean: ju * .6, brow: -.8, nerv: ju ? 0 : .6, armL: { h: [-60, -140], bend: -20 }, armR: { h: [60, -140], bend: 20 }, mouth: { o: t > 17.85 ? .7 : talk('KALLE', t).o, w: 1, sm: .4 } }));
-      rudi(R(t, { x: 820, s: .8, look: [.3, -.3] }));
-      swirl(seg(t, 19.0, 19.8));
+  { t: 22.6, d: 3.0, f: (t, l) => {   // 11 Close: Karte im Gesicht, Rudis Satz
+      cam(330, FLOOR - 170 - 300 * 1.55, 1.9 + l * .15); flur(t); stuhl(300, FLOOR, 1.2);
+      kalle(K(t, { x: 300, y: FLOOR - 170, nerv: 0, brow: .9, lid: .55, lower: .3, look: [0, .2], mouth: { o: 0, sm: -.8 }, armL: { h: [-80, 120], bend: -20 }, armR: { h: [80, 120], bend: 20 } }));
+      zettel(300, FLOOR - 170 - 340 * 1.55 + 20, .55, .2);
     } },
-  { t: 19.4, d: 3.6, f: (t, l) => {   // 7 Paketwagen-Welt
-      cam(540 + Math.sin(l * 3) * 20, 1000, 1.0); paketwagen(t);
-      const ar = seg(t, 19.4, 19.9), grab = t > 20.7;
-      const kx = lerp(-100, 380, eo(ar)), sq = landSq(t, 19.9);
-      karton(grab ? kx + 150 : 640, grab ? FLOOR - 330 : FLOOR, grab ? 1.1 : 1.2, { label: 'KALLE' });
-      kalle(K(t, { x: kx, sq, brow: grab ? .2 : -.4, look: [1, .4], mouth: { o: grab ? .5 : 0, w: 1.1, sm: grab ? .9 : 0 }, armR: grab ? { h: [110, -70], bend: 10 } : { h: [120, 40], bend: 20 }, armL: grab ? { h: [140, -70], bend: 10 } : undefined }));
-      portal(200, 900, 260, t, clamp((t - 21.9) / .3));
-      swirl(seg(t, 22.4, 23.2));
-    } },
-  { t: 23.0, d: 3.45, f: (t, l) => {   // 8 Landung + Triumph
-      cam(560, 1040, 1.0); wohnzimmer(t);
-      const sq = landSq(t, 23.15), up = seg(t, 23.0, 23.15);
-      kalle(K(t, { y: FLOOR - (1 - up) * 300, sq, brow: .1, look: [0, -.4], mouth: { o: talk('KALLE', t).o * 1.4, w: 1.2, sm: 1 }, armL: { h: [-60, -230], bend: -10 }, armR: { h: [60, -230], bend: 10 },
-        hold: (a, b) => karton((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + 30, .75, { label: 'KALLE' }) }));
-      rudi(R(t, { look: [-.6, -.2], lid: .55 }));
-    } },
-  { t: 26.45, d: 3.95, f: (t, l) => {   // 9 Insert: Karton auf → Türklingel
-      cam(540, 1180, 1.7 + l * .08); wohnzimmer(t, { fridge: false });
-      const op = eo(seg(t, 27.0, 27.6)), rise = eo(seg(t, 27.5, 28.2));
-      if (rise > 0) klingel(540, 1180 - rise * 260, 1.1, { glow: seg(t, 28.2, 28.6) * (1 - seg(t, 29.6, 30)) });
-      karton(540, 1400, 1.35, { open: op, label: 'KALLE' });
-    } },
-  { t: 30.4, d: 3.6, f: (t, l) => {   // 10 Two-Shot, tote Stille, Rudis Satz
-      cam(560, 1080, 1.0 + l * .1); wohnzimmer(t);
-      kalle(K(t, { nerv: 0, brow: .9, lid: .45, look: [0, .2], mouth: { o: 0, sm: -.6 }, armL: { h: [-20, 80], bend: -10 }, armR: { h: [40, 60], bend: 10 },
-        hold: (a, b) => klingel(b[0] + 10, b[1] - 40, .55) }));
-      rudi(R(t, { look: [-.7, 0], lid: .55, stalk: 1 }));
-    } },
-  { t: 34.0, d: 4.6, f: (t, l) => {   // 11 Endkarte
+  { t: 25.6, d: 4.8, f: (t, l) => {   // 12 Endkarte
       reset(); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#05061a'; g.fillRect(0, 0, W, H);
       if (logo.naturalWidth) g.drawImage(logo, 0, 0, W, H);
-      const p = back(clamp((t - 34.15) / .35), 1.6);
+      const p = back(clamp((t - 25.75) / .35), 1.6);
       g.save(); g.translate(W / 2, 300); g.scale(p, p); g.font = '400 110px "Titan One"'; g.textAlign = 'center'; g.textBaseline = 'middle';
       g.lineWidth = 16; g.strokeStyle = INK; g.strokeText('Kennst du das?', 0, 0); g.fillStyle = '#ffffff'; g.fillText('Kennst du das?', 0, 0); g.restore();
-      const p2 = clamp((t - 35.9) / .3);
-      g.globalAlpha = p2; g.font = '800 54px "Baloo 2"'; g.textAlign = 'center'; g.lineWidth = 12; g.strokeStyle = INK;
-      for (const [s, y] of [['Schreib\'s in die Kommentare 👇', 1560], ['und folg für mehr!', 1640]]) { g.strokeText(s, W / 2, y); g.fillStyle = '#ff4fd8'; g.fillText(s, W / 2, y); }
+      const p2 = clamp((t - 27.5) / .3); g.globalAlpha = p2; g.font = '800 54px "Baloo 2"'; g.textAlign = 'center'; g.lineWidth = 12; g.strokeStyle = INK;
+      for (const [s_, y] of [['Schreib\'s in die Kommentare 👇', 1560], ['und folg für mehr!', 1640]]) { g.strokeText(s_, W / 2, y); g.fillStyle = '#ff4fd8'; g.fillText(s_, W / 2, y); }
       g.globalAlpha = 1;
     } },
 ];
 function shotAt(t) { for (let i = SH.length - 1; i >= 0; i--) if (t >= SH[i].t) return SH[i]; return SH[0]; }
-
 window.DUR = DUR;
 window.render = t => {
   frame(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   const s = shotAt(t); S.lw = 7; s.f(t, clamp((t - s.t) / s.d));
-  if (t < 34.0) subtitles(t);
+  if (s.sw) swirl(seg(t, s.sw[0], s.sw[1]));
+  subtitles(t);
 };
-// Ereignisse für die Mischung
-window.EV = [
-  { t: 0.0, type: 'stab' }, { t: 0.15, type: 'paper' }, { t: 2.05, type: 'stab' },
-  { t: 4.65, type: 'music', cue: 'groove' }, { t: 5.3, type: 'blip' }, { t: 8.0, type: 'blip' },
-  { t: 11.55, type: 'click' }, { t: 11.7, type: 'portal' }, { t: 15.0, type: 'blip' },
-  { t: 17.85, type: 'boing' }, { t: 18.35, type: 'suck' }, { t: 19.0, type: 'swirl' }, { t: 19.4, type: 'music', cue: 'world' },
-  { t: 19.9, type: 'thump' }, { t: 20.7, type: 'grab' }, { t: 21.9, type: 'portal' }, { t: 22.4, type: 'swirl' },
-  { t: 23.0, type: 'music', cue: 'groove' }, { t: 23.15, type: 'boing' },
-  { t: 26.45, type: 'music', cue: 'stop' }, { t: 27.0, type: 'paper' }, { t: 28.2, type: 'ding' },
-  { t: 33.3, type: 'kazoo' }, { t: 34.0, type: 'music', cue: 'end' },
-];
-window.VO = VO;
-window.TEXTS = t => [];
-window.READY = true;
+window.EV = EV; window.VO = VO; window.TEXTS = t => []; window.READY = true;

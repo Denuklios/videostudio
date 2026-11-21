@@ -11,7 +11,7 @@ async def tts(text, v, rate, pitch, mp3):
     await edge_tts.Communicate(text, v, rate=rate, pitch=pitch).save(str(mp3))
 lines = json.loads((HERE / "lines.json").read_text()); dur, lips = {}, {}
 for L in lines:
-    v, rate, pitch = CAST[L["who"]]; mp3 = OUT / f"{L['id']}.mp3"; wav = OUT / f"{L['id']}.wav"
+    v, rate, pitch = CAST[L["who"]]; rate = L.get("rate", rate); pitch = L.get("pitch", pitch); mp3 = OUT / f"{L['id']}.mp3"; wav = OUT / f"{L['id']}.wav"
     asyncio.run(tts(L["text"], v, rate, pitch, mp3))
     # Stille vorn/hinten weg, Mono 48 kHz
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(mp3), "-af",

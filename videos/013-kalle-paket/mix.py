@@ -8,9 +8,9 @@ import sfx
 from sfx import SR, t_, env_exp, bp, lp, hp, noise, norm, brown, add, compress, limit
 
 HERE = Path(__file__).parent; OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
-DUR = 38.6; N = int(DUR * SR)
+DUR = 30.4; N = int(DUR * SR)
 EV = json.loads((HERE / "events.json").read_text())["ev"]
-VO = {"k1": 1.55, "k2": 4.95, "r1": 8.05, "k3": 10.6, "r2": 15.25, "k4": 17.0, "k5": 23.55, "r3": 30.95, "cta": 34.45}
+VO = {"k1": 0.25, "k2": 4.05, "r1": 7.85, "k3": 9.1, "n1": 13.6, "n2": 16.2, "n3": 18.5, "r2": 23.4, "cta": 26.0}
 BPM = 112; B = 60 / BPM
 mf = lambda m: 440 * 2 ** ((m - 69) / 12)
 
@@ -83,15 +83,18 @@ def world(t0, t1):   # Paketwagen-Welt: schnelles Zupf-Riff, Four-on-the-floor
         if i % 4 == 2: put(music, snare(.22), tt)
         put(music, bass(riff[i % 8] - 12, B / 2 * .9, .3), tt)
         i += 1; tt += B / 2
-groove(4.65, 19.4); world(19.4, 23.0); groove(23.0, 26.45, up=2)
+# Lauern: leises Zupf-Motiv auf tiefem Bass
+for i, m in enumerate([50, 53, 50, 56, 55, 53]): put(music, pluck(m, .5, .3), .1 + i * .5); put(music, bass(38, .45, .2), .1 + i * .5)
+groove(4.0, 11.8)
+# Maschinengewehr: Four-on-the-floor + Stinger auf jedem NEIN
+world(11.8, 20.2)
+for st in (13.6, 16.2, 18.5):
+    tt = t_(.7); chord = sum(np.sign(np.sin(2 * np.pi * mf(m) * tt)) for m in (50, 56, 62, 65))
+    put(music, lp(chord, 2200) * np.exp(-tt / .2) * .14, st); put(music, kick(1.0), st)
 # Schluss-Phrase auf der Endkarte
-x, s = theremin([(34.1, .5, 69), (34.6, .5, 70), (35.1, .5, 69), (35.6, 1.6, 62)], .2); put(music, x, s)
-put(music, bass(50 - 12, 2.5, .3), 35.6)
-# Stabs am Anfang
-for st in (0.0, 2.05):
-    tt = t_(.9); chord = sum(np.sign(np.sin(2 * np.pi * mf(m) * tt)) for m in (50, 57, 62, 65))
-    put(music, lp(chord, 1800) * np.exp(-tt / .25) * .12, st)
-    put(music, kick(.9), st)
+x, s_ = theremin([(25.7, .45, 69), (26.15, .45, 70), (26.6, .45, 69), (27.05, 1.6, 62)], .2); put(music, x, s_)
+put(music, bass(50 - 12, 2.5, .3), 27.05)
+tt = t_(.9); chord = sum(np.sign(np.sin(2 * np.pi * mf(m) * tt)) for m in (50, 57, 62, 65)); put(music, lp(chord, 1800) * np.exp(-tt / .25) * .12, 4.0); put(music, kick(.9), 4.0)
 
 # —— Geräusche ——
 def paper(): d = .35; return bp(noise(d), 1500, 7000) * (np.abs(np.sin(t_(d) * 60)) ** 3) * env_exp(d, .15) * .5
@@ -108,7 +111,10 @@ def kazoo():
     d = 1.0; tt = t_(d); f = 330 * (1 - .25 * tt / d) * (1 + .03 * np.sin(2 * np.pi * 6 * tt))
     ph = 2 * np.pi * np.cumsum(f) / SR; x = sum(np.sin(k * ph) / k for k in range(1, 12))
     return bp(x, 300, 3500) * np.minimum(1, tt / .03) * np.minimum(1, (d - tt) / .1) * .25
-MAP = {"paper": paper, "blip": blip, "click": lambda: sfx.click(1.0, .5), "portal": portal_open, "boing": boing, "suck": suck,
+def lid(): d = .5; tt = t_(d); return (hp(noise(d), 800) * env_exp(d, .05) + sum(np.sin(2 * np.pi * f * tt) * env_exp(d, .25) * .3 for f in (420, 1130, 2210))) * .5
+def shopbell(): return np.concatenate([sfx.ding(.4), sfx.ding(.35)])
+def slap(): d = .2; return (bp(noise(d), 600, 5000) * env_exp(d, .02) + np.sin(2 * np.pi * 120 * t_(d)) * env_exp(d, .03)) * .7
+MAP = {"paper": paper, "lid": lid, "shopbell": shopbell, "slap": slap, "flap": lambda: sfx.click(.7, .6), "pop": lambda: sfx.pop(.6), "blip": blip, "click": lambda: sfx.click(1.0, .5), "portal": portal_open, "boing": boing, "suck": suck,
        "swirl": lambda: sfx.whoosh(.6, .7), "thump": lambda: sfx.thump(.7), "grab": lambda: sfx.clack(.8, .6),
        "ding": lambda: sfx.ding(.5), "kazoo": kazoo, "stab": lambda: np.zeros(10)}
 for e in EV:
@@ -122,7 +128,7 @@ def bed(t0, t1, kind):
     elif kind == "fridge": x = lp(brown(d), 300) * .03 + (np.sin(2 * np.pi * 60 * tt) * .5 + np.sin(2 * np.pi * 120 * tt) * .3) * .012
     else: x = lp(brown(d), 200) * .07 + np.sin(2 * np.pi * 48 * tt) * .015
     fade = np.minimum(1, np.minimum(tt / .05, (d - tt) / .05)); put(amb, x * fade, t0)
-bed(0, 4.65, "hall"); bed(4.65, 19.4, "fridge"); bed(19.4, 23.0, "van"); bed(23.0, 34.0, "fridge")
+bed(0, 11.8, "fridge"); bed(11.8, 19.4, "van"); bed(19.4, 25.6, "fridge")
 
 # —— Stimmen ——
 lines = {l["id"]: l for l in json.loads((HERE / "lines.json").read_text())}
@@ -138,7 +144,7 @@ for vid, st in VO.items():
 k = int(.15 * SR); sm = np.convolve(vmask, np.ones(k) / k, mode="same")
 music *= (1 - sm * (1 - 10 ** (-7 / 20)))[:, None]
 # Stille-Pointe: ab 26.45 bis 34.0 keine Musik (inkl. Hall)
-music[int(26.45 * SR):int(34.0 * SR)] = 0
+music[int(20.2 * SR):int(25.6 * SR)] = 0
 
 mix = music * .8 + fx * .9 + amb + voice * 1.1
 mix = mix / max(1e-9, np.abs(mix).max()) * .9
