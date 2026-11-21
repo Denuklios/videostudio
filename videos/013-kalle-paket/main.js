@@ -122,9 +122,9 @@ function swirl(u) {
 
 // —— Untertitel ——
 const SUB_COL = { KALLE: '#ff8a3d', RUDI: '#2ec4b6' };
-function subtitles(t) {
+function subtitles(t, only) {
   const out = [];
-  for (const [id, t0] of Object.entries(VO)) {
+  for (const [id, t0] of Object.entries(only || VO)) {
     const L = LINE[id], t1 = t0 + (id[0] === 'n' ? .9 : Math.max(1.8, vdur(id) + .6));
     if (id === 'cta') continue;
     if (t >= SUB_END) continue;
@@ -191,7 +191,7 @@ const SH = [
   { t: 14.6, d: 2.4, f: (t, l) => machineShot(t, l, welt_tanke, 14.6, 'n2'), sw: [16.7, 17.2] },
   { t: 17.0, d: 2.4, f: (t, l) => machineShot(t, l, welt_nachbar, 17.0, 'n3', t => {   // Nachbar umarmt Kalles Paket
       kalle({ x: 820, y: FLOOR, s: 1.35, face: -1, t, bald: true, hood: '#8e6bbf', hoodS: '#6b4f99', jeans: '#4a4a4a', brow: .2, lid: .5, look: [.3, 0], mouth: { o: 0, sm: .8 },
-        armL: { h: [60, -40], bend: -10 }, armR: { h: [-40, -40], bend: 10 }, hold: (a, b) => karton((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + 60, .55, { label: 'KALLE' }) });
+        armL: { h: [60, -40], bend: -10 }, armR: { h: [-40, -40], bend: 10 }, hold: (a, b) => karton((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + 60, .55, { label: 'MEINS!' }) });
     }), sw: [19.0, 19.6] },
   { t: 19.4, d: 3.2, f: (t, l) => {   // 10 Zurück, Stuhl, Stille, Briefschlitz
       cam(560, 1080, 1.0); const slot = clamp((t - 21.6) / .15) * (1 - clamp((t - 22.3) / .2));
@@ -221,22 +221,25 @@ const SH = [
 ];
 function shotAt(t) { for (let i = SH.length - 1; i >= 0; i--) if (t >= SH[i].t) return SH[i]; return SH[0]; }
 // —— Cold Open (Hook): Vorblende aus der Mülltonne ——
-const HOOK = 1.6;
+const HOOK = 2.4;
 function coldOpen(t) {   // Hook: ein Paket + groß „NICHT ANGETROFFEN“ als Stempel
   frame(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
-  const hit = .28, sh = t > hit && t < hit + .5 ? 22 * (1 - (t - hit) / .5) : 0;
+  const sh = t > .14 && t < .64 ? 22 * (1 - (t - .14) / .5) : 0;
   cam(540, 1120, 1.35 + t * .04, sh, t); flur(t);
   karton(540, 1500, 1.9, { label: 'KALLE' });
-  // Stempel knallt drauf
-  const u = clamp((t - .12) / (hit - .12)), sc = lerp(3.2, 1, ei(u));
-  if (t > .12) { g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2, 960); g.rotate(-.1); g.scale(sc, sc); g.globalAlpha = Math.min(1, u * 2);
-    g.lineJoin = 'round'; g.strokeStyle = '#d62839'; g.lineWidth = 22; g.strokeRect(-505, -250, 1010, 500);
-    g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = '#d62839';
-    g.font = '400 230px "Titan One"'; g.fillText('NICHT', 0, -95); g.font = '400 132px "Titan One"'; g.fillText('ANGETROFFEN', 0, 125);
-    g.restore(); g.globalAlpha = 1; }
+  // Stempel-Schild knallt drauf (ab Bild 1, hoher Kontrast: Rot + Weiß + schwarzer Rand)
+  const hit = .14, u = clamp(t / hit), sc = lerp(2.2, 1, ei(u));
+  g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2, 980); g.rotate(-.08); g.scale(sc, sc);
+  g.fillStyle = 'rgba(0,0,0,.35)'; g.fillRect(-505, -235, 1030, 490);
+  g.fillStyle = '#e0202f'; g.fillRect(-520, -250, 1040, 490); g.lineWidth = 16; g.strokeStyle = INK; g.strokeRect(-520, -250, 1040, 490);
+  g.lineWidth = 8; g.strokeStyle = '#ffffff'; g.strokeRect(-490, -220, 980, 430);
+  g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round'; g.fillStyle = '#ffffff'; g.strokeStyle = INK;
+  g.font = '400 220px "Titan One"'; g.lineWidth = 14; g.strokeText('NICHT', 0, -80); g.fillText('NICHT', 0, -80);
+  g.font = '400 128px "Titan One"'; g.strokeText('ANGETROFFEN', 0, 120); g.fillText('ANGETROFFEN', 0, 120);
+  g.restore();
   // Oben: Kalles Protest
-  const p = back(clamp((t - .55) / .25), 1.6);
-  if (t > .55) { g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2, 330); g.scale(p, p); g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+  const p = back(clamp((t - .45) / .25), 1.6);
+  if (t > .45) { g.setTransform(1, 0, 0, 1, 0, 0); g.save(); g.translate(W / 2, 330); g.scale(p, p); g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
     g.font = '400 112px "Titan One"'; g.lineWidth = 20; g.strokeStyle = INK; g.strokeText('Ich war ZUHAUSE!', 0, 0); g.fillStyle = '#fff'; g.fillText('Ich war ZUHAUSE!', 0, 0); g.restore(); }
   if (t > HOOK - .2) screenRect('#ffffff', (t - (HOOK - .2)) / .2 * .9);
 }
@@ -245,14 +248,25 @@ function flashback(t) {   // Einblendung „Eine Stunde vorher…“
   g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = a; g.font = '800 64px "Baloo 2"'; g.textAlign = 'center'; g.textBaseline = 'middle';
   g.lineWidth = 14; g.strokeStyle = INK; g.strokeText('Eine Stunde vorher…', W / 2, 260); g.fillStyle = '#ffd84d'; g.fillText('Eine Stunde vorher…', W / 2, 260); g.globalAlpha = 1;
 }
-window.DUR = DUR + HOOK;
+// —— Einschub vor dem Portal: „Warum muss ich … immer selber suchen?!“ ——
+const INS = 9.0, D = 2.8, RANT = { k2b: 9.15 };
+function talkAt(id, t, t0) { const k = Math.floor((q(t) - t0) * 24), lp = LIPS[id]; if (t < t0 || t > t0 + vdur(id)) return { o: 0, w: 1 }; return { o: lp?.o[k] ?? 0, w: .8 + .45 * (lp?.b[k] ?? .5) }; }
+function rant(t) {
+  const l = (t - INS) / D, m = talkAt('k2b', t, RANT.k2b), word = t > RANT.k2b + 1.2 && t < RANT.k2b + 1.7;
+  cam(540, 1010, 2.0 + l * .25, word ? 14 : 0, t); flur(t);
+  kalle(K(t, { x: 540, s: 1.6, brow: -1, nerv: .8, eyeS: 1.1, pupil: 4, look: [0, -.05], mouth: { o: m.o * 1.5, w: m.w * 1.1, sm: -.6 },
+    armL: { h: [-110, -40], bend: -30 }, armR: { h: [110, -40], bend: 30 } }));
+}
+window.DUR = DUR + HOOK + D;
 window.render = T => {
   if (T < HOOK) return coldOpen(T);
-  const t = T - HOOK;
+  const ts = T - HOOK;
+  if (ts >= INS && ts < INS + D) { frame(ts); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H); S.lw = 7; rant(ts); subtitles(ts, RANT); return; }
+  const t = ts >= INS + D ? ts - D : ts;
   frame(t); g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#000'; g.fillRect(0, 0, W, H);
   const s = shotAt(t); S.lw = 7; s.f(t, clamp((t - s.t) / s.d));
   if (s.sw) swirl(seg(t, s.sw[0], s.sw[1]));
   subtitles(t); flashback(t);
 };
-window.EV = [{ t: 0.02, type: 'stab' }, { t: 0.1, type: 'lid' }, { t: 1.45, type: 'swirl' }, ...EV.map(e => ({ ...e, t: e.t + HOOK }))];
+window.EV = [{ t: 0.0, type: 'stab' }, { t: 2.25, type: 'swirl' }, { t: HOOK + RANT.k2b + 1.25, type: 'stab' }, ...EV.map(e => ({ ...e, t: e.t + HOOK + (e.t >= INS ? D : 0) }))];
 window.VO = VO; window.TEXTS = t => []; window.READY = true;

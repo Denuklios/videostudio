@@ -9,7 +9,12 @@ from sfx import SR, t_, env_exp, bp, lp, hp, noise, norm, brown, add, compress, 
 
 HERE = Path(__file__).parent; OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
 DUR = 30.4; N = int(DUR * SR)
-EV = [dict(e, t=e["t"] - 1.6) for e in json.loads((HERE / "events.json").read_text())["ev"] if e["t"] >= 1.6]
+HOOK, INS, D = 2.4, 9.0, 2.8
+def story(t):   # Video-Zeit → ursprüngliche Story-Zeit (None im Hook bzw. Einschub)
+    t -= HOOK
+    if t < 0 or INS <= t < INS + D: return None
+    return t - D if t >= INS + D else t
+EV = [dict(e, t=story(e["t"])) for e in json.loads((HERE / "events.json").read_text())["ev"] if story(e["t"]) is not None]
 VO = {"k1": 0.25, "k2": 4.05, "r1": 7.85, "k3": 9.1, "n1": 13.6, "n2": 16.2, "n3": 18.5, "r2": 23.4, "cta": 26.0}
 BPM = 112; B = 60 / BPM
 mf = lambda m: 440 * 2 ** ((m - 69) / 12)
@@ -149,13 +154,21 @@ music[int(20.2 * SR):int(25.6 * SR)] = 0
 mix = music * .8 + fx * .9 + amb + voice * 1.1
 mix = mix / max(1e-9, np.abs(mix).max()) * .9
 mix = np.stack([limit(mix[:, 0]), limit(mix[:, 1])], axis=1)
-# —— Cold Open davor (1.6 s): Bass, Deckel, „NEIN!!!“, Wusch ——
-HOOK = 1.6; pre = np.zeros((int(HOOK * SR), 2))
+# —— Cold Open davor (2.4 s): Stempel-Klatsch, Bass, Wusch ——
+pre = np.zeros((int(HOOK * SR), 2))
 tt = t_(.9); chord = sum(np.sign(np.sin(2 * np.pi * mf(m) * tt)) for m in (50, 56, 62, 65))
-add(pre, slap() * 1.2, .28); add(pre, kick(1.0), .28); add(pre, lp(chord, 2200) * np.exp(-tt / .25) * .3, .28)
-add(pre, sfx.whoosh(.4, .8), 1.25)
+add(pre, slap() * 1.2, .14); add(pre, kick(1.0), .14); add(pre, lp(chord, 2200) * np.exp(-tt / .25) * .3, .14)
+add(pre, sfx.whoosh(.4, .8), HOOK - .3)
 pre = pre / max(1e-9, np.abs(pre).max()) * .9
-mix = np.concatenate([pre, mix])
+# —— Einschub (2.8 s): Kalles Wutsatz, Musik aus, nur Kühlschrank + Stab ——
+ins = np.zeros((int(D * SR), 2))
+add(ins, lp(brown(D), 300) * .03, 0)
+with wave.open(str(HERE / "voices" / "k2b.wav")) as w: kv = np.frombuffer(w.readframes(w.getnframes()), np.int16) / 32768
+kv = compress(norm(kv + hp(kv, 2500) * .3, .9), .3, 3.5); add(ins, kv, .15, .95)
+add(ins, kick(.8), 1.4)
+ins = ins / max(1e-9, np.abs(mix).max()) * 1.0
+i0 = int(INS * SR)
+mix = np.concatenate([pre, mix[:i0], ins, mix[i0:]])
 with wave.open(str(OUT / "mix.wav"), "wb") as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR)
     w.writeframes((np.clip(mix, -1, 1) * 32767).astype(np.int16).tobytes())
