@@ -99,7 +99,10 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   (Cartoon/Comic wie rubber-hose, midcentury-toon, manga-panels; Erklärstile wie dark-documentary, news-package, map-explainer;
   neon-tubes, hologram-hud, pixel-rpg). Bibliothek: `sh .claude/skills/lemo-opuscar/scripts/setup.sh` (→ `~/lemo-opuscar`),
   Werkzeuge: `… setup.sh deps` (core installiert). Ablauf: `$LIB/AGENTS.md` lesen und befolgen. Gut für Comic-/Alltags-Videos
-  (z. B. Kalle) mit echter Animation. Offen: ffmpeg 7+ fehlt (hier 6.x) – betrifft nur die Ton-Längenprüfung in `mux.sh`.
+  (z. B. Kalle) mit echter Animation. Lemo braucht ffmpeg 7+: liegt in `/root/ffmpeg7/ffmpeg-7.0.2-amd64-static`, vor jedem
+  Lemo-Befehl `export PATH=/root/ffmpeg7/ffmpeg-7.0.2-amd64-static:$PATH`. Fehlt der Ordner (neue Umgebung): vom Nutzer erlaubt (21.11.),
+  `mkdir -p /root/ffmpeg7 && cd /root/ffmpeg7 && curl -sLO https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz`,
+  md5 mit der `.md5`-Datei daneben prüfen, entpacken. Unsere eigene Engine nutzt weiter das System-ffmpeg.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
