@@ -83,6 +83,13 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   Prompt-Grundgerüst: „<Motiv>, Vice City Miami vibe, cinematic video game screenshot style, ultra realistic, dramatic
   lighting, neon reflections at night, high detail, no text, no logos, no real persons“. KEINE Rockstar-Figuren, -Logos,
   Screenshots oder Trailer. Sobald der Nutzer die PC-Version hat: eigene Spielaufnahmen (Google Drive) schneiden.
+- **Openverse (freie Fotos + Klänge, ohne Schlüssel, Wunsch des Nutzers 21.11.):** `engine/openverse.py` ergänzt Canva –
+  so gibt es mehr Bilder pro Video (6–10 statt 4 → schnellere Schnitte) ohne Canva-Pause.
+  `python3 ../../engine/openverse.py suche "miami night skyline" --hoch` → `ov_vorschau.jpg` ansehen, passende wählen,
+  `python3 ../../engine/openverse.py lade <id> bilder/name.png --projekt .` (schneidet auf 1080×1920, schreibt `quellen.txt`).
+  Gut für echte Orte/Dinge: Miami-Fotos für GTA/Vice City, NASA-Fotos fürs Weltall, Tiere, Geschichte (Gemälde, gemeinfrei).
+  Nur cc0/pdm/by. Bei „by“ in `post.txt` vor den Hashtags „📷 Fotos: <Urheber> (CC BY)“. Keine Bilder mit Wasserzeichen,
+  erkennbaren Privatpersonen im Fokus, fremden Logos oder Spiel-/Film-Screenshots. Auch Klänge (`--audio`), z. B. Soundeffekte.
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
