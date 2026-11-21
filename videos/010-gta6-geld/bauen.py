@@ -16,7 +16,7 @@ szenen = [
     {"kopf": "Autos an <b>Moses</b>", "label": "TIPP 2/4",
      "text": "Tipp zwei: Ab Kapitel zwei verkaufst du geklaute Autos an Moses, für ein paar tausend Dollar."},
     {"kopf": "<b>Juweliere</b> knacken", "label": "TIPP 3/4",
-     "text": "Tipp drei: Danach lohnen sich Juweliere. Zehn- bis fünfundzwanzigtausend Dollar pro Überfall."},
+     "text": "Tipp drei: Raub einen Juwelier aus. Das bringt zehn- bis fünfundzwanzigtausend Dollar pro Überfall."},
     {"kopf": "Der <b>Banktresor</b>", "label": "TIPP 4/4",
      "text": "Tipp vier: Ende Kapitel vier schaltet eine Nebenmission die Banktresore frei."},
     {"kopf": "<b>205.000 $</b> pro Tresor",

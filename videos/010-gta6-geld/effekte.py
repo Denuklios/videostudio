@@ -11,7 +11,7 @@ EFFEKTE = [
  tempo_linien(160,1000,wort="autos")
  + schild(540,1250,"+ EIN PAAR 1.000 $",CYAN,groesse=56,wort="tausend"),
  # 3 Juwelier
- (hervorheben(760,960,maske=M("juwelier"),art="puls",glanz=CYAN,wort="juweliere") if JUW else "")
+ (hervorheben(760,960,maske=M("juwelier"),art="puls",glanz=CYAN,wort="juwelier") if JUW else "")
  + schild(540,1250,"10.000 – 25.000 $",MAG,WEISS,groesse=60,wort="zehn"),
  # 4 Tresor
  (hervorheben(690,1050,maske=M("tresor"),art="blink",glanz=CYAN,wort="banktresore") if (B/"maske_tresor.png").exists() else "")
