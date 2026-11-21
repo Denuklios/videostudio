@@ -1,0 +1,165 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Effekt-Demo</title>
+<style>
+@font-face { font-family: "Anton"; src: url("fonts/Anton-Regular.ttf"); }
+@font-face { font-family: "Archivo"; src: url("fonts/ArchivoBlack-Regular.ttf"); }
+html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}
+</style></head><body><canvas id="c" width="1080" height="1920"></canvas>
+<script type="module">
+// Effekt-Bausteine im Motion-Design-Stil (Demo, 1080×1920, 24 fps)
+const W = 1080, H = 1920, c = document.getElementById('c'), g = c.getContext('2d');
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x)), lerp = (a, b, t) => a + (b - a) * t;
+const eo = t => 1 - Math.pow(1 - clamp(t), 3), eio = t => { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+const back = (t, s = 1.8) => { t = clamp(t) - 1; return 1 + t * t * ((s + 1) * t + s); };
+const hash = n => { n = Math.sin(n * 127.1 + 311.7) * 43758.5453; return n - Math.floor(n); };
+const ORANGE = '#ff5a1f', CYAN = '#3ff0ff', MAG = '#ff4fd8', LIME = '#c8ff1a', INK = '#0b0b0f', PAPER = '#f2efe8';
+await Promise.all(['400 100px Anton', '400 100px Archivo'].map(f => document.fonts.load(f)));
+const logo = new Image(); logo.src = 'schluss.png'; await logo.decode().catch(() => { });
+
+function bg(col) { g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = col; g.fillRect(0, 0, W, H); }
+function label(txt, t) {   // kleine Effekt-Beschriftung oben
+  g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = clamp(t / .15) * .85; g.font = '400 34px Archivo'; g.textAlign = 'left'; g.textBaseline = 'top';
+  g.fillStyle = 'rgba(0,0,0,.55)'; const w = g.measureText(txt).width; g.fillRect(40, 60, w + 40, 58); g.fillStyle = '#fff'; g.fillText(txt, 60, 70); g.globalAlpha = 1;
+}
+
+// 1 Schrift in Streifen (Slice-Reveal)
+function sliceText(t, d, txt, col, bgc, fg = INK) {
+  bg(bgc); const n = 14, fs = 250;
+  g.font = `400 ${fs}px Anton`; g.textAlign = 'center'; g.textBaseline = 'middle';
+  for (let i = 0; i < n; i++) {
+    const y0 = H / 2 - fs * .62 + i * (fs * 1.24 / n), hh = fs * 1.24 / n + 1;
+    const inn = eo((t - i * .025) / .45), out = clamp((t - (d - .35) - i * .015) / .3);
+    const dx = (1 - inn) * (i % 2 ? 1 : -1) * 1200 + out * (i % 2 ? -1 : 1) * 1400;
+    g.save(); g.beginPath(); g.rect(0, y0, W, hh); g.clip(); g.fillStyle = fg; g.fillText(txt, W / 2 + dx, H / 2); g.restore();
+  }
+  // Akzentbalken
+  const bw = eo((t - .3) / .4) * 700; g.fillStyle = col; g.fillRect(W / 2 - bw / 2, H / 2 + fs * .72, bw, 26);
+}
+// 2 Laufband-Schrift, Reihen gegenläufig
+function marquee(t, d, txt) {
+  bg(LIME); g.font = '400 150px Anton'; g.textBaseline = 'middle'; g.textAlign = 'left';
+  const unit = g.measureText(txt + '  ').width;
+  for (let r = 0; r < 12; r++) {
+    const y = 120 + r * 160, dir = r % 2 ? 1 : -1, sp = 260 + (r % 3) * 90, off = ((t * sp * dir) % unit + unit) % unit;
+    const solid = r === 5 || r === 6;
+    g.fillStyle = solid ? INK : 'rgba(11,11,15,.0)'; g.strokeStyle = INK; g.lineWidth = 3;
+    for (let x = -unit + off; x < W + unit; x += unit) { if (solid) g.fillText(txt, x, y); else g.strokeText(txt, x, y); }
+  }
+}
+// 3 Wellen-Kachelmuster (Truchet) mit Farbwelle
+function waves(t, d) {
+  bg(PAPER); const s = 90, cols = Math.ceil(W / s) + 1, rows = Math.ceil(H / s) + 1;
+  g.lineWidth = 26; g.lineCap = 'round';
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
+    const x = i * s, y = j * s, flip = hash(i * 31 + j * 7) > .5;
+    const wave = Math.sin((i * .5 + j * .35) - t * 5), hot = wave > .55 && Math.abs(j * s - lerp(-200, H + 200, t / d)) < 520;
+    g.strokeStyle = hot ? ORANGE : INK;
+    g.save(); g.translate(x + s / 2, y + s / 2); g.rotate((flip ? Math.PI / 2 : 0) + (hot ? Math.sin(t * 8 + i) * .3 : 0));
+    g.beginPath(); g.arc(-s / 2, -s / 2, s / 2, 0, Math.PI / 2); g.stroke(); g.beginPath(); g.arc(s / 2, s / 2, s / 2, Math.PI, Math.PI * 1.5); g.stroke(); g.restore();
+  }
+}
+// 4 3D-Punktkugel, dreht und verformt sich
+function sphere(t, d, title) {
+  bg('#15161c'); const N = 1400, R = 330, cx = W / 2, cy = H / 2 - 40, rot = t * .9, tilt = .35;
+  const pts = [];
+  for (let i = 0; i < N; i++) {
+    const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), th = i * 2.39996;
+    let x = Math.cos(th) * r, z = Math.sin(th) * r, yy = y;
+    const k = 1 + .18 * Math.sin(yy * 6 + t * 3) * clamp(t / 1.2);   // Verformung
+    x *= k; z *= k; yy *= k * (1 + .1 * Math.sin(t * 2));
+    const xr = x * Math.cos(rot) - z * Math.sin(rot), zr = x * Math.sin(rot) + z * Math.cos(rot);
+    const yr = yy * Math.cos(tilt) - zr * Math.sin(tilt), zr2 = yy * Math.sin(tilt) + zr * Math.cos(tilt);
+    const p = 900 / (900 + zr2 * R); pts.push([cx + xr * R * p, cy + yr * R * p, zr2]);
+  }
+  const grow = eo(t / .5);
+  for (const [x, y, z] of pts.sort((a, b) => b[2] - a[2])) { g.fillStyle = `rgba(230,240,255,${.25 + .75 * (1 - (z + 1) / 2)})`; g.beginPath(); g.arc(cx + (x - cx) * grow, cy + (y - cy) * grow, 2.6 + (1 - z) * 1.6, 0, 6.283); g.fill(); }
+  g.font = '400 92px Anton'; g.textAlign = 'center'; g.fillStyle = CYAN; g.globalAlpha = clamp((t - .4) / .3); g.fillText(title, W / 2, cy + R + 230); g.globalAlpha = 1;
+}
+// 5 Stern-Explosion (Speichen) + Zahl
+function burst(t, d, num, sub) {
+  bg(ORANGE); const cx = W / 2, cy = H / 2 - 120, n = 14, p = back(clamp(t / .35), 2.2), rot = t * .8;
+  g.save(); g.translate(cx, cy); g.rotate(rot); g.strokeStyle = INK; g.lineCap = 'round';
+  for (let i = 0; i < n; i++) { const a = i / n * 6.283, L = (i % 2 ? 210 : 260) * p; g.lineWidth = 34; g.beginPath(); g.moveTo(Math.cos(a) * 40 * p, Math.sin(a) * 40 * p); g.lineTo(Math.cos(a) * L, Math.sin(a) * L); g.stroke(); }
+  g.restore();
+  // Zahl zählt hoch
+  const v = Math.round(lerp(0, num, eo((t - .2) / .9)));
+  g.font = '400 230px Anton'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = INK; g.fillText(v.toLocaleString('de-DE') + ' $', cx, cy + 470);
+  g.font = '400 56px Archivo'; g.fillText(sub, cx, cy + 640);
+}
+// 6 Zifferblatt: Ringe + Zeiger
+function dial(t, d, txt) {
+  bg('#101820'); const cx = W / 2, cy = H / 2 - 80;
+  g.strokeStyle = 'rgba(255,255,255,.25)'; g.lineWidth = 3;
+  for (const r of [360, 300, 240]) { g.beginPath(); g.arc(cx, cy, r * eo(t / .4), 0, 6.283); g.stroke(); }
+  for (let i = 0; i < 60; i++) { const a = i / 60 * 6.283 - Math.PI / 2, on = i / 60 < t / d; g.strokeStyle = on ? CYAN : 'rgba(255,255,255,.35)'; g.lineWidth = i % 5 ? 4 : 9; const r1 = i % 5 ? 330 : 310; g.beginPath(); g.moveTo(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1); g.lineTo(cx + Math.cos(a) * 360, cy + Math.sin(a) * 360); g.stroke(); }
+  const a = t * 7 - Math.PI / 2; g.strokeStyle = MAG; g.lineWidth = 12; g.lineCap = 'round'; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(a) * 280, cy + Math.sin(a) * 280); g.stroke();
+  const b = t * .6 - Math.PI / 2; g.strokeStyle = '#fff'; g.lineWidth = 18; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + Math.cos(b) * 190, cy + Math.sin(b) * 190); g.stroke();
+  g.fillStyle = '#fff'; g.beginPath(); g.arc(cx, cy, 20, 0, 6.283); g.fill();
+  g.font = '400 140px Anton'; g.textAlign = 'center'; g.fillStyle = '#fff'; g.globalAlpha = clamp((t - .3) / .2); g.fillText(txt, cx, cy + 600); g.globalAlpha = 1;
+}
+// 7 Punkte fliegen und formen eine Zahl
+let ZIEL = null;
+function targets(txt) {
+  const o = document.createElement('canvas'); o.width = 1080; o.height = 600; const x = o.getContext('2d');
+  x.font = '400 440px Anton'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillStyle = '#000'; x.fillText(txt, 540, 300);
+  const d = x.getImageData(0, 0, 1080, 600).data, out = [];
+  for (let y = 0; y < 600; y += 14) for (let xx = 0; xx < 1080; xx += 14) if (d[(y * 1080 + xx) * 4 + 3] > 128) out.push([xx, y + H / 2 - 400]);
+  return out;
+}
+function dotsForm(t, d, txt) {
+  bg('#f4f1ea'); if (!ZIEL) ZIEL = targets(txt);
+  ZIEL.forEach(([x, y], i) => {
+    const sx = hash(i) * W, sy = hash(i + 99) * H, u = eio((t - hash(i + 7) * .4) / .8);
+    g.fillStyle = i % 9 === 0 ? ORANGE : INK; g.beginPath(); g.arc(lerp(sx, x, u), lerp(sy, y, u), 5.5, 0, 6.283); g.fill();
+  });
+  g.font = '400 60px Archivo'; g.textAlign = 'center'; g.fillStyle = INK; g.globalAlpha = clamp((t - 1) / .2); g.fillText('nur so viel Wasser im Honig', W / 2, H / 2 + 330); g.globalAlpha = 1;
+}
+// 8 Play-Symbol mit kreisenden Punkten
+function playOrbit(t, d) {
+  bg('#1d2bd6'); const cx = W / 2, cy = H / 2, p = back(clamp(t / .3), 1.8);
+  for (let i = 0; i < 16; i++) { const a = i / 16 * 6.283 + t * 1.6, r = 300 + Math.sin(t * 4 + i) * 20; g.fillStyle = '#dfe6ff'; g.beginPath(); g.arc(cx + Math.cos(a) * r, cy + Math.sin(a) * r, 10, 0, 6.283); g.fill(); }
+  g.save(); g.translate(cx + 20, cy); g.scale(p, p); g.fillStyle = '#fff'; g.beginPath(); g.moveTo(-110, -150); g.lineTo(170, 0); g.lineTo(-110, 150); g.closePath(); g.fill(); g.restore();
+  g.font = '400 70px Archivo'; g.textAlign = 'center'; g.fillStyle = '#fff'; g.globalAlpha = clamp((t - .3) / .2); g.fillText('JETZT GEHT’S LOS', cx, cy + 520); g.globalAlpha = 1;
+}
+// 9 Farb-Hartschnitte im Takt
+function colorCuts(t, d) {
+  const B = 60 / 104 / 2, k = Math.floor(t / B), cols = [MAG, LIME, CYAN, ORANGE, '#fff', INK];
+  bg(cols[k % cols.length]); const words = ['3', 'FAKTEN', 'IN', '30', 'SEKUNDEN', '!'];
+  g.font = '400 260px Anton'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = k % cols.length === 5 ? '#fff' : INK;
+  g.save(); g.translate(W / 2, H / 2); g.scale(1 + .08 * (1 - (t % B) / B), 1 + .08 * (1 - (t % B) / B)); g.fillText(words[k % words.length], 0, 0); g.restore();
+}
+// 10 Logo-Ende: Krake + Strahlen + Titel
+function logoEnd(t, d) {
+  bg('#05061a');
+  g.save(); g.translate(W / 2, 860); g.rotate(t * .25); for (let i = 0; i < 24; i++) { g.rotate(6.283 / 24); g.fillStyle = i % 2 ? 'rgba(255,79,216,.10)' : 'rgba(63,240,255,.07)'; g.beginPath(); g.moveTo(0, 0); g.lineTo(-60, -1400); g.lineTo(60, -1400); g.fill(); } g.restore();
+  const p = back(clamp(t / .4), 1.6);
+  if (logo.naturalWidth) { g.save(); g.translate(W / 2, 960); g.scale(p, p); g.drawImage(logo, -W / 2, -H / 2, W, H); g.restore(); }
+  g.font = '400 140px Anton'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.globalAlpha = clamp((t - .5) / .3);
+  g.fillStyle = '#fff'; g.fillText('WUSSTEST', W / 2, 230); g.fillStyle = MAG; g.fillText('DU’S?', W / 2, 380); g.globalAlpha = 1;
+}
+
+// —— Ablauf ——
+const S = [
+  { d: 2.2, l: 'Schrift in Streifen', f: (t, d) => sliceText(t, d, '205.000 $', MAG, '#f2efe8') },
+  { d: 2.0, l: 'Laufband-Schrift', f: (t, d) => marquee(t, d, 'GTA 6 •') },
+  { d: 2.0, l: 'Wellenmuster + Farbwelle', f: waves },
+  { d: 2.6, l: '3D-Punktkugel', f: (t, d) => sphere(t, d, 'DIE VENUS DREHT RÜCKWÄRTS') },
+  { d: 2.2, l: 'Explosion + Zähler', f: (t, d) => burst(t, d, 205000, 'PRO BANKTRESOR') },
+  { d: 2.0, l: 'Zifferblatt', f: (t, d) => dial(t, d, '3 TAGE') },
+  { d: 2.2, l: 'Punkte formen Zahl', f: (t, d) => dotsForm(t, d, '17 %') },
+  { d: 1.6, l: 'Play-Symbol + Orbit', f: playOrbit },
+  { d: 1.73, l: 'Farb-Schnitte im Takt', f: colorCuts },
+  { d: 2.6, l: 'Logo-Ende', f: logoEnd },
+];
+let acc = 0; for (const s of S) { s.t0 = acc; acc += s.d; }
+window.DUR = acc;
+window.render = T => {
+  const s = S.findLast(s => T >= s.t0) || S[0], t = T - s.t0;
+  s.f(t, s.d);
+  // Wisch-Übergang: Balken fegt am Szenenende durch
+  const w = clamp((t - (s.d - .18)) / .18); if (w > 0) { g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = INK; g.fillRect(0, H * (1 - w), W, H * w); }
+  label(s.l, t);
+};
+window.EV = S.map(s => ({ t: s.t0, type: 'cut' }));
+window.TEXTS = () => []; window.READY = true;
+</script></body></html>
