@@ -28,7 +28,7 @@ szenen = [
      "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!", "min_dauer": 3.0},
 ]
 BILDER = ["geld", "laden", "geld", "skyline", "skyline", "laden"]
-OBJ = {"geld": ("geld", 540, 1050), "laden": ("laden", 540, 950), "skyline": ("skyline", 540, 800)}
+OBJ = {"geld": ("geld", 540, 1050), "laden": ("laden", 650, 1600), "skyline": ("skyline", 600, 880)}
 
 UEBER = [
     (hervorheben(*OBJ["geld"][1:], maske=M("geld"), art="puls", glanz=MAG, wort="milliarden") if hat("geld") else ""),

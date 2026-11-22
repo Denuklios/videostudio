@@ -53,7 +53,7 @@
    "label": "FAKT 1/3",
    "text": "Schon vor dem Start waren über zweiunddreißig Millionen Kopien verkauft.",
    "foto": "bilder/laden.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/016-gta6-rekord/bilder/maske_laden.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/016-gta6-rekord/bilder/maske_laden_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"kopien\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"kopien\" style=\"transform-box:view-box;transform-origin:650px 1600px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
    "fx": [
     {
      "typ": "punkte",
@@ -64,6 +64,11 @@
      "wort": "zweiunddreißig"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/016-gta6-rekord/bilder/maske_laden.png",
+    "x": 650,
+    "y": 1600
+   },
    "bild": ""
   },
   {
@@ -94,14 +99,24 @@
      "wort": "vierfache"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/016-gta6-rekord/bilder/maske_skyline.png",
+    "x": 600,
+    "y": 880
+   },
    "bild": ""
   },
   {
    "kopf": "<b>Größter Start</b> aller Zeiten",
    "text": "Rockstar nennt es den größten Unterhaltungs-Start der Geschichte.",
    "foto": "bilder/skyline.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/016-gta6-rekord/bilder/maske_skyline.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/016-gta6-rekord/bilder/maske_skyline_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"größten\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn2)\"/></g><g data-a=\"fade blink\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"größten\" style=\"transform-box:view-box;transform-origin:600px 880px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm2)\"/></g>",
    "fx": [],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/016-gta6-rekord/bilder/maske_skyline.png",
+    "x": 600,
+    "y": 880
+   },
    "bild": ""
   },
   {
@@ -116,6 +131,11 @@
      "d": 0
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/016-gta6-rekord/bilder/maske_laden.png",
+    "x": 650,
+    "y": 1600
+   },
    "bild": ""
   },
   {
@@ -123,7 +143,7 @@
    "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!",
    "min_dauer": 3.0,
    "foto": "../../kanal/schluss.png",
-   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "ueber": "<defs><mask id=\"hm3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn3)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm3)\"/></g>",
    "fx": [
     {
      "typ": "strahlen",
