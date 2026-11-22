@@ -20,9 +20,9 @@ Nur belegbare Fakten. Keine Spielszenen, Trailer-Clips, Rockstar-Logos oder Spie
 - [x] GTA 6: So wirst du schnell reich → videos/010-gta6-geld (geplant 2026-11-21 16:00)
 - [x] GTA 6 Glitches gehen viral → videos/011-gta6-glitches (geplant 2026-11-21 19:00)
 - [x] GTA 6 Rekordstart: 3,79 Mrd. $ an Tag 1, 32,5 Mio. Kopien vor Start (Rockstar/Take-Two), GTA 5: 816 Mio. $ → videos/016-gta6-rekord (geplant 22.11. 19:00)
-- [ ] Streaming-Weltrekord: 7,91 Mio. Zuschauer gleichzeitig (alle Plattformen), 4,5× mehr als der alte Rekord Valorant (1,74 Mio.) – Streams Charts
-- [ ] Twitch-Rekord: GTA 6 mit ~3,3 Mio. gleichzeitig überholt League of Legends (3,11 Mio.) – höchster Spiele-Peak der Twitch-Geschichte (Streams Charts)
-- [ ] 214 Mio. Stunden geschaut in nur 2 Tagen – das sind über 24.000 Jahre Video (Streams Charts; Umrechnung prüfen)
-- [ ] Leonida ist etwa doppelt so groß wie die GTA-5-Karte und rund 3× so groß wie Red Dead Redemption 2 (Rockstar/Aaron Garbut) – 6 Regionen
+- [x] (Foto-Beitrag 017, 22.11. 14:00) Streaming-Weltrekord: 7,91 Mio. Zuschauer gleichzeitig (alle Plattformen), 4,5× mehr als der alte Rekord Valorant (1,74 Mio.) – Streams Charts
+- [x] (Foto-Beitrag 017, 22.11. 14:00) Twitch-Rekord: GTA 6 mit ~3,3 Mio. gleichzeitig überholt League of Legends (3,11 Mio.) – höchster Spiele-Peak der Twitch-Geschichte (Streams Charts)
+- [x] (Foto-Beitrag 017, 22.11. 14:00) 214 Mio. Stunden geschaut in nur 2 Tagen – das sind über 24.000 Jahre Video (Streams Charts; Umrechnung prüfen)
+- [x] (Foto-Beitrag 017, 22.11. 14:00) Leonida ist etwa doppelt so groß wie die GTA-5-Karte und rund 3× so groß wie Red Dead Redemption 2 (Rockstar/Aaron Garbut) – 6 Regionen
 - [ ] Die 6 Regionen von Leonida: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, Mount Kalaga (Rockstar) – welche ist die echte Florida-Vorlage?
 - [ ] Laut Rockstar fast so groß wie GTA 4, GTA 5 und RDR2 zusammen (Edge) – Vergleich in Zahlen (nur offizielle Aussagen, Fan-Schätzungen kennzeichnen)
