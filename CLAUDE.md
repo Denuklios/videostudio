@@ -77,6 +77,9 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
     `fx_punktkugel` (Planeten/Atome), `fx_muster` (Übergang), `fx_farbschnitte` (Wortfolge im Takt), `fx_play`,
     `fx_strahlen` (hinter dem Logo am Ende). Jedes Video etwas anders kombinieren; in derselben Szene dann KEIN `zaehler`/`schild` mit derselben Zahl (doppelt). Beispiel: `videos/demo-fx`.
   - Kamerafahrten, wechselnde Übergänge, Soundeffekte (Wusch, Klick, Pling, Bass) macht die Engine automatisch.
+  - **Kommentare holen (22.11.: bisher 0 Kommentare):** in Metricool IMMER `firstCommentText` setzen – eine konkrete Frage,
+    auf die man antworten will (Redewendungen: „Welche Redewendung soll ich als Nächstes erklären? Schreib sie hier rein 👇“;
+    Fakten/GTA: Entweder-oder oder „1, 2 oder 3?“). Wünsche aus Kommentaren als nächste Folgen bauen, im Post „Wunsch von @name“.
   - **post.txt** endet IMMER mit „Wusstest du's? Schreib's in die Kommentare! 👇“ (Wunsch des Nutzers 20.11.), davor gern eine
     passende Frage zum Thema. Im Text darf „Wusstest du's?“ stehen – nur im Sprechtext nicht.
 - **Überarbeitungen:** Wird ein Video neu gebaut oder neu gerendert, IMMER alle aktuellen Regeln mit einbauen
