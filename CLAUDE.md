@@ -133,15 +133,16 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 ## Serie „Woher kommt das?“ – Redewendungen (Wunsch des Nutzers 22.11.)
 
-Redewendungs-Videos werden mit **Lemo-Opuscar** gebaut (NICHT mit Canva-Bildern, NICHT mit three.js – das sah „eigenartig“ aus):
-echte, animierte Filme in einem Lemo-Stil, der zur Herkunft passt. **Stile abwechseln** (nicht vergessen, Wunsch des Nutzers:
-„verliere das nicht aus den Augen“), z. B. `woodcut` (Holzschnitt, Jagd/Mittelalter – Vorlage `videos/018-lappen`),
-`gilded-illumination` (Buchmalerei), `engraving` (Kupferstich), `shadow-puppet`, `paper-popup`, `ukiyoe`, `watercolor`,
-`silent-film`, `comic-history` (✦ braucht Bildgenerator). Ablauf: `TREATMENT.md` → Stimme (Qwen3 Ryan, ganzer Text,
-Whisper-Wortzeiten → `tools/timeline.py`) → Bilder in Code (Lemo-Engine des Stils aus `$LIB/styles/<stil>/demo/engine`,
-ins Projekt kopieren) → `mix.py` → `build.sh` (video.mjs `--size 1080x1920`, mux.sh −14 LUFS, ffmpeg 7 im PATH).
-Hook ab Bild 0 lesbar (Titel), Untertitel im Stil (z. B. Buchdruck im Rand), Schluss mit Kanal-Logo + Kommentar-Aufruf.
-Tiere/Figuren laufen IMMER in Blickrichtung (Kopf vorn) – vor dem Rendern Standbilder prüfen.
+Redewendungs-Videos werden mit **Lemo-Opuscar im Stil „Paper Pop-up Book“** (`paper-popup`) gebaut – vom Nutzer gewählt.
+Vorlage: `videos/019-lappen-popup` (Buch auf dem Tisch, Cover-Titel = Hook ab Bild 0, Szenen springen als Papierfiguren hoch,
+Schild mit dem Spruch, am Ende Kanal-Logo + Schild „Wusstest du's?“). **Nicht** Holzschnitt (gefiel nicht), nicht three.js
+selbst gebaut, nicht Canva. Je Folge neue Kulisse/Farbwelt und neue Figuren (Szenerie passend zur Herkunft).
+- Stimme: Qwen3 Ryan, ganzer Text, Whisper-Wortzeiten → `tools/timeline.py` (Vorlage `videos/018-lappen/tools`).
+- **Ton leise halten** (Wunsch des Nutzers: Geräusche waren „fast lauter als die Stimme“): Stimme klar vorn,
+  Musik ×0,09 und Geräusche ×0,12 und zusätzlich unter der Stimme geduckt (Vorlage `mix.py` in 019).
+- **Rendern dauert ~55 min pro Film** (Software-WebGL): Folgen am Vorabend bauen, 2 Folgen nie parallel mit anderen Renders.
+- Vor dem Rendern Standbilder prüfen: Figuren laufen in Blickrichtung (Kopf vorn), nichts am Bildrand abgeschnitten
+  (Schilder schmaler als das Bild, Logo nicht vom Schild verdeckt), keine Gegenstände vor der Kamera.
 
 ## Foto-Beiträge (Wunsch des Nutzers 22.11.)
 
