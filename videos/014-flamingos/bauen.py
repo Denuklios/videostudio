@@ -29,7 +29,7 @@ szenen = [
 ]
 BILDER = ["kueken", "krebse", "krebse", "flamingo", "flamingo", "kueken"]
 # Hauptobjekt je Bild (Maske aus ausschneiden.py, Mitte x/y) – nur genutzt, wenn die Maske existiert
-OBJ = {"kueken": ("kueken", 620, 1250), "krebse": ("krebs", 540, 960), "flamingo": ("flamingo", 540, 900)}
+OBJ = {"kueken": ("kueken", 630, 1260), "krebse": ("krebs", 430, 790), "flamingo": ("flamingo", 470, 1000)}
 
 UEBER = [
     (hervorheben(*OBJ["kueken"][1:], maske=M("kueken"), art="puls", glanz=CYAN, wort="grau") if hat("kueken") else "")
