@@ -200,7 +200,7 @@ def main():
 
     # "auto" (Standard): ElevenLabs, solange Guthaben da ist, sonst die kostenlose Edge-Stimme
     wunsch = projekt.get("anbieter", "qwen")  # Standard ab 21.11.: Qwen3 im Wechsel Design/Ryan/Aiden, Ausweich: Killian
-    reihenfolge = {"auto": ["elevenlabs", "edge"], "elevenlabs": ["elevenlabs", "edge"], "qwen": ["qwen"]}  # kein Ausweichen auf andere Stimmen (nur Ryan).get(wunsch, ["edge"])
+    reihenfolge = {"auto": ["elevenlabs", "edge"], "elevenlabs": ["elevenlabs", "edge"], "qwen": ["qwen"]}.get(wunsch, ["qwen"])  # nur Ryan, kein Ausweichen
     stimme = projekt.get("stimme", "de-DE-KillianNeural")
     tempo = projekt.get("tempo", "+8%")
 
