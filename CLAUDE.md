@@ -131,6 +131,14 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
+## Foto-Beiträge (Wunsch des Nutzers 22.11.)
+
+TikTok schiebt Foto-Karussells extra an. Zusätzlich zu den Videos gern 1 Foto-Beitrag pro Tag (z. B. 14:00):
+Zahlen-Karten im Kanal-Look aus HTML (Vorlage `videos/017-fotos-gta-zahlen/bauen.js`, `node bauen.js` → `folie_N.png`),
+Cover + 3–5 Fakten (je eine große Zahl) + Schluss-Karte mit Profilbild und Kommentar-Aufruf. Nur NEUE Fakten, die in
+keinem Video vorkommen; Quelle klein auf jeder Karte. Metricool: `media` = alle PNG-URLs (raw GitHub), nur TikTok,
+`autoAddMusic: true`, `photoCoverIndex: 0`. Vorher an die Vorschau-Sitzung schicken.
+
 ## Vorschau vor dem Veröffentlichen (Wunsch des Nutzers 21.11.)
 
 Der Nutzer will JEDES Video vorher sehen – in einem eigenen Chat nur mit Videos: Sitzung **„🎬 Video-Vorschau“**
