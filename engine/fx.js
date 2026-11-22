@@ -149,7 +149,7 @@
     },
     // 9 Harte Farb-Schnitte im Takt, je ein Wort
     farbschnitte(t, d, o) {
-      const ws = o.woerter, B = d / ws.length, k = Math.min(ws.length - 1, Math.floor(t / B)), cols = [AK, LIME, '#3ff0ff', ORANGE, '#fff', INK];
+      const ws = o.woerter, B = d / ws.length, k = Math.min(ws.length - 1, Math.floor(t / B)), cols = [LIME, INK, '#3ff0ff', ORANGE, '#fff', AK]   // Akzentfarbe zuletzt: sonst verschwindet das hervorgehobene Untertitel-Wort;
       const col = cols[k % cols.length]; g.fillStyle = col; g.fillRect(0, 0, W, H);
       const q = (t % B) / B, s = 1 + .08 * (1 - q);
       g.save(); g.translate(W / 2, H / 2 - 100); g.scale(s, s); txt(ws[k], 0, 0, passend(ws[k], 980, 280), col === INK ? '#fff' : INK); g.restore();
