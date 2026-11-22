@@ -1,0 +1,8 @@
+„Durch die Lappen gehen“ – Wusstest du's? (@wusstestdu_s)
+Stil: Paper Pop-up Book aus der Lemo-Opuscar-Bibliothek (Engine: book.js, cutmesh.js, paper.js, art.js, post.js, lib.js) – github.com/lemomo-ai/lemo-opuscar
+three.js r170 (MIT)
+Walnuss-Textur, Schreibtischlampe: Poly Haven (CC0)
+Schriften: Fredoka, Lilita One, IM Fell English (SIL Open Font License 1.1), über fetch_fonts.mjs
+Stimme: Qwen3-TTS 0.6B-CustomVoice, Sprecher „Ryan“ (Apache-2.0); Zeiten/Prüfung: faster-whisper (MIT)
+Musik und Geräusche: selbst synthetisiert (mix.py)
+Logo: eigenes Kanal-Profilbild
