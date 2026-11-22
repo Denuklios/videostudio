@@ -74,16 +74,11 @@ def elevenlabs_vertonen(text, stimme_id, ziel_mp3):
 
 
 QWEN_PY, WHISPER_PY = "/root/qwen-venv/bin/python", "/root/stimme-venv/bin/python"
-QWEN_STIMMEN = ["design", "Ryan", "Aiden"]   # Wechsel je Video (Wunsch des Nutzers 21.11.)
+QWEN_STIMME = "Ryan"   # Wunsch des Nutzers 22.11.: NUR noch Ryan, alle anderen Stimmen raus
 
 
 def qwen_stimme_fuer(ordner, projekt):
-    if projekt.get("qwen_stimme"): return projekt["qwen_stimme"]
-    import re
-    m = re.match(r"(\d+)", ordner.name); n = int(m.group(1)) if m else 0
-    st = QWEN_STIMMEN[n % 3]
-    if st == "design": st = "design_tiktok" if "gta" in ordner.name.lower() else "design_erzaehler"
-    return st
+    return QWEN_STIMME
 
 
 def _lade_mono(wav, sr=24000):
@@ -205,7 +200,7 @@ def main():
 
     # "auto" (Standard): ElevenLabs, solange Guthaben da ist, sonst die kostenlose Edge-Stimme
     wunsch = projekt.get("anbieter", "qwen")  # Standard ab 21.11.: Qwen3 im Wechsel Design/Ryan/Aiden, Ausweich: Killian
-    reihenfolge = {"auto": ["elevenlabs", "edge"], "elevenlabs": ["elevenlabs", "edge"], "qwen": ["qwen", "edge"]}.get(wunsch, ["edge"])
+    reihenfolge = {"auto": ["elevenlabs", "edge"], "elevenlabs": ["elevenlabs", "edge"], "qwen": ["qwen"]}  # kein Ausweichen auf andere Stimmen (nur Ryan).get(wunsch, ["edge"])
     stimme = projekt.get("stimme", "de-DE-KillianNeural")
     tempo = projekt.get("tempo", "+8%")
 
