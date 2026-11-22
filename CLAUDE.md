@@ -34,7 +34,7 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
   nicht neonbunt. Canva-Prompt-Grundgerüst: „<Motiv>, realistic cinematic photography, natural colors, natural
   lighting, high detail, premium, not childish, no neon, no text“. Cyan (#3ff0ff) und Magenta (#ff4fd8) nur im festen
   Rahmen: Überschrift-Hervorhebung, Untertitel, Effekte, Logo am Ende. Profilbild: `kanal/profilbild.png`.
-- Schluss-Szene: gesprochen immer **„Wusstest du das? Schreib's in die Kommentare und folg für mehr!“** (Wunsch des Nutzers 20.11.) – nie „Wusstest-du's“ in den
+- Schluss-Szene: gesprochen immer **„Wusstest du das? Schreib's in die Kommentare und folg für mehr!“** (Wunsch des Nutzers 20.11.; Ausnahme Redewendungen, siehe „Kommentare holen“) – nie „Wusstest-du's“ in den
   Sprechtext schreiben, das spricht die Stimme falsch aus. Als Überschrift (kopf) darf „Wusstest du's?“ stehen.
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
   und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
@@ -77,7 +77,13 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
     `fx_punktkugel` (Planeten/Atome), `fx_muster` (Übergang), `fx_farbschnitte` (Wortfolge im Takt), `fx_play`,
     `fx_strahlen` (hinter dem Logo am Ende). Jedes Video etwas anders kombinieren; in derselben Szene dann KEIN `zaehler`/`schild` mit derselben Zahl (doppelt). Beispiel: `videos/demo-fx`.
   - Kamerafahrten, wechselnde Übergänge, Soundeffekte (Wusch, Klick, Pling, Bass) macht die Engine automatisch.
-  - **Kommentare holen (22.11.: bisher 0 Kommentare):** in Metricool IMMER `firstCommentText` setzen – eine konkrete Frage,
+  - **Kommentare holen (Wunsch des Nutzers 22.11. „mach 1, 2, 4“; bisher 0 Kommentare):**
+    1. **Redewendungen:** Schlusssatz gesprochen IMMER „Welche Redewendung soll ich als Nächstes erklären? Schreib sie in die
+       Kommentare und folg für mehr!“ (statt des normalen Schlusssatzes); Schild am Ende „Welche als Nächstes?“.
+       Wünsche, die der Nutzer aus den Kommentaren weitergibt, als nächste Folgen bauen, im Post „Wunsch von @name“.
+    2. **Fakten- und GTA-Videos: raten lassen.** Direkt nach dem Hook (2. Satz) eine Rate-Frage mit Auswahl, z. B.
+       „Was glaubst du: A oder B? Schreib's in die Kommentare, bevor ich's auflöse!“ – Auflösung erst später im Video.
+    4. In Metricool IMMER `firstCommentText` setzen – eine konkrete Frage,
     auf die man antworten will (Redewendungen: „Welche Redewendung soll ich als Nächstes erklären? Schreib sie hier rein 👇“;
     Fakten/GTA: Entweder-oder oder „1, 2 oder 3?“). Wünsche aus Kommentaren als nächste Folgen bauen, im Post „Wunsch von @name“.
   - **post.txt** endet IMMER mit „Wusstest du's? Schreib's in die Kommentare! 👇“ (Wunsch des Nutzers 20.11.), davor gern eine

@@ -1,9 +1,30 @@
 [
- {"id": "l1", "text": "Warum sagt man eigentlich: Er hat den Löffel abgegeben?"},
- {"id": "l2", "text": "Im Mittelalter hatte fast jeder nur einen einzigen eigenen Löffel."},
- {"id": "l3", "text": "Oft selbst geschnitzt. Man trug ihn immer bei sich, zum Essen aus dem gemeinsamen Topf."},
- {"id": "l4", "text": "Starb jemand, wurde sein Löffel an den Nächsten weitergegeben."},
- {"id": "l5", "text": "Wer den Löffel abgab, war also gestorben. Das ist die bekannteste Erklärung."},
- {"id": "l6", "text": "Und so wurde aus einem Holzlöffel ein Spruch, den wir heute noch sagen."},
- {"id": "l7", "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!"}
+ {
+  "id": "l1",
+  "text": "Warum sagt man eigentlich: Er hat den Löffel abgegeben?"
+ },
+ {
+  "id": "l2",
+  "text": "Im Mittelalter hatte fast jeder nur einen einzigen eigenen Löffel."
+ },
+ {
+  "id": "l3",
+  "text": "Oft selbst geschnitzt. Man trug ihn immer bei sich, zum Essen aus dem gemeinsamen Topf."
+ },
+ {
+  "id": "l4",
+  "text": "Starb jemand, wurde sein Löffel an den Nächsten weitergegeben."
+ },
+ {
+  "id": "l5",
+  "text": "Wer den Löffel abgab, war also gestorben. Das ist die bekannteste Erklärung."
+ },
+ {
+  "id": "l6",
+  "text": "Und so wurde aus einem Holzlöffel ein Spruch, den wir heute noch sagen."
+ },
+ {
+  "id": "l7",
+  "text": "Welche Redewendung soll ich als Nächstes erklären? Schreib sie in die Kommentare und folg für mehr!"
+ }
 ]

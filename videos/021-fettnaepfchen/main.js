@@ -43,7 +43,7 @@ const abdruck = A.cut(.012, .02, (x, w, h) => { x.fillStyle = 'rgba(120,90,40,.7
 const spuren = [0, 1, 2, 3, 4].map(i => { const m = cutMesh(abdruck, { shadow: false }); m.rotation.x = -Math.PI / 2; m.rotation.z = -Math.PI / 2; m.position.set(-.005 + i * .022, .0006, .2 + (i % 2 ? .008 : -.008)); m.visible = false; B.book.stage.add(m); return m; });
 const spruch = popper(schild('Ins Fettnäpfchen getreten!', .12), 0, 0, .27);
 const logo = popper(logoItem, -.05, .0, .21);
-const wds = popper(schild("Wusstest du's?", .085), .055, 0, .23);
+const wds = popper(schild('Welche als Nächstes?', .1), .06, 0, .23);
 
 // ---------- Zeitplan ----------
 const OPEN0 = K.l2 - .1, RAUM0 = OPEN0 + 1.2, NAPF0 = K.l2 + 1.6, STIEF0 = K.l3 + .3, GEH0 = K.l4, TRITT = K.l4 + 1.4, FRAU0 = RAUM0 + .6, BOESE = K.l5, SPRUCH0 = K.l6 + .4, END0 = K.l7 - .2;

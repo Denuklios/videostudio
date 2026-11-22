@@ -41,7 +41,7 @@ const wandernd = cutMesh(A.cut(.009, .022, loeffelZeichnen, { pad: 8, border: 6 
 const kerze = popper(A.cut(.012, .04, (x, w, h) => { x.beginPath(); x.roundRect(w * .2, h * .35, w * .6, h * .65, 6); sh(x, '#f4efe2', 8); x.beginPath(); x.ellipse(w / 2, h * .2, w * .25, h * .16, 0, 0, TAU); sh(x, '#ffcf5a', 6); }, { pad: 12, border: 8 }), -.15, 0, .23, 1e9, { sway: .04 });
 const spruch = popper(schild('Den Löffel abgegeben', .12), 0, 0, .27);
 const logo = popper(logoItem, -.05, .0, .21);
-const wds = popper(schild("Wusstest du's?", .085), .055, 0, .23);
+const wds = popper(schild('Welche als Nächstes?', .1), .06, 0, .23);
 
 // ---------- Zeitplan ----------
 const OPEN0 = K.l2 - .1, RAUM0 = OPEN0 + 1.2, FAM0 = K.l2 + 1.4, GROSS0 = K.l3 + .2, ALT0 = K.l4 - .2, GABE = K.l4 + .9, GEHT = K.l4 + 2.3, SPRUCH0 = K.l5 + 1.5, END0 = K.l7 - .2;
