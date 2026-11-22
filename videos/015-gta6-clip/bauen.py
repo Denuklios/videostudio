@@ -28,7 +28,7 @@ szenen = [
      "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!", "min_dauer": 3.0},
 ]
 BILDER = ["streamer", "streamer", "maus", "club", "club", "maus"]
-OBJ = {"streamer": ("streamer", 540, 1000), "maus": ("maus", 540, 1000), "club": ("club", 540, 900)}
+OBJ = {"streamer": ("streamer", 480, 1300), "maus": ("maus", 580, 1050), "club": ("club", 520, 1260)}
 
 UEBER = [
     "",
