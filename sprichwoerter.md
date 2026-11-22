@@ -4,9 +4,9 @@ Herkunft vor dem Bauen immer prüfen (Wiktionary, Duden-Herkunftswörterbuch, wi
 im Video ehrlich sagen („Die beliebteste Erklärung …“). Bilder: Gemälde-/Historien-Look (Mittelalter, Bauernhaus, Jagd).
 
 - [x] Durch die Lappen gehen → videos/019-lappen-popup (Pop-up, geplant 22.11. 20:30) – Jagd: Stofflappen an Leinen hielten das Wild im Revier; wer entkam, ging „durch die Lappen“ (gut belegt)
-- [ ] Etwas auf dem Kerbholz haben – Holzstab mit Kerben für Schulden, bis ins 18. Jh. üblich (gut belegt)
-- [ ] Ins Fettnäpfchen treten – Napf mit Fett/Stiefelfett am Boden im Bauernhaus, wer hineintrat, gab Ärger (gut belegt)
-- [ ] Den Löffel abgeben – jeder hatte seinen eigenen Löffel, beim Tod wurde er weitergegeben (beliebteste Erklärung)
+- [x] Etwas auf dem Kerbholz haben → videos/020-kerbholz (Pop-up, für 23.11. 14:00) – Holzstab mit Kerben für Schulden, bis ins 18. Jh. üblich (gut belegt)
+- [x] Ins Fettnäpfchen treten → videos/021-fettnaepfchen (Pop-up, für 23.11. 17:30) – Napf mit Fett/Stiefelfett am Boden im Bauernhaus, wer hineintrat, gab Ärger (gut belegt)
+- [x] Den Löffel abgeben → videos/022-loeffel (Pop-up, für 24.11. 14:00) – jeder hatte seinen eigenen Löffel, beim Tod wurde er weitergegeben (beliebteste Erklärung)
 - [ ] Jemandem auf den Leim gehen – Vogelfang mit Leimruten (gut belegt)
 - [ ] Pechvogel – Vögel, die an Pech-/Leimruten kleben blieben (gut belegt)
 - [ ] Einen Zahn zulegen – Kochtopf hing an einer Zahnstange über dem Feuer; einen Zahn tiefer = schneller kochen (beliebteste Erklärung, prüfen)

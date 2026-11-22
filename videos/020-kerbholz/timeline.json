@@ -1,0 +1,47 @@
+{
+ "dur": 29.34,
+ "vo": [
+  {
+   "id": "l1",
+   "t0": 0.25,
+   "t1": 3.505,
+   "text": "Warum sagt man eigentlich: Der hat etwas auf dem Kerbholz?"
+  },
+  {
+   "id": "l2",
+   "t0": 3.723,
+   "t1": 5.923,
+   "text": "Früher konnten viele Menschen weder lesen noch schreiben."
+  },
+  {
+   "id": "l3",
+   "t0": 6.505,
+   "t1": 10.086,
+   "text": "Schulden schnitzte man deshalb in einen Holzstab. Für jede Schuld eine Kerbe."
+  },
+  {
+   "id": "l4",
+   "t0": 10.432,
+   "t1": 14.905,
+   "text": "Dann wurde der Stab gespalten. Eine Hälfte bekam der Wirt, eine der Schuldner."
+  },
+  {
+   "id": "l5",
+   "t0": 15.505,
+   "t1": 19.086,
+   "text": "Zum Bezahlen legte man beide Hälften aneinander. Schummeln ging nicht."
+  },
+  {
+   "id": "l6",
+   "t0": 19.614,
+   "t1": 23.523,
+   "text": "Wer viel auf dem Kerbholz hatte, hatte also viel Schuld. Daher kommt der Spruch."
+  },
+  {
+   "id": "l7",
+   "t0": 23.905,
+   "t1": 26.741,
+   "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!"
+  }
+ ]
+}

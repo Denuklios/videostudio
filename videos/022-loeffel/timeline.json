@@ -1,0 +1,47 @@
+{
+ "dur": 34.24,
+ "vo": [
+  {
+   "id": "l1",
+   "t0": 0.25,
+   "t1": 3.49,
+   "text": "Warum sagt man eigentlich: Er hat den Löffel abgegeben?"
+  },
+  {
+   "id": "l2",
+   "t0": 3.94,
+   "t1": 7.54,
+   "text": "Im Mittelalter hatte fast jeder nur einen einzigen eigenen Löffel."
+  },
+  {
+   "id": "l3",
+   "t0": 7.99,
+   "t1": 13.39,
+   "text": "Oft selbst geschnitzt. Man trug ihn immer bei sich, zum Essen aus dem gemeinsamen Topf."
+  },
+  {
+   "id": "l4",
+   "t0": 13.84,
+   "t1": 17.08,
+   "text": "Starb jemand, wurde sein Löffel an den Nächsten weitergegeben."
+  },
+  {
+   "id": "l5",
+   "t0": 17.53,
+   "t1": 21.85,
+   "text": "Wer den Löffel abgab, war also gestorben. Das ist die bekannteste Erklärung."
+  },
+  {
+   "id": "l6",
+   "t0": 22.3,
+   "t1": 26.98,
+   "text": "Und so wurde aus einem Holzlöffel ein Spruch, den wir heute noch sagen."
+  },
+  {
+   "id": "l7",
+   "t0": 27.43,
+   "t1": 31.39,
+   "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!"
+  }
+ ]
+}
