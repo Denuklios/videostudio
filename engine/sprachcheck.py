@@ -13,5 +13,5 @@ txt = " ".join(s.text.strip() for s in segs)
 print("Erkannt:", txt)
 if len(sys.argv) > 2:
     norm = lambda s: re.sub(r"[^a-zäöüß0-9 ]", "", s.lower())
-    r = difflib.SequenceMatcher(None, norm(sys.argv[2]), norm(txt)).ratio()
+    r = difflib.SequenceMatcher(None, norm(sys.argv[2]).split(), norm(txt).split(), autojunk=False).ratio()  # wortweise, ohne autojunk (sonst schwankt der Wert bei langen Texten)
     print(f"Übereinstimmung: {r*100:.0f} %"); sys.exit(0 if r > .85 else 1)
