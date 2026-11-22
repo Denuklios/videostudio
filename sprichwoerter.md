@@ -3,7 +3,7 @@
 Herkunft vor dem Bauen immer prüfen (Wiktionary, Duden-Herkunftswörterbuch, wissen.de). Ist die Herkunft umstritten,
 im Video ehrlich sagen („Die beliebteste Erklärung …“). Bilder: Gemälde-/Historien-Look (Mittelalter, Bauernhaus, Jagd).
 
-- [ ] Durch die Lappen gehen – Jagd: Stofflappen an Leinen hielten das Wild im Revier; wer entkam, ging „durch die Lappen“ (gut belegt)
+- [x] Durch die Lappen gehen → videos/018-lappen (Woodcut) – Jagd: Stofflappen an Leinen hielten das Wild im Revier; wer entkam, ging „durch die Lappen“ (gut belegt)
 - [ ] Etwas auf dem Kerbholz haben – Holzstab mit Kerben für Schulden, bis ins 18. Jh. üblich (gut belegt)
 - [ ] Ins Fettnäpfchen treten – Napf mit Fett/Stiefelfett am Boden im Bauernhaus, wer hineintrat, gab Ärger (gut belegt)
 - [ ] Den Löffel abgeben – jeder hatte seinen eigenen Löffel, beim Tod wurde er weitergegeben (beliebteste Erklärung)

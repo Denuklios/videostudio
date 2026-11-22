@@ -131,6 +131,18 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 - **Fremdes Material:** Keine Clips, Trailer oder Screenshots aus Spielen/Filmen/Sendern und keine fremden Logos
   oder Figuren – nur eigene (Canva-)Bilder. Sonst Urheberrechts-Sperren.
 
+## Serie „Woher kommt das?“ – Redewendungen (Wunsch des Nutzers 22.11.)
+
+Redewendungs-Videos werden mit **Lemo-Opuscar** gebaut (NICHT mit Canva-Bildern, NICHT mit three.js – das sah „eigenartig“ aus):
+echte, animierte Filme in einem Lemo-Stil, der zur Herkunft passt. **Stile abwechseln** (nicht vergessen, Wunsch des Nutzers:
+„verliere das nicht aus den Augen“), z. B. `woodcut` (Holzschnitt, Jagd/Mittelalter – Vorlage `videos/018-lappen`),
+`gilded-illumination` (Buchmalerei), `engraving` (Kupferstich), `shadow-puppet`, `paper-popup`, `ukiyoe`, `watercolor`,
+`silent-film`, `comic-history` (✦ braucht Bildgenerator). Ablauf: `TREATMENT.md` → Stimme (Qwen3 Ryan, ganzer Text,
+Whisper-Wortzeiten → `tools/timeline.py`) → Bilder in Code (Lemo-Engine des Stils aus `$LIB/styles/<stil>/demo/engine`,
+ins Projekt kopieren) → `mix.py` → `build.sh` (video.mjs `--size 1080x1920`, mux.sh −14 LUFS, ffmpeg 7 im PATH).
+Hook ab Bild 0 lesbar (Titel), Untertitel im Stil (z. B. Buchdruck im Rand), Schluss mit Kanal-Logo + Kommentar-Aufruf.
+Tiere/Figuren laufen IMMER in Blickrichtung (Kopf vorn) – vor dem Rendern Standbilder prüfen.
+
 ## Foto-Beiträge (Wunsch des Nutzers 22.11.)
 
 TikTok schiebt Foto-Karussells extra an. Zusätzlich zu den Videos 1 Foto-Beitrag pro Tag (21:00):
