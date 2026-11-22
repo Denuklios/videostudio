@@ -133,7 +133,7 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
 
 ## Foto-Beiträge (Wunsch des Nutzers 22.11.)
 
-TikTok schiebt Foto-Karussells extra an. Zusätzlich zu den Videos gern 1 Foto-Beitrag pro Tag (z. B. 14:00):
+TikTok schiebt Foto-Karussells extra an. Zusätzlich zu den Videos 1 Foto-Beitrag pro Tag (21:00):
 Zahlen-Karten im Kanal-Look aus HTML (Vorlage `videos/017-fotos-gta-zahlen/bauen.js`, `node bauen.js` → `folie_N.png`),
 Cover + 3–5 Fakten (je eine große Zahl) + Schluss-Karte mit Profilbild und Kommentar-Aufruf. Nur NEUE Fakten, die in
 keinem Video vorkommen; Quelle klein auf jeder Karte. Metricool: `media` = alle PNG-URLs (raw GitHub), nur TikTok,
@@ -159,16 +159,20 @@ davon 2 GTA-Videos** (ab 21.11., weil GTA am besten läuft: 567 Aufrufe/18 Likes
 1. `git pull`. **Vorgebaute Videos:** Liegen für heute schon Ordner/Termine vor (z. B. am Vorabend gebaut, in den
    Themenlisten mit „für <Datum> <Uhrzeit>“ markiert, oder in Metricool schon eingeplant), KEINE neuen Videos für diese
    Uhrzeiten bauen – stattdessen die vorgebauten fertigstellen (fehlende Bilder, Rendern, Prüfen, Vorschau, Einplanen).
-2. **Themenwahl:** 2 Themen aus `gta_themen.md` (oberste offene) + 1 oberstes offenes Thema aus `themen.md`.
+2. **Themenwahl:** 2 Themen aus `gta_themen.md` (oberste offene) + 1 oberstes offenes Thema aus `themen.md`
+   + 2 Redewendungen aus `sprichwoerter.md`.
    Sind in `gta_themen.md` weniger als 8 offen: per WebSearch aktuelle GTA-6-News/Fakten suchen und neue,
    belegbare GTA-Themen ergänzen (Story-Hintergründe, Rekorde, Karte, Fahrzeuge, Easter Eggs, Vergleich GTA 5,
    Reaktionen, Verkaufszahlen – nur belegte Zahlen). Regeln für fremdes Material gelten (keine Spielszenen/Logos/Figuren).
-3. **Zeitplan:** 12:00 Fakten-Video, 16:00 und 19:00 GTA-Videos (Europe/Copenhagen). Ist eine Zeit schon vorbei
+3. **Zeitplan (ab 23.11., Wunsch des Nutzers 22.11.):** 12:00 Fakten-Video, **14:00 Redewendung**, 16:00 GTA-Video,
+   **17:30 Redewendung**, 19:00 GTA-Video, 21:00 Foto-Beitrag (Europe/Copenhagen). Redewendungen aus `sprichwoerter.md`
+   (oberste offene, Serie „Woher kommt das?“, Herkunft vorher prüfen; umstrittene Herkunft ehrlich sagen).
+   Sind dort weniger als 8 offen: neue, gut belegte Redewendungen recherchieren und ergänzen. Ist eine Zeit schon vorbei
    oder zu knapp, die nächste freie Lücke ≥ 2 h nach jetzt.
 4. **Canva-Bilder sparsam:** max. **4 Bilder pro Video** (Bilder dürfen in 2 Szenen vorkommen). Canva hat
    „quota_cooldown“ (≈ 1 Bild / 45 min nach mehreren Bildern): Bilder einzeln anfordern, bei Cooldown mit
    `send_later` (45 min) weitermachen, erzeugte Media-IDs in `videos/NNN/canva_ids.txt` notieren. Reihenfolge:
-   zuerst alle Bilder fürs 12-Uhr-Video, dann 16, dann 19. Exporte max. 3 Bilder pro Design, Duplikate prüfen.
+   nach Termin (12, 14, 16, 17:30, 19). Redewendungen: 2–3 Bilder reichen (Gemälde-Look), gern Openverse (gemeinfreie Gemälde). Exporte max. 3 Bilder pro Design, Duplikate prüfen.
    Wird es für ein Video zu knapp, den Termin verschieben (nächste freie Lücke) – NICHT mit Bildern aus anderen Videos bauen.
 5. **Metricool sperrt Beiträge kurz vor dem Termin** (ca. 15–20 min): Änderungen/Austausch spätestens 30 min vorher.
 5. **Veröffentlichung immer automatisch:** `autoPublish: true`. Mit `false` landet das Video nur als Entwurf.
