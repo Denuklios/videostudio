@@ -28,7 +28,7 @@ szenen = [
      "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!", "min_dauer": 3.0},
 ]
 BILDER = ["pyramiden", "koenigin", "pyramiden", "koenigin", "mond", "mond"]
-OBJ = {"pyramiden": ("pyramide", 540, 1000), "koenigin": ("koenigin", 540, 1000), "mond": ("astronaut", 540, 1000)}
+OBJ = {"pyramiden": ("pyramide", 650, 740), "koenigin": ("koenigin", 400, 1200), "mond": ("astronaut", 370, 1080)}
 
 UEBER = [
     (hervorheben(*OBJ["pyramiden"][1:], maske=M("pyramide"), art="puls", glanz=CYAN, wort="pyramiden") if hat("pyramide") else ""),
