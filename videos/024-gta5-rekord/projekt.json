@@ -1,0 +1,137 @@
+{
+ "titel": "GTA 5: Platz 3 aller Zeiten",
+ "datei": "gta5-rekord",
+ "stil": {
+  "bg1": "#0a0418",
+  "bg2": "#2a0a3a",
+  "akzent": "#ff4fd8",
+  "text": "#ffffff",
+  "form": "#3ff0ff"
+ },
+ "cover": {
+  "titel": "GTA 5: <b>235 Mio.</b> verkauft",
+  "szene": 0
+ },
+ "hook": {
+  "text": "235 Mio.<br><b>verkauft?!</b>",
+  "dauer": 1.4
+ },
+ "musik": "episch",
+ "emojis": {
+  "millionen": "💰",
+  "platz": "🏆",
+  "kommentare": "💬",
+  "minecraft": "⛏️",
+  "rockstar": "⭐"
+ },
+ "szenen": [
+  {
+   "kopf": "<b>235 Mio.</b> verkauft",
+   "text": "GTA 5 hat sich fast 235 Millionen Mal verkauft.",
+   "foto": "bilder/laden.png",
+   "ueber": "",
+   "fx": [
+    {
+     "typ": "explosion",
+     "dauer": 2.0,
+     "zahl": 235,
+     "vor": "",
+     "nach": " MIO.",
+     "unter": "VERKAUFT",
+     "x": 540,
+     "y": 820,
+     "von": 0,
+     "wort": "235",
+     "plus": -0.4
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Platz <b>1, 2 oder 3?</b>",
+   "text": "Was glaubst du: Platz eins, zwei oder drei der meistverkauften Spiele aller Zeiten? Schreib's in die Kommentare, bevor ich's auflöse!",
+   "foto": "bilder/podest.png",
+   "ueber": "",
+   "fx": [
+    {
+     "typ": "farbschnitte",
+     "dauer": 1.4,
+     "woerter": [
+      "PLATZ",
+      "1?",
+      "2?",
+      "3?"
+     ],
+     "wort": "platz"
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Seit <b>2013</b>",
+   "label": "FAKT 1/2",
+   "text": "Dabei ist GTA 5 schon 2013 erschienen. Vor über 13 Jahren.",
+   "foto": "bilder/stadt.png",
+   "ueber": "<g data-a=\"federn\" data-ton=\"klick\" data-wort=\"2013\"><rect x=\"313\" y=\"1249\" width=\"454\" height=\"102\" rx=\"51\" fill=\"#3ff0ff\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1325\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"70\" fill=\"#14101f\">SEIT 2013</text></g>",
+   "fx": [],
+   "bild": ""
+  },
+  {
+   "kopf": "Immer noch <b>gekauft</b>",
+   "label": "FAKT 2/2",
+   "text": "Und es verkauft sich weiter, sogar in der Woche, in der GTA 6 rauskam.",
+   "foto": "bilder/laden.png",
+   "ueber": "",
+   "fx": [],
+   "bild": ""
+  },
+  {
+   "kopf": "Die Antwort: <b>Platz 3</b>",
+   "text": "Die Antwort: Platz drei. Nur Minecraft und Tetris wurden öfter verkauft.",
+   "foto": "bilder/podest.png",
+   "ueber": "<g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"drei\"></g>",
+   "fx": [
+    {
+     "typ": "punkte",
+     "dauer": 2.0,
+     "text": "#3",
+     "unter": "NUR MINECRAFT UND TETRIS DAVOR",
+     "y": 820,
+     "wort": "drei"
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "<b>235 Mio.</b> Mal",
+   "text": "Fast 235 Millionen Mal. Kein anderes Rockstar-Spiel kommt da ran.",
+   "foto": "bilder/stadt.png",
+   "ueber": "",
+   "fx": [
+    {
+     "typ": "muster",
+     "dauer": 0.7,
+     "d": 0
+    }
+   ],
+   "bild": ""
+  },
+  {
+   "kopf": "Wusstest <b>du's?</b>",
+   "text": "Wusstest du das? Schreib's in die Kommentare und folg für mehr!",
+   "min_dauer": 3.0,
+   "foto": "../../kanal/schluss.png",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "fx": [
+    {
+     "typ": "strahlen",
+     "dauer": 4.0,
+     "x": 540,
+     "y": 860,
+     "d": 0.0
+    }
+   ],
+   "bild": ""
+  }
+ ]
+}
