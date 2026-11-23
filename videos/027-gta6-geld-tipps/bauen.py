@@ -62,7 +62,7 @@ projekt = {
     "hook": {"text": "GTA 6<br><b>Geld-Trick</b>", "dauer": 1.4},
     "musik": "spannend",
     "emojis": {"geld": "💰", "bargeld": "💵", "briefkasten": "📬", "schätzen": "🤿", "schiffswrack": "🚢", "speicher": "📌"},
-    "aussprache": {"GTA": "G T A", "6": "sechs", "1": "eins", "2": "zwei", "3": "drei", "Island": "Eiländ", "Dreams": "Driems", "Kenton": "Kenten", "Jasons": "Dschäisons"},
+    "aussprache": {"GTA": "Ge Te A", "6": "sechs", "1": "eins", "2": "zwei", "3": "drei", "Island": "Eiländ", "Dreams": "Driems", "Kenton": "Kenten", "Jasons": "Dschäisons"},
     "szenen": szenen,
 }
 (HIER / "projekt.json").write_text(json.dumps(projekt, ensure_ascii=False, indent=1))
