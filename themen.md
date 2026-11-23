@@ -8,7 +8,7 @@ Jedes Thema wird vor dem Video recherchiert; stimmt ein Fakt nicht, wird das The
 ## Offen
 
 - [x] Warum Flamingos rosa sind (und grau zur Welt kommen) → videos/014-flamingos (geplant 22.11. 12:00)
-- [ ] Kleopatra lebte näher an der Mondlandung als am Bau der Cheops-Pyramide
+- [x] Kleopatra lebte näher an der Mondlandung als am Bau der Cheops-Pyramide → videos/023-kleopatra (für 23.11. 12:00)
 - [ ] Wombats machen würfelförmigen Kot – und warum
 - [ ] Warum wir im Flugzeug Tomatensaft bestellen
 - [ ] Ein Tag auf dem Neptun – und wie kalt es dort wirklich ist

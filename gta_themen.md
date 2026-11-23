@@ -7,8 +7,8 @@ Nur belegbare Fakten. Keine Spielszenen, Trailer-Clips, Rockstar-Logos oder Spie
 - [x] Die meistgesehenen GTA-6-Clips: ohnePixel vorn mit über 519.000 Aufrufen (Streams Charts) – was Streamer zum Lachen bringt → videos/015-gta6-clip (geplant 22.11. 16:00)
 - [x] (übersprungen: politisch, spaltet den Kanal) Sogar das Weiße Haus macht mit: GTA-Montage als Werbung (Axios, 20.11.) – ein Spiel vereint das Internet
 - [ ] GTA 6 und echte Florida-Momente: Trailer zitiert virale „Florida Man“-Videos (Sportskeeda) – welche echten Vorbilder
-- [ ] GTA 5: das erfolgreichste Unterhaltungsprodukt aller Zeiten? Umsatz, Verkäufe, Rekorde (Fakten prüfen) – Bezug zum GTA-6-Start
-- [ ] Vice City: von 2002 bis GTA 6 – Geschichte der Stadt und ihr Vorbild Miami (Fakten prüfen)
+- [x] (→ videos/024-gta5-rekord, für 23.11. 16:00) GTA 5: das erfolgreichste Unterhaltungsprodukt aller Zeiten? Umsatz, Verkäufe, Rekorde (Fakten prüfen) – Bezug zum GTA-6-Start
+- [x] (→ videos/025-vice-city, für 23.11. 19:00) Vice City: von 2002 bis GTA 6 – Geschichte der Stadt und ihr Vorbild Miami (Fakten prüfen)
 - [ ] GTA 6 Launch-Rekorde: Streaming-Zuschauer, Vorbestellungen, erste Verkaufszahlen – nur offizielle/seriöse Zahlen
 - [ ] GTA 6 vs. GTA 5: Was ist neu? (nur offiziell bestätigte Unterschiede)
 - [ ] Wie lange hat Rockstar an GTA 6 gearbeitet? Entwicklungszeit und Team (belegte Angaben)
