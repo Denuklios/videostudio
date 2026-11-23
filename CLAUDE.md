@@ -25,6 +25,28 @@ Ohne Rückfragen den ganzen Ablauf durchziehen (Details: `ANLEITUNG.md`):
    - Konto, Uhrzeit und ob sofort veröffentlicht oder als Entwurf: siehe „Einstellungen“ unten.
      Ist dort nichts festgelegt, vor dem ersten Veröffentlichen einmal nachfragen.
 
+## NUR hilfreicher Content (Wunsch des Nutzers 23.11. – hat Vorrang vor allen älteren Regeln)
+
+„Ich will, dass es funktioniert mit Klicks, Views, dranbleiben und liken. Mir egal wie. Nur noch hilfreichen Content.“
+Anlass: TikTok hat „GTA 6: So wirst du schnell reich“ extra geboostet (+327 Aufrufe), weil Leute es über die **Suche** fanden
+(„hilfreicher Beitrag“). Reine Staun-Fakten (Kleopatra, Flamingos …) werden NICHT mehr gebaut.
+
+- **Jedes Video beantwortet eine Frage, die Leute bei TikTok suchen** oder gibt Tipps, die man sofort anwenden kann:
+  GTA-6-Tipps (Geld, Autos, Polizei abhängen, Verstecke, Anfängerfehler, Steuerung/Tricks), Alltags-Hilfe
+  („Warum …?“, „Wie …?“, Lifehacks mit Begründung), Redewendungen („Woher kommt …?“ – erklärt eine echte Suchfrage).
+  Themenlisten: `hilfe_themen.md` (GTA-Tipps + Alltagsfragen) und `sprichwoerter.md`. `themen.md`/`gta_themen.md` nicht mehr nutzen.
+- **Suchbegriff (Keyword) überall:** 1. gesprochener Satz enthält ihn wörtlich („GTA 6 Geld Trick: …“), Hook-Text im Bild
+  enthält ihn, TikTok-Titel = die Suchfrage, Beschreibung ≥ 150 Zeichen mit Keyword + 2–3 verwandten Suchbegriffen in ganzen Sätzen.
+- **Aufbau:** Hook = Ergebnis/Versprechen („So bekommst du 10.000 $ in Kapitel 1“) → sofort Tipp 1 (kein Intro) →
+  nummerierte Tipps (`"label": "TIPP 1/3"`), jeder mit konkretem Wert/Ort/Taste → bester Tipp zuletzt („Tipp 3 ist der beste“
+  schon im Hook ankündigen = dranbleiben) → kurzer Schluss: „Speicher dir das und folg für mehr!“ (Speichern zählt bei TikTok stark).
+- **Länge 25–40 s**, kurze Sätze. Nur belegte Tipps (mind. 2 Guide-Quellen übereinstimmend; Beträge als „ca.“), Quellen in `quellen.txt`.
+- **firstCommentText:** konkrete Frage zum Thema („Welchen Tipp kanntest du noch nicht: 1, 2 oder 3?“).
+- **Aussprache:** NUR Qwen3 Ryan. JEDE Szene nach dem Erzeugen mit `engine/sprachcheck.py` prüfen; unter 90 % → Satz
+  umformulieren/lautschriftlich schreiben und neu erzeugen. Zahlen/Abkürzungen im Sprechtext ausschreiben
+  („G T A sechs“, „zehntausend Dollar“, „Kapitel eins“), englische Namen notfalls eindeutschen.
+- **Lieber 3 starke als 5 mittelmäßige Videos pro Tag.**
+
 ## Einstellungen des Nutzers
 
 - Kanal: **„Wusstest du's?“** – TikTok `@wusstestdu_s`. Instagram noch offen.
@@ -181,16 +203,16 @@ davon 2 GTA-Videos** (ab 21.11., weil GTA am besten läuft: 567 Aufrufe/18 Likes
 1. `git pull`. **Vorgebaute Videos:** Liegen für heute schon Ordner/Termine vor (z. B. am Vorabend gebaut, in den
    Themenlisten mit „für <Datum> <Uhrzeit>“ markiert, oder in Metricool schon eingeplant), KEINE neuen Videos für diese
    Uhrzeiten bauen – stattdessen die vorgebauten fertigstellen (fehlende Bilder, Rendern, Prüfen, Vorschau, Einplanen).
-2. **Themenwahl:** 2 Themen aus `gta_themen.md` (oberste offene) + 1 oberstes offenes Thema aus `themen.md`
-   + 2 Redewendungen aus `sprichwoerter.md`.
-   Sind in `gta_themen.md` weniger als 8 offen: per WebSearch aktuelle GTA-6-News/Fakten suchen und neue,
-   belegbare GTA-Themen ergänzen (Story-Hintergründe, Rekorde, Karte, Fahrzeuge, Easter Eggs, Vergleich GTA 5,
-   Reaktionen, Verkaufszahlen – nur belegte Zahlen). Regeln für fremdes Material gelten (keine Spielszenen/Logos/Figuren).
-3. **Zeitplan (ab 23.11., Wunsch des Nutzers 22.11.):** 12:00 Fakten-Video, **14:00 Redewendung**, 16:00 GTA-Video,
-   **17:30 Redewendung**, 19:00 GTA-Video, 21:00 Foto-Beitrag (Europe/Copenhagen). Redewendungen aus `sprichwoerter.md`
-   (oberste offene, Serie „Woher kommt das?“, Herkunft vorher prüfen; umstrittene Herkunft ehrlich sagen).
-   Sind dort weniger als 8 offen: neue, gut belegte Redewendungen recherchieren und ergänzen. Ist eine Zeit schon vorbei
-   oder zu knapp, die nächste freie Lücke ≥ 2 h nach jetzt.
+2. **Themenwahl (ab 23.11., nur hilfreicher Content):** 2 GTA-6-Tipp-Videos + 1 Alltagsfrage aus `hilfe_themen.md`
+   (oberste offene) + 1 Redewendung aus `sprichwoerter.md`. Sind in `hilfe_themen.md` weniger als 8 offen: per WebSearch
+   neue Fragen/Tipps recherchieren, die Leute wirklich suchen (Guide-Seiten, „how to“, „warum“), nur mit ≥ 2 Quellen.
+   Regeln für fremdes Material gelten (keine Spielszenen/Logos/Figuren).
+3. **Zeitplan (ab 23.11.):** 12:00 Alltagsfrage, 14:00 Redewendung, 16:00 GTA-Tipps, 19:00 GTA-Tipps,
+   21:00 Foto-Beitrag (Tipps als Karten, z. B. „5 GTA-6-Tipps zum Speichern“) (Europe/Copenhagen).
+   Redewendungen: oberste offene aus `sprichwoerter.md`, Herkunft vorher prüfen; umstrittene Herkunft ehrlich sagen.
+   Ist eine Zeit schon vorbei oder zu knapp, die nächste freie Lücke ≥ 2 h nach jetzt.
+   **Metricool-Limit:** Der Tarif erlaubt nur 20 Veröffentlichungen pro Monat (im Nov. erreicht am 22.11.). Scheitert ein
+   Beitrag mit „account limit“, dem Nutzer Video + Beschreibung/Hashtags/Titel zum selbst Posten schicken.
 4. **Canva-Bilder sparsam:** max. **4 Bilder pro Video** (Bilder dürfen in 2 Szenen vorkommen). Canva hat
    „quota_cooldown“ (≈ 1 Bild / 45 min nach mehreren Bildern): Bilder einzeln anfordern, bei Cooldown mit
    `send_later` (45 min) weitermachen, erzeugte Media-IDs in `videos/NNN/canva_ids.txt` notieren. Reihenfolge:
