@@ -157,7 +157,7 @@ selbst gebaut, nicht Canva. Je Folge neue Kulisse/Farbwelt und neue Figuren (Sze
 
 TikTok schiebt Foto-Karussells extra an. Zusätzlich zu den Videos 1 Foto-Beitrag pro Tag (21:00):
 Zahlen-Karten im Kanal-Look aus HTML (Vorlage `videos/017-fotos-gta-zahlen/bauen.js`, `node bauen.js` → `folie_N.png`),
-Cover + 3–5 Fakten (je eine große Zahl) + Schluss-Karte mit Profilbild und Kommentar-Aufruf. Nur NEUE Fakten, die in
+Cover + 3–5 Fakten (je eine große Zahl) + Schluss-Karte mit Profilbild und Kommentar-Aufruf. **Bilder als JPG** (`folie_N.jpg`) hochladen – TikTok lehnt PNG bei Foto-Beiträgen ab (Fehler 22.11.). Nur NEUE Fakten, die in
 keinem Video vorkommen; Quelle klein auf jeder Karte. Metricool: `media` = alle PNG-URLs (raw GitHub), nur TikTok,
 `autoAddMusic: true`, `photoCoverIndex: 0`. Vorher an die Vorschau-Sitzung schicken.
 
