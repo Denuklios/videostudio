@@ -22,7 +22,7 @@
   "bargeld": "💵",
   "briefkasten": "📬",
   "schätzen": "🤿",
-  "wrack": "🚢",
+  "schiffswrack": "🚢",
   "speicher": "📌"
  },
  "aussprache": {
@@ -33,13 +33,13 @@
   "3": "drei",
   "Island": "Eiländ",
   "Dreams": "Driems",
-  "Kenton": "Kentn",
+  "Kenton": "Kenten",
   "Jasons": "Dschäisons"
  },
  "szenen": [
   {
    "kopf": "GTA 6 <b>Geld-Tipps</b>",
-   "text": "GTA 6 Geld-Tipps für Kapitel 1. Tipp 3 bringt am meisten.",
+   "text": "GTA 6: So kommst du in Kapitel 1 schnell an Geld. Tipp 3 bringt am meisten.",
    "foto": "bilder/dielen.png",
    "ueber": "",
    "fx": [
@@ -77,7 +77,7 @@
   {
    "kopf": "<b>Schätze</b> tauchen",
    "label": "TIPP 3/3",
-   "text": "Tipp 3: Nach der Mission Island Dreams tauchst du für Kenton nach Schätzen in alten Wracks.",
+   "text": "Tipp 3: Nach der Mission Island Dreams tauchst du für Kenton nach Schätzen in alten Schiffswracks.",
    "foto": "bilder/taucher.png",
    "ueber": "<g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"mission\"></g>",
    "fx": [
@@ -93,7 +93,7 @@
   },
   {
    "kopf": "Sofort <b>kassieren</b>",
-   "text": "Du musst nicht das ganze Wrack leeren. Bring ihm jeden Fund und kassier sofort ab.",
+   "text": "Du musst nicht jedes Schiffswrack ganz leeren. Bring ihm jeden Fund und kassier sofort ab.",
    "foto": "bilder/hafen.png",
    "ueber": "",
    "fx": [

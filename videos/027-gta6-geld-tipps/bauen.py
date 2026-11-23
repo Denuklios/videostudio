@@ -13,15 +13,15 @@ hat = lambda n: (B / f"maske_{n}.png").exists()
 
 szenen = [
     {"kopf": "GTA 6 <b>Geld-Tipps</b>",
-     "text": "GTA 6 Geld-Tipps für Kapitel 1. Tipp 3 bringt am meisten."},
+     "text": "GTA 6: So kommst du in Kapitel 1 schnell an Geld. Tipp 3 bringt am meisten."},
     {"kopf": "Bargeld <b>verstecken</b>", "label": "TIPP 1/3",
      "text": "Tipp 1: Stirbst du oder wirst du verhaftet, ist dein Bargeld weg. Versteck es unter den losen Dielen in Jasons Zimmer."},
     {"kopf": "<b>Briefkasten</b> leeren", "label": "TIPP 2/3",
      "text": "Tipp 2: Schau nach jeder Mission in den Briefkasten. Dort landet dein Lohn."},
     {"kopf": "<b>Schätze</b> tauchen", "label": "TIPP 3/3",
-     "text": "Tipp 3: Nach der Mission Island Dreams tauchst du für Kenton nach Schätzen in alten Wracks."},
+     "text": "Tipp 3: Nach der Mission Island Dreams tauchst du für Kenton nach Schätzen in alten Schiffswracks."},
     {"kopf": "Sofort <b>kassieren</b>",
-     "text": "Du musst nicht das ganze Wrack leeren. Bring ihm jeden Fund und kassier sofort ab."},
+     "text": "Du musst nicht jedes Schiffswrack ganz leeren. Bring ihm jeden Fund und kassier sofort ab."},
     {"kopf": "Speichern & <b>folgen</b>",
      "text": "Speicher dir das und folg für mehr!", "min_dauer": 2.6},
 ]
@@ -61,8 +61,8 @@ projekt = {
     "cover": {"titel": "GTA 6 <b>Geld-Tipps</b>", "szene": 0},
     "hook": {"text": "GTA 6<br><b>Geld-Trick</b>", "dauer": 1.4},
     "musik": "spannend",
-    "emojis": {"geld": "💰", "bargeld": "💵", "briefkasten": "📬", "schätzen": "🤿", "wrack": "🚢", "speicher": "📌"},
-    "aussprache": {"GTA": "G T A", "6": "sechs", "1": "eins", "2": "zwei", "3": "drei", "Island": "Eiländ", "Dreams": "Driems", "Kenton": "Kentn", "Jasons": "Dschäisons"},
+    "emojis": {"geld": "💰", "bargeld": "💵", "briefkasten": "📬", "schätzen": "🤿", "schiffswrack": "🚢", "speicher": "📌"},
+    "aussprache": {"GTA": "G T A", "6": "sechs", "1": "eins", "2": "zwei", "3": "drei", "Island": "Eiländ", "Dreams": "Driems", "Kenton": "Kenten", "Jasons": "Dschäisons"},
     "szenen": szenen,
 }
 (HIER / "projekt.json").write_text(json.dumps(projekt, ensure_ascii=False, indent=1))
