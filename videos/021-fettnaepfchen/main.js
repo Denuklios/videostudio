@@ -3,7 +3,7 @@ import { basis, THREE, A, sh, crescent, INK, paperFill, mulberry, track, seg, ei
 import { cutMesh } from './cutmesh.js';
 
 const B = await basis({
-  coverZeilen: [['italic 96px "IM Fell English"', 'Woher kommt', .24], ['190px "Lilita One"', '»Ins', .43], ['210px "Lilita One"', 'Fettnäpfchen', .63], ['170px "Lilita One"', 'treten«?', .80]],
+  coverZeilen: [['italic 96px "IM Fell English"', 'Woher kommt', .24], ['190px "Lilita One"', '»Ins', .43], ['170px "Lilita One"', 'Fettnäpfchen', .63], ['170px "Lilita One"', 'treten«?', .80]],
   coverIcon: (x, px, py, w, h) => {       // Napf mit Fett
     x.save(); x.translate(px + w * .15, py + h * .4); x.lineWidth = 10; x.strokeStyle = INK;
     x.fillStyle = '#8a6a4a'; x.beginPath(); x.moveTo(0, 0); x.lineTo(w * .7, 0); x.lineTo(w * .6, h * .3); x.lineTo(w * .1, h * .3); x.closePath(); x.fill(); x.stroke();
@@ -42,8 +42,8 @@ const spritzer = Array.from({ length: 7 }, (_, i) => { const m = cutMesh(tropfen
 const abdruck = A.cut(.012, .02, (x, w, h) => { x.fillStyle = 'rgba(120,90,40,.75)'; x.beginPath(); x.ellipse(w / 2, h * .35, w * .45, h * .33, 0, 0, TAU); x.fill(); x.beginPath(); x.ellipse(w / 2, h * .82, w * .35, h * .17, 0, 0, TAU); x.fill(); }, { pad: 4, border: 0, raw: true });
 const spuren = [0, 1, 2, 3, 4].map(i => { const m = cutMesh(abdruck, { shadow: false }); m.rotation.x = -Math.PI / 2; m.rotation.z = -Math.PI / 2; m.position.set(-.005 + i * .022, .0006, .2 + (i % 2 ? .008 : -.008)); m.visible = false; B.book.stage.add(m); return m; });
 const spruch = popper(schild('Ins Fettnäpfchen getreten!', .12), 0, 0, .27);
-const logo = popper(logoItem, -.05, .0, .21);
-const wds = popper(schild('Welche als Nächstes?', .1), .06, 0, .23);
+const logo = popper(logoItem, -.052, .0, .21);
+const wds = popper(schild('Welche als Nächstes?', .095), .05, 0, .23);
 
 // ---------- Zeitplan ----------
 const OPEN0 = K.l2 - .1, RAUM0 = OPEN0 + 1.2, NAPF0 = K.l2 + 1.6, STIEF0 = K.l3 + .3, GEH0 = K.l4, TRITT = K.l4 + 1.4, FRAU0 = RAUM0 + .6, BOESE = K.l5, SPRUCH0 = K.l6 + .4, END0 = K.l7 - .2;
@@ -57,9 +57,9 @@ const CAM = track([
   [STIEF0 + .4, [-.02, .09, .5, -.02, .03, .2]],              // Napf + Stiefel nah
   [GEH0 + .3, [-.06, .1, .58, -.06, .04, .2]],
   [TRITT + .3, [-.01, .1, .62, -.01, .045, .2]],              // der Tritt
-  [BOESE + .4, [.03, .13, .74, .03, .06, .18]],                // Gast + Bäuerin
+  [BOESE + .4, [.03, .13, .8, .03, .06, .18]],                 // Gast + Bäuerin
   [SPRUCH0 + .6, [0, .16, .85, 0, .07, .2]],
-  [END0 + 1.2, [0, .2, .72, 0, .06, .2]], [DUR, [0, .2, .7, 0, .06, .2]],
+  [END0 + 1.2, [0, .2, .82, 0, .06, .2]], [DUR, [0, .2, .8, 0, .06, .2]],
 ]);
 
 window.DUR = DUR;
@@ -67,11 +67,11 @@ window.render = t => {
   // Gast: kommt durch die Tür, geht nach rechts, tritt in den Napf, geht weiter (Fettspuren)
   if (t > RAUM0 + .8 && t < END0) {
     let x = -.17, pose = 'steh';
-    if (t > GEH0) { const u = seg(t, GEH0, TRITT + 1.6); x = lerp(-.17, .05, u); pose = u > 0 && u < 1 ? (Math.floor(t * 6) % 2 ? 'a' : 'b') : 'steh'; }
+    if (t > GEH0) { const u = seg(t, GEH0, TRITT + 1.6); x = lerp(-.17, -.01, u); pose = u > 0 && u < 1 ? (Math.floor(t * 6) % 2 ? 'a' : 'b') : 'steh'; }
     if (t > BOESE) pose = 'oh';
     zeige(GAST, pose, x, 0, .2, back(seg(t, RAUM0 + .8, RAUM0 + 1.2), 1.6));
   } else zeige(GAST, null);
-  zeige(FRAU, t < BOESE ? 'ruhig' : 'boese', .13, 0, .19, back(seg(t, FRAU0, FRAU0 + .4), 1.6) * (1 - eio(seg(t, END0, END0 + .4))));
+  zeige(FRAU, t < BOESE ? 'ruhig' : 'boese', .1, 0, .19, back(seg(t, FRAU0, FRAU0 + .4), 1.6) * (1 - eio(seg(t, END0, END0 + .4))));
   const sp = seg(t, TRITT, TRITT + .7);
   spritzer.forEach((m, i) => { const a = -Math.PI * (.15 + i * .1); m.visible = sp > 0 && sp < 1; m.position.set(-.03 + Math.cos(a) * .03 * sp, .012 + Math.sin(Math.PI * sp) * .025 * (1 + i % 3 * .3), .205); });
   spuren.forEach((m, i) => { m.visible = t > TRITT + .3 + i * .25 && t < END0; });
