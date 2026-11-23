@@ -124,8 +124,14 @@ def qwen_vorbereiten(projekt, audio, ordner):
     import difflib, re
     st = qwen_stimme_fuer(ordner, projekt)
     texte = [sz["text"].strip() for sz in projekt["szenen"]]
+    # Aussprache: {"GTA": "G T A", "6": "sechs"} – nur für die Stimme; Untertitel zeigen den Originaltext
+    aus = projekt.get("aussprache", {})
+    def sprich(w):
+        kern = re.sub(r"^[^\wÄÖÜäöü]+|[^\wÄÖÜäöü]+$", "", w)
+        return w.replace(kern, aus[kern]) if kern and kern in aus else w
+    gesprochen = [" ".join(sprich(w) for w in tx.split()) for tx in texte]
     gesamt_wav, wjson = audio / "qwen_gesamt.wav", audio / "qwen_woerter.json"
-    ein = json.dumps({"text": " ".join(texte), "stimme": st}, ensure_ascii=False)
+    ein = json.dumps({"text": " ".join(gesprochen), "stimme": st}, ensure_ascii=False)
     alt = (audio / "qwen_in.json").read_text() if (audio / "qwen_in.json").exists() else ""
     if alt != ein or not gesamt_wav.exists() or not wjson.exists():   # gleicher Text + Stimme → Aufnahme wiederverwenden
         (audio / "qwen_in.json").write_text(ein)
@@ -133,19 +139,25 @@ def qwen_vorbereiten(projekt, audio, ordner):
         subprocess.run([WHISPER_PY, str(Path(__file__).with_name("woerter.py")), str(gesamt_wav), str(wjson)], check=True)
     ww = json.loads(wjson.read_text())
     norm = lambda x: re.sub(r"[^a-zäöüß0-9]", "", x.lower())
-    tw, szene_von, textwoerter = [], [], []
+    tw, szene_von, textwoerter, sp_von = [], [], [], []   # sp_von: gesprochenes Wort → Textwort-Index
     for i, tx in enumerate(texte):
-        for w in tx.split(): tw.append(norm(w)); szene_von.append(i); textwoerter.append(w)
+        for w in tx.split():
+            k = len(textwoerter); textwoerter.append(w); szene_von.append(i)
+            for s_ in sprich(w).split(): tw.append(norm(s_)); sp_von.append(k)
     hw = [norm(w["wort"]) for w in ww]
-    zu = {}   # Textwort-Index → Whisper-Index
+    zu_sp = {}   # gesprochener Index → Whisper-Index
     for tag, a1, a2, b1, b2 in difflib.SequenceMatcher(None, tw, hw, autojunk=False).get_opcodes():
-        for k in range(a2 - a1): zu[a1 + k] = min(b2 - 1, b1 + k) if b2 > b1 else max(0, b1 - 1)
+        for k in range(a2 - a1): zu_sp[a1 + k] = min(b2 - 1, b1 + k) if b2 > b1 else max(0, b1 - 1)
+    zu, zu_ende = {}, {}   # Textwort → erstes / letztes Whisper-Wort
+    for j, k in enumerate(sp_von):
+        if j in zu_sp:
+            zu.setdefault(k, zu_sp[j]); zu_ende[k] = zu_sp[j]
     # Schnittpunkte zwischen den Szenen
     sig = _lade_mono(gesamt_wav)
     grenzen = [0.0]
     for i in range(len(texte) - 1):
         last = max(j for j, s_ in enumerate(szene_von) if s_ == i); nxt = last + 1
-        a, b = ww[zu[last]]["ende"], ww[zu[nxt]]["start"]
+        a, b = ww[zu_ende[last]]["ende"], ww[zu[nxt]]["start"]
         grenzen.append(_leiseste_stelle(sig, a, b))
     grenzen.append(len(sig) / 24000)
     for k in range(1, len(grenzen)):   # Schutz: jede Szene mindestens 0,3 s (sehr kurze Szenen wie „Karma.“)
@@ -159,8 +171,8 @@ def qwen_vorbereiten(projekt, audio, ordner):
         ws = []
         for k, (txw, s_) in enumerate(zip(textwoerter, szene_von)):
             if s_ != i or k not in zu: continue
-            w = ww[zu[k]]
-            ws.append({"wort": txw, "start": max(0, (w["start"] - t0) / 1.1), "ende": max(0, (w["ende"] - t0) / 1.1)})
+            w, we = ww[zu[k]], ww[zu_ende[k]]
+            ws.append({"wort": txw, "start": max(0, (w["start"] - t0) / 1.1), "ende": max(0, (we["ende"] - t0) / 1.1)})
         teile.append((mp3, ws))
     print("Qwen3-Stimme:", st)
     return teile
