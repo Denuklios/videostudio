@@ -54,6 +54,11 @@
      "wort": "geld"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_geld.png",
+    "x": 650,
+    "y": 1290
+   },
    "bild": ""
   },
   {
@@ -61,8 +66,13 @@
    "label": "TIPP 1/3",
    "text": "Tipp 1: Stirbst du oder wirst du verhaftet, ist dein Bargeld weg. Versteck es unter den losen Dielen in Jasons Zimmer.",
    "foto": "bilder/dielen.png",
-   "ueber": "<g data-a=\"federn\" data-ton=\"klick\" data-wort=\"weg\"><rect x=\"253\" y=\"1454\" width=\"573\" height=\"93\" rx=\"46\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1523\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"64\" fill=\"#14101f\">BARGELD = WEG</text></g>",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_geld.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_geld_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"dielen\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"dielen\" style=\"transform-box:view-box;transform-origin:650px 1290px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g><g data-a=\"federn\" data-ton=\"klick\" data-wort=\"weg\"><rect x=\"253\" y=\"1454\" width=\"573\" height=\"93\" rx=\"46\" fill=\"#ff4fd8\" stroke=\"#14101f\" stroke-width=\"8\"/><text x=\"540\" y=\"1523\" text-anchor=\"middle\" font-family=\"Titel\" font-size=\"64\" fill=\"#14101f\">BARGELD = WEG</text></g>",
    "fx": [],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_geld.png",
+    "x": 650,
+    "y": 1290
+   },
    "bild": ""
   },
   {
@@ -70,8 +80,13 @@
    "label": "TIPP 2/3",
    "text": "Tipp 2: Schau nach jeder Mission in den Briefkasten. Dort landet dein Lohn.",
    "foto": "bilder/briefkasten.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_briefkasten.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_briefkasten_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"briefkasten\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn2)\"/></g><g data-a=\"fade blink\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"briefkasten\" style=\"transform-box:view-box;transform-origin:430px 1000px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm2)\"/></g>",
    "fx": [],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_briefkasten.png",
+    "x": 430,
+    "y": 1000
+   },
    "bild": ""
   },
   {
@@ -79,7 +94,7 @@
    "label": "TIPP 3/3",
    "text": "Tipp 3: Nach der Mission Island Dreams tauchst du für Kenton nach Schätzen in alten Schiffswracks.",
    "foto": "bilder/taucher.png",
-   "ueber": "<g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"mission\"></g>",
+   "ueber": "<defs><mask id=\"hm3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_taucher.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_taucher_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"schätzen\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn3)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"schätzen\" style=\"transform-box:view-box;transform-origin:290px 620px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm3)\"/></g><g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"mission\"></g>",
    "fx": [
     {
      "typ": "streifen",
@@ -89,13 +104,18 @@
      "wort": "mission"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_taucher.png",
+    "x": 290,
+    "y": 620
+   },
    "bild": ""
   },
   {
    "kopf": "Sofort <b>kassieren</b>",
    "text": "Du musst nicht jedes Schiffswrack ganz leeren. Bring ihm jeden Fund und kassier sofort ab.",
    "foto": "bilder/hafen.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm4\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_schatz.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn4\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_schatz_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"fund\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn4)\"/></g><g data-a=\"fade blink\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"fund\" style=\"transform-box:view-box;transform-origin:630px 1270px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm4)\"/></g>",
    "fx": [
     {
      "typ": "muster",
@@ -103,6 +123,11 @@
      "d": 0
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/027-gta6-geld-tipps/bilder/maske_schatz.png",
+    "x": 630,
+    "y": 1270
+   },
    "bild": ""
   },
   {
@@ -110,7 +135,7 @@
    "text": "Speicher dir das und folg für mehr!",
    "min_dauer": 2.6,
    "foto": "../../kanal/schluss.png",
-   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "ueber": "<defs><mask id=\"hm5\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn5\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn5)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm5)\"/></g>",
    "fx": [
     {
      "typ": "strahlen",
