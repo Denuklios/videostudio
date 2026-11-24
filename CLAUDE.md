@@ -46,6 +46,14 @@ Anlass: TikTok hat „GTA 6: So wirst du schnell reich“ extra geboostet (+327 
   umformulieren/lautschriftlich schreiben und neu erzeugen. Zahlen/Abkürzungen im Sprechtext ausschreiben
   („G T A sechs“, „zehntausend Dollar“, „Kapitel eins“), englische Namen notfalls eindeutschen.
 - **Lieber 3 starke als 5 mittelmäßige Videos pro Tag.**
+- **Rückmeldung 24.11. zu 027 (GTA-Geldtipps, abgelehnt):** „Spricht bescheuert, klingt kacke. Die Tipps sind langweilig. Kaum
+  Spannung. Schau in andere Richtungen, nicht nur GTA. Hauptsache Mehrwert.“ Daraus folgt:
+  - **Themen breit:** Geld sparen, Handy/Technik-Tricks, Gesundheit/Körper, Psychologie, Haushalt, Recht im Alltag, Essen,
+    Auto, Reisen … GTA höchstens 1× pro Tag und nur mit wirklich überraschenden Tipps.
+  - **Nur Tipps mit Aha-Effekt:** etwas, das die meisten NICHT wissen und sofort nutzen können (kein „leere den Briefkasten“).
+  - **Spannung:** Einstieg mit Problem/Verlust („Du verschenkst jeden Monat Geld – ohne es zu merken“), offene Schleife
+    („der dritte Trick ist fast verboten gut“), jeder Tipp mit Begründung/Folge, Bildwechsel alle 2–3 s, Tempo hoch.
+  - **Stimme:** keine Lautschrift-Tricks mehr, die künstlich klingen; Wörter, die die Stimme nicht kann, im Skript vermeiden.
 
 ## Einstellungen des Nutzers
 
@@ -203,11 +211,11 @@ davon 2 GTA-Videos** (ab 21.11., weil GTA am besten läuft: 567 Aufrufe/18 Likes
 1. `git pull`. **Vorgebaute Videos:** Liegen für heute schon Ordner/Termine vor (z. B. am Vorabend gebaut, in den
    Themenlisten mit „für <Datum> <Uhrzeit>“ markiert, oder in Metricool schon eingeplant), KEINE neuen Videos für diese
    Uhrzeiten bauen – stattdessen die vorgebauten fertigstellen (fehlende Bilder, Rendern, Prüfen, Vorschau, Einplanen).
-2. **Themenwahl (ab 23.11., nur hilfreicher Content):** 2 GTA-6-Tipp-Videos + 1 Alltagsfrage aus `hilfe_themen.md`
+2. **Themenwahl (ab 24.11., nur hilfreicher Content, breit):** 2–3 Alltags-/Wissens-Tipps + höchstens 1 GTA-Tipp-Video aus `hilfe_themen.md`
    (oberste offene) + 1 Redewendung aus `sprichwoerter.md`. Sind in `hilfe_themen.md` weniger als 8 offen: per WebSearch
    neue Fragen/Tipps recherchieren, die Leute wirklich suchen (Guide-Seiten, „how to“, „warum“), nur mit ≥ 2 Quellen.
    Regeln für fremdes Material gelten (keine Spielszenen/Logos/Figuren).
-3. **Zeitplan (ab 23.11.):** 12:00 Alltagsfrage, 14:00 Redewendung, 16:00 GTA-Tipps, 19:00 GTA-Tipps,
+3. **Zeitplan (ab 24.11.):** 12:00 Alltags-Tipp, 14:00 Redewendung, 16:00 Alltags-Tipp, 19:00 Tipp (GTA oder Alltag),
    21:00 Foto-Beitrag (Tipps als Karten, z. B. „5 GTA-6-Tipps zum Speichern“) (Europe/Copenhagen).
    Redewendungen: oberste offene aus `sprichwoerter.md`, Herkunft vorher prüfen; umstrittene Herkunft ehrlich sagen.
    Ist eine Zeit schon vorbei oder zu knapp, die nächste freie Lücke ≥ 2 h nach jetzt.
