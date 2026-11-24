@@ -26,7 +26,7 @@ szenen = [
      "text": "Speicher dir das und folg für mehr GTA-Geheimnisse!", "min_dauer": 2.4},
 ]
 BILDER = ["block", "garage", "garage", "kofferraum", "block"]
-OBJ = {"block": ("block", 540, 900), "garage": ("auto", 540, 1150), "kofferraum": ("schlange", 540, 1100)}
+OBJ = {"block": ("block", 540, 880), "garage": ("auto", 550, 1050), "kofferraum": ("schlange", 640, 1130)}
 def hv(n, wort, art="puls", glanz=MAG):
     m, x, y = OBJ[n]
     return hervorheben(x, y, maske=M(m), art=art, glanz=glanz, wort=wort) if hat(m) else ""

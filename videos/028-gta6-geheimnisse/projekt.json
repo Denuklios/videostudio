@@ -30,8 +30,13 @@
    "kopf": "GTA 6: <b>Geheimes Mario?!</b>",
    "text": "In GTA 6 ist ein geheimes Mario-Easter-Egg versteckt. Und kaum einer hat es gefunden.",
    "foto": "bilder/block.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_block.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_block_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"mario\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"mario\" style=\"transform-box:view-box;transform-origin:540px 880px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
    "fx": [],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_block.png",
+    "x": 540,
+    "y": 880
+   },
    "bild": ""
   },
   {
@@ -52,6 +57,11 @@
      "wort": "zwei"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_auto.png",
+    "x": 550,
+    "y": 1050
+   },
    "bild": ""
   },
   {
@@ -59,7 +69,7 @@
    "label": "GEHEIMNIS 1/3",
    "text": "In einer Villa auf Vespucci Island steht in der Garage ein Mitsubishi Eclipse. Genau das Auto von Paul Walker aus Fast and Furious.",
    "foto": "bilder/garage.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_auto.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn2\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_auto_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"mitsubishi\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn2)\"/></g><g data-a=\"fade blink\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"mitsubishi\" style=\"transform-box:view-box;transform-origin:550px 1050px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm2)\"/></g>",
    "fx": [
     {
      "typ": "streifen",
@@ -69,6 +79,11 @@
      "wort": "paul"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_auto.png",
+    "x": 550,
+    "y": 1050
+   },
    "bild": ""
   },
   {
@@ -76,8 +91,13 @@
    "label": "GEHEIMNIS 2/3",
    "text": "Jetzt öffne den Kofferraum. Da springt dich eine Schlange an. Eine Anspielung auf Toy Story.",
    "foto": "bilder/kofferraum.png",
-   "ueber": "<g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"springt\"></g>",
+   "ueber": "<defs><mask id=\"hm3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_schlange.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn3\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_schlange_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"schlange\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn3)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"schlange\" style=\"transform-box:view-box;transform-origin:640px 1130px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm3)\"/></g><g data-beben=\"1.1\" data-bdauer=\"0.5\" data-ton=\"bass\" data-wort=\"springt\"></g>",
    "fx": [],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_schlange.png",
+    "x": 640,
+    "y": 1130
+   },
    "bild": ""
   },
   {
@@ -85,7 +105,7 @@
    "label": "GEHEIMNIS 3/3",
    "text": "Und jetzt das Krasseste: Irgendwo steht ein Block wie bei Super Mario. Schieß drauf, und Jason und Lucia bekommen die Mützen von Mario und Luigi.",
    "foto": "bilder/block.png",
-   "ueber": "",
+   "ueber": "<defs><mask id=\"hm4\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_block.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn4\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_block_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-halten=\"2.6\" data-wort=\"schieß\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn4)\"/></g><g data-a=\"fade blink\" data-l=\"0.45\" data-halten=\"2.6\" data-wort=\"schieß\" style=\"transform-box:view-box;transform-origin:540px 880px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #3ff0ff) drop-shadow(0 0 40px #3ff0ff)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm4)\"/></g>",
    "fx": [
     {
      "typ": "streifen",
@@ -95,6 +115,11 @@
      "wort": "mützen"
     }
    ],
+   "objekt": {
+    "maske": "/home/user/videostudio/videos/028-gta6-geheimnisse/bilder/maske_block.png",
+    "x": 540,
+    "y": 880
+   },
    "bild": ""
   },
   {
@@ -102,7 +127,7 @@
    "text": "Speicher dir das und folg für mehr GTA-Geheimnisse!",
    "min_dauer": 2.4,
    "foto": "../../kanal/schluss.png",
-   "ueber": "<defs><mask id=\"hm1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn1\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn1)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm1)\"/></g>",
+   "ueber": "<defs><mask id=\"hm5\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask><mask id=\"hn5\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"><image href=\"file:///home/user/videostudio/kanal/maske_logo_inv.png\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\"/></mask></defs><g data-a=\"fade\" data-l=\"0.35\" data-wort=\"folg\"><rect x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" fill=\"#000\" opacity=\".6\" mask=\"url(#hn5)\"/></g><g data-a=\"heben puls\" data-l=\"0.45\" data-wort=\"folg\" style=\"transform-box:view-box;transform-origin:540px 860px;filter:brightness(1.3) saturate(1.3) drop-shadow(0 0 18px #ff4fd8) drop-shadow(0 0 40px #ff4fd8)\"><image href=\"__FOTO__\" x=\"0\" y=\"0\" width=\"1080\" height=\"1920\" preserveAspectRatio=\"xMidYMid slice\" mask=\"url(#hm5)\"/></g>",
    "fx": [
     {
      "typ": "strahlen",

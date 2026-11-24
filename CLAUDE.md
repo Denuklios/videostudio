@@ -65,6 +65,9 @@ die bei anderen funktionieren, ein bisschen abgewandelt.“ (Führerschein-/Umta
   trendingsoup.com/tttrends/de) + Gaming-News der letzten 48 h. Stand 23.11.: #gta6 1,3 Mrd. Aufrufe (+106 %), #lucia +150 %.
 - **Format, das bei anderen funktioniert, abwandeln:** z. B. „GTA 6 Easter Eggs/Geheimnisse, die kaum einer gefunden hat“,
   „Streamer X hat das entdeckt“, Ranking/Top 3, „Das sagt dir das Spiel nicht“. Frische Funde (≤ 48 h) zuerst.
+- **Bild-Prompts (Wunsch des Nutzers 24.11.: „Prompts so anlegen, dass es so macht, wie du es haben willst“):** jeder Prompt
+  beginnt mit „Vertical 9:16 portrait format, tall composition, main subject centered in the middle third,“ – der Nutzer
+  erzeugt Bilder teils selbst; Querformat-Bilder werden sonst nur mit unscharfem Rand ins Hochformat gesetzt.
 - **Stimme (24.11.):** Qwen3 **Design „TikTok“** (`design_tiktok`, Standard in `stimme.py`), Tempo ×1,2. Ryan war „zu langsam,
   klingt kacke“. Keine Lautschrift-Tricks.
 
