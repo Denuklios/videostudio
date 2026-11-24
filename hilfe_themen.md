@@ -5,7 +5,7 @@ Keine Spielszenen, Logos oder Rockstar-Figuren – eigene Bilder.
 
 ## GTA 6 – Tipps
 
-- [ ] GTA 6 schnell Geld in Kapitel 1: Kentons Schatztauchgänge (ca. 1.400 $ erstes Wrack), Illegale Geschäfte ausrauben, Briefkasten nach Missionen leeren – und: Bargeld geht beim Tod/Festnahme verloren → Geld zu Hause verstecken (keengamer, alcasthq, gamedaily, game-checklists)
+- [x] (→ videos/027-gta6-geld-tipps, für 24.11. 16:00) GTA 6 schnell Geld in Kapitel 1: Kentons Schatztauchgänge (ca. 1.400 $ erstes Wrack), Illegale Geschäfte ausrauben, Briefkasten nach Missionen leeren – und: Bargeld geht beim Tod/Festnahme verloren → Geld zu Hause verstecken (keengamer, alcasthq, gamedaily, game-checklists)
 - [ ] GTA 6 Polizei loswerden: bei 1 Stern mit dem Polizisten reden statt fliehen (Kotaku/Red Bull prüfen) + weitere belegte Tricks
 - [ ] GTA 6 Autos verkaufen: Moses kauft Autos ohne Tracker ab Kapitel 2 – Mittelklasse oft über 10.000 $ (Guides prüfen)
 - [ ] GTA 6 versteckte Mechaniken: Safe mit jeder Explosion öffnen, Fokus-Modus (beide Sticks drücken), Essen beim Fahren (Kotaku, Red Bull)
