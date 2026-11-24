@@ -74,11 +74,12 @@ def elevenlabs_vertonen(text, stimme_id, ziel_mp3):
 
 
 QWEN_PY, WHISPER_PY = "/root/qwen-venv/bin/python", "/root/stimme-venv/bin/python"
-QWEN_STIMME = "Ryan"   # Wunsch des Nutzers 22.11.: NUR noch Ryan, alle anderen Stimmen raus
+QWEN_STIMME = "design_tiktok"   # Wunsch des Nutzers 24.11.: „Mach mal die Stimme Design“ (Ryan klang zu langsam)
+TEMPO = 1.2   # schneller als früher (1,1), Ryan war „zu langsam“
 
 
 def qwen_stimme_fuer(ordner, projekt):
-    return QWEN_STIMME
+    return projekt.get("qwen_stimme", QWEN_STIMME)
 
 
 def _lade_mono(wav, sr=24000):
@@ -115,7 +116,7 @@ def _schneiden(sig, t0, t1, ziel, sr=24000):
     with wave.open(str(roh), "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
         w.writeframes((np.clip(teil, -1, 1) * 32767).astype("<i2").tobytes())
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(roh), "-af", "atempo=1.1", str(ziel)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(roh), "-af", f"atempo={TEMPO}", str(ziel)], check=True)
     roh.unlink()
 
 
@@ -172,7 +173,7 @@ def qwen_vorbereiten(projekt, audio, ordner):
         for k, (txw, s_) in enumerate(zip(textwoerter, szene_von)):
             if s_ != i or k not in zu: continue
             w, we = ww[zu[k]], ww[zu_ende[k]]
-            ws.append({"wort": txw, "start": max(0, (w["start"] - t0) / 1.1), "ende": max(0, (we["ende"] - t0) / 1.1)})
+            ws.append({"wort": txw, "start": max(0, (w["start"] - t0) / TEMPO), "ende": max(0, (we["ende"] - t0) / TEMPO)})
         teile.append((mp3, ws))
     print("Qwen3-Stimme:", st)
     return teile

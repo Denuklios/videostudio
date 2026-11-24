@@ -42,7 +42,7 @@ Anlass: TikTok hat „GTA 6: So wirst du schnell reich“ extra geboostet (+327 
   schon im Hook ankündigen = dranbleiben) → kurzer Schluss: „Speicher dir das und folg für mehr!“ (Speichern zählt bei TikTok stark).
 - **Länge 25–40 s**, kurze Sätze. Nur belegte Tipps (mind. 2 Guide-Quellen übereinstimmend; Beträge als „ca.“), Quellen in `quellen.txt`.
 - **firstCommentText:** konkrete Frage zum Thema („Welchen Tipp kanntest du noch nicht: 1, 2 oder 3?“).
-- **Aussprache:** NUR Qwen3 Ryan. JEDE Szene nach dem Erzeugen mit `engine/sprachcheck.py` prüfen; unter 90 % → Satz
+- **Aussprache:** Stimme siehe „Zielgruppe & Trends“ (Design TikTok). JEDE Szene nach dem Erzeugen mit `engine/sprachcheck.py` prüfen; unter 90 % → Satz
   umformulieren/lautschriftlich schreiben und neu erzeugen. Zahlen/Abkürzungen im Sprechtext ausschreiben
   („G T A sechs“, „zehntausend Dollar“, „Kapitel eins“), englische Namen notfalls eindeutschen.
 - **Lieber 3 starke als 5 mittelmäßige Videos pro Tag.**
@@ -54,6 +54,19 @@ Anlass: TikTok hat „GTA 6: So wirst du schnell reich“ extra geboostet (+327 
   - **Spannung:** Einstieg mit Problem/Verlust („Du verschenkst jeden Monat Geld – ohne es zu merken“), offene Schleife
     („der dritte Trick ist fast verboten gut“), jeder Tipp mit Begründung/Folge, Bildwechsel alle 2–3 s, Tempo hoch.
   - **Stimme:** keine Lautschrift-Tricks mehr, die künstlich klingen; Wörter, die die Stimme nicht kann, im Skript vermeiden.
+
+## Zielgruppe & Trends (Wunsch des Nutzers 24.11. – hat Vorrang)
+
+„TikTok ist für junge Leute, nicht für alte. Aktuelle Themen, die bei großen Streamern funktionieren. Auf Züge aufspringen,
+die bei anderen funktionieren, ein bisschen abgewandelt.“ (Führerschein-/Umtausch-Themen = „Asbach uralt“, abgelehnt.)
+- **Zielgruppe 13–25.** Themen: was gerade bei großen Streamern/Creatorn läuft (GTA 6, Gaming, Streamer-Momente, virale
+  Internet-Trends, Black Friday Gaming-Deals …). KEINE Themen für Ältere (Führerschein, Rente, Umtauschrecht …).
+- **Vor jedem Tageslauf Trends prüfen:** TikTok-Creative-Center-Daten für DE (z. B. ignix.social/trends/hashtags,
+  trendingsoup.com/tttrends/de) + Gaming-News der letzten 48 h. Stand 23.11.: #gta6 1,3 Mrd. Aufrufe (+106 %), #lucia +150 %.
+- **Format, das bei anderen funktioniert, abwandeln:** z. B. „GTA 6 Easter Eggs/Geheimnisse, die kaum einer gefunden hat“,
+  „Streamer X hat das entdeckt“, Ranking/Top 3, „Das sagt dir das Spiel nicht“. Frische Funde (≤ 48 h) zuerst.
+- **Stimme (24.11.):** Qwen3 **Design „TikTok“** (`design_tiktok`, Standard in `stimme.py`), Tempo ×1,2. Ryan war „zu langsam,
+  klingt kacke“. Keine Lautschrift-Tricks.
 
 ## Einstellungen des Nutzers
 
@@ -69,7 +82,7 @@ Anlass: TikTok hat „GTA 6: So wirst du schnell reich“ extra geboostet (+327 
 - Metricool: Marke `blogId 8000715` (Zeitzone Europe/Copenhagen). Darin sind TikTok „Wusstest du's?“
   und Instagram `wunsch_fabrik_dk` verbunden. **Immer nur `providers: [{"network":"tiktok"}]`** –
   Instagram `wunsch_fabrik_dk` ist das Geschäftskonto und bekommt nie diese Videos.
-- Stimme (Wunsch des Nutzers 22.11.): **NUR Qwen3-TTS „Ryan“** – alle anderen Stimmen (Design, Aiden, Killian, Piper …) raus.
+- Stimme (ÜBERHOLT 24.11. → Design „TikTok“, siehe oben; alt 22.11.): **NUR Qwen3-TTS „Ryan“** – alle anderen Stimmen (Design, Aiden, Killian, Piper …) raus.
   Standard in `stimme.py` (`anbieter` "qwen", `QWEN_STIMME = "Ryan"`). Ganzer Text wird in EINEM Durchgang gesprochen und per
   Whisper-Wortzeiten in Szenen geschnitten (Schnitt an der leisesten Stelle), Tempo ×1,1. Dauer ca. 7 min pro Video – früh starten.
   Fällt Qwen aus: NICHT mit anderer Stimme veröffentlichen, sondern Qwen neu starten (notfalls Termin verschieben).
