@@ -27,7 +27,7 @@ szenen = [
 ]
 BILDER = ["dielen", "dielen", "briefkasten", "taucher", "hafen"]
 OBJ = {"dielen": ("geld", 540, 1150), "briefkasten": ("briefkasten", 540, 1000),
-       "taucher": ("taucher", 540, 950), "hafen": ("schatz", 540, 1150)}
+       "taucher": ("taucher", 290, 620), "hafen": ("schatz", 630, 1270)}
 UEBER = [
     "",
     (hervorheben(*OBJ["dielen"][1:], maske=M("geld"), art="puls", glanz=MAG, wort="dielen") if hat("geld") else "") + schild(540, 1500, "BARGELD = WEG", MAG, groesse=64, wort="weg"),
