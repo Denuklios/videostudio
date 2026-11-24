@@ -26,7 +26,7 @@ szenen = [
      "text": "Speicher dir das und folg für mehr!", "min_dauer": 2.6},
 ]
 BILDER = ["dielen", "dielen", "briefkasten", "taucher", "hafen"]
-OBJ = {"dielen": ("geld", 540, 1150), "briefkasten": ("briefkasten", 540, 1000),
+OBJ = {"dielen": ("geld", 650, 1290), "briefkasten": ("briefkasten", 540, 1000),
        "taucher": ("taucher", 290, 620), "hafen": ("schatz", 630, 1270)}
 UEBER = [
     "",
