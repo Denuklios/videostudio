@@ -135,9 +135,11 @@ def qwen_vorbereiten(projekt, audio, ordner):
     ein = json.dumps({"text": " ".join(gesprochen), "stimme": st}, ensure_ascii=False)
     alt = (audio / "qwen_in.json").read_text() if (audio / "qwen_in.json").exists() else ""
     if alt != ein or not gesamt_wav.exists() or not wjson.exists():   # gleicher Text + Stimme → Aufnahme wiederverwenden
-        (audio / "qwen_in.json").write_text(ein)
-        subprocess.run([QWEN_PY, str(Path(__file__).with_name("qwen_stimme.py")), str(audio / "qwen_in.json"), str(gesamt_wav)], check=True)
+        (audio / "qwen_in.json").unlink(missing_ok=True); gesamt_wav.unlink(missing_ok=True); wjson.unlink(missing_ok=True)
+        (audio / "qwen_auftrag.json").write_text(ein)
+        subprocess.run([QWEN_PY, str(Path(__file__).with_name("qwen_stimme.py")), str(audio / "qwen_auftrag.json"), str(gesamt_wav)], check=True)
         subprocess.run([WHISPER_PY, str(Path(__file__).with_name("woerter.py")), str(gesamt_wav), str(wjson)], check=True)
+        (audio / "qwen_in.json").write_text(ein)   # erst nach Erfolg merken (sonst wird nach Abbruch alte Aufnahme wiederverwendet)
     ww = json.loads(wjson.read_text())
     norm = lambda x: re.sub(r"[^a-zäöüß0-9]", "", x.lower())
     tw, szene_von, textwoerter, sp_von = [], [], [], []   # sp_von: gesprochenes Wort → Textwort-Index

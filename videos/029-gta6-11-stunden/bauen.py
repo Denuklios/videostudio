@@ -26,7 +26,7 @@ szenen = [
      "text": "Speicher dir das und folg für mehr Tipps!", "min_dauer": 2.4},
 ]
 BILDER = ["schock", "schock", "konsole", "fehler", "warten"]
-OBJ = {"schock": ("gamer", 540, 1100), "konsole": ("konsole", 540, 1100), "fehler": ("tv", 540, 650), "warten": ("konsole", 540, 1100)}
+OBJ = {"schock": ("gamer", 540, 1100), "konsole": ("konsole", 480, 1300), "fehler": ("tv", 540, 650), "warten": ("konsole", 480, 1300)}
 def hv(n, wort, art="puls", glanz=MAG):
     m, x, y = OBJ[n]
     return hervorheben(x, y, maske=M(m), art=art, glanz=glanz, wort=wort) if hat(m) else ""
