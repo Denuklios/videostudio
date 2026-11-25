@@ -23,10 +23,10 @@ szenen = [
     {"kopf": "So schützt du <b>dich</b>",
      "text": "Deshalb: Siehst du das Speicher-Symbol, mach niemals die Konsole aus. Warte, bis es verschwunden ist."},
     {"kopf": "Speichern & <b>folgen</b>",
-     "text": "Speicher dir das und folg für mehr GTA-Tipps!", "min_dauer": 2.4},
+     "text": "Speicher dir das und folg für mehr Tipps!", "min_dauer": 2.4},
 ]
 BILDER = ["schock", "schock", "konsole", "fehler", "warten"]
-OBJ = {"schock": ("gamer", 540, 1100), "konsole": ("konsole", 540, 1100), "fehler": ("tv", 540, 900), "warten": ("controller", 540, 1150)}
+OBJ = {"schock": ("gamer", 540, 1100), "konsole": ("konsole", 540, 1100), "fehler": ("tv", 540, 650), "warten": ("konsole", 540, 1100)}
 def hv(n, wort, art="puls", glanz=MAG):
     m, x, y = OBJ[n]
     return hervorheben(x, y, maske=M(m), art=art, glanz=glanz, wort=wort) if hat(m) else ""
